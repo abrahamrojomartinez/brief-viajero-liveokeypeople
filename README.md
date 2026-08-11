@@ -12,16 +12,20 @@ netlify.toml                — cabeceras de caché
 brief_viajero.html          — dossier anterior (LiveOkey Marruecos 2026)
 ```
 
-## Publicar en Netlify
+## Netlify
 
-El repo ya está listo; solo falta conectarlo:
+El proyecto ya está creado en el equipo **Digital Change**:
 
-1. En Netlify → **Add new site → Import an existing project → GitHub**.
-2. Elegir este repositorio y la rama que se quiera publicar.
+- Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
+- URL: https://vibra-con-liveokey-trip.netlify.app
+
+Falta conectarlo a este repo para que se publique y se actualice solo:
+
+1. En el panel del proyecto → **Project configuration → Build & deploy →
+   Link repository** (o **Import from Git**).
+2. Elegir `abrahamrojomartinez/brief-viajero-liveokeypeople` y la rama a publicar.
 3. Dejar el comando de build vacío y el directorio de publicación en `.`
    (ya viene definido en `netlify.toml`).
-4. En **Site configuration → Change site name**, poner `vibra-liveokey-asturias`
-   para que la URL quede `https://vibra-liveokey-asturias.netlify.app`.
 
 A partir de ahí, cada push a esa rama redespliega solo.
 
