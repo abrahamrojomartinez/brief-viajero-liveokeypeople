@@ -35,8 +35,10 @@ A partir de ahí, cada push a esa rama redespliega solo.
   el texto se pinta antes de que baje ninguna foto.
 - La portada (`img/portada-atardecer.jpg`) carga con `fetchpriority="high"`;
   el resto va con `loading="lazy"`.
-- Todas las imágenes llevan `width`/`height` para que la página no dé saltos
-  mientras carga.
+- Las imágenes no llevan atributos `width`/`height` a propósito: el CSS las
+  dimensiona por un solo lado (`height` fija en los logos, `aspect-ratio` en
+  los mosaicos) y esos atributos sobrescribían la proporción y las deformaban.
+  El `aspect-ratio` del CSS ya evita los saltos de maquetación.
 - Las fotos se sirven con caché de un año; el HTML se revalida siempre, así
   que los cambios se ven al recargar.
 
