@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+  command = ""
+
+# El HTML siempre se revalida: así los cambios se ven al instante
+# al recargar desde WhatsApp o Instagram.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Las imágenes no cambian: caché larga.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
