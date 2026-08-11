@@ -44,13 +44,14 @@ A partir de ahí, cada push a esa rama redespliega solo.
 
 ## Los botones "Entrar al grupo"
 
-Los dos CTAs (el de la cabecera y el del cierre) apuntan al WhatsApp
-personal, con un mensaje ya escrito:
+Los dos CTAs (el de la cabecera y el del cierre) llevan al grupo del viaje:
 
 ```
-https://wa.me/34678703227?text=Hola%2C%20quiero%20entrar%20al%20grupo%20del%20viaje%20de%20septiembre
+https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc
 ```
 
-Cuando el grupo del viaje exista, basta con sustituir esa URL por el enlace
-de invitación (`https://chat.whatsapp.com/...`) en los dos sitios de
-`index.html`. Son las únicas dos apariciones de `wa.me` en el archivo.
+Son las dos únicas apariciones de `chat.whatsapp.com` en `index.html`.
+
+Si alguna vez hay que rehacer el grupo, WhatsApp genera un código de
+invitación nuevo y estos dos enlaces dejan de servir: habría que sustituirlos.
+Lo mismo si se restablece el enlace desde los ajustes del grupo.
