@@ -39,3 +39,16 @@ A partir de ahí, cada push a esa rama redespliega solo.
   mientras carga.
 - Las fotos se sirven con caché de un año; el HTML se revalida siempre, así
   que los cambios se ven al recargar.
+
+## Los botones "Entrar al grupo"
+
+Los dos CTAs (el de la cabecera y el del cierre) apuntan al WhatsApp
+personal, con un mensaje ya escrito:
+
+```
+https://wa.me/34678703227?text=Hola%2C%20quiero%20entrar%20al%20grupo%20del%20viaje%20de%20septiembre
+```
+
+Cuando el grupo del viaje exista, basta con sustituir esa URL por el enlace
+de invitación (`https://chat.whatsapp.com/...`) en los dos sitios de
+`index.html`. Son las únicas dos apariciones de `wa.me` en el archivo.
