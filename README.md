@@ -1,57 +1,83 @@
-# Dossier VIBRA × LiveOkey — Asturias, 15–20 septiembre
+# Asturias, 15–20 septiembre — VIBRA × LiveOkey
 
-Sitio estático de un solo archivo. `index.html` es el dossier del viaje; las
-imágenes viven en `/img`.
+Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 
-## Estructura
-
-```
-index.html          22 KB   — el dossier (antes 820 KB con las imágenes incrustadas)
-img/                526 KB  — las 13 fotos y logos, en archivos sueltos
-netlify.toml                — cabeceras de caché
-brief_viajero.html          — dossier anterior (LiveOkey Marruecos 2026)
-```
-
-## Netlify
-
-El proyecto ya está creado en el equipo **Digital Change**:
+| Ruta        | Quién     | Qué cuenta                         |
+|-------------|-----------|------------------------------------|
+| `/`         | LiveOkey  | El finde de surf, 18–20 sept       |
+| `/previa/`  | VIBRA     | La previa de coworking, 15–18 sept |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
 - URL: https://vibra-con-liveokey-trip.netlify.app
 
-Falta conectarlo a este repo para que se publique y se actualice solo:
+## Estructura
 
-1. En el panel del proyecto → **Project configuration → Build & deploy →
-   Link repository** (o **Import from Git**).
-2. Elegir `abrahamrojomartinez/brief-viajero-liveokeypeople` y la rama a publicar.
-3. Dejar el comando de build vacío y el directorio de publicación en `.`
-   (ya viene definido en `netlify.toml`).
+```
+index.html          21 KB   — dossier de LiveOkey (marca oscura, rojo #BC2813)
+previa/index.html   23 KB   — dossier de VIBRA (papel crema, coral #E8724C)
+img/                        — las 18 fotos + los dos recortes para compartir
+netlify.toml                — cabeceras de caché
+```
 
-A partir de ahí, cada push a esa rama redespliega solo.
+**Los enlaces entre los dos son relativos y dependen de esta estructura.**
+En `index.html` el botón «Ver la previa →» apunta a `previa/`, y en
+`previa/index.html` el botón «Conoce cómo será el finde →» apunta a `../`.
+Si algún día se mueven de sitio, hay que actualizar esos dos enlaces.
 
-## Notas de rendimiento
+## Peso
 
-- El HTML pasó de 820 KB a 22 KB al sacar las imágenes a archivos sueltos:
-  el texto se pinta antes de que baje ninguna foto.
-- La portada (`img/portada-atardecer.jpg`) carga con `fetchpriority="high"`;
-  el resto va con `loading="lazy"`.
+Los HTML venían con las fotos incrustadas en base64 y pesaban 550 KB y 775 KB.
+Ahora pesan 21 KB y 23 KB: el texto se pinta antes de que baje ninguna foto.
+
+- Cada foto es un archivo suelto en `/img/`, con caché de un año.
+- Las que ganaban algo llevan además versión **WebP** vía `<picture>`, con el
+  JPG de respaldo. `descanso-activo` y `taller` no la llevan: venían ya muy
+  comprimidas y el WebP salía más gordo que el original.
+- La portada de cada página carga con `fetchpriority="high"`; el resto va con
+  `loading="lazy"`.
+- `picture{display:contents}` hace falta para que el `<img>` siga siendo el hijo
+  directo del grid (`.mosaic`, `.pair`) y de `.hero`. Y `picture
+  source{display:none}` también: con el padre en `display:contents` el
+  `<source>` genera caja y se come una celda del mosaico.
 - Las imágenes no llevan atributos `width`/`height` a propósito: el CSS las
-  dimensiona por un solo lado (`height` fija en los logos, `aspect-ratio` en
-  los mosaicos) y esos atributos sobrescribían la proporción y las deformaban.
-  El `aspect-ratio` del CSS ya evita los saltos de maquetación.
-- Las fotos se sirven con caché de un año; el HTML se revalida siempre, así
-  que los cambios se ven al recargar.
+  dimensiona por un solo lado (`aspect-ratio` en los mosaicos, `height` fija en
+  los logos) y esos atributos deformaban la proporción.
 
-## Los botones "Entrar al grupo"
+## Compartir por WhatsApp e Instagram
 
-Los dos CTAs (el de la cabecera y el del cierre) llevan al grupo del viaje:
+Cada página lleva etiquetas Open Graph con su propio recorte 1200×630
+(`img/og-liveokey.jpg`, `img/og-vibra.jpg`), para que el enlace salga con foto
+y titular en vez de pelado. Esas URL son absolutas: si algún día se pone un
+dominio propio, hay que actualizarlas.
+
+## Modo oscuro
+
+Las dos páginas tienen paleta fija (LiveOkey oscura, VIBRA crema) y un bloque
+`@media (prefers-color-scheme: dark)` cuyo trabajo es que el móvil en modo
+oscuro **no** cambie nada. Comprobado: las dos renderizan idénticas en claro y
+en oscuro.
+
+Ese bloque traía dos trozos de CSS pegados por error que, en VIBRA, dejaban las
+tarjetas y la polaroid sin fondo y les cambiaban el padding. Se quitaron, y se
+restauraron al final del bloque los colores propios de VIBRA que las reglas
+`!important` heredadas del dossier oscuro estaban pisando: el coral del bloque
+abierto, el borde de la opción destacada y el titular del bonus.
+
+## Los botones «Entrar al grupo»
+
+Los dos CTAs de cada página llevan al grupo del viaje:
 
 ```
 https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc
 ```
 
-Son las dos únicas apariciones de `chat.whatsapp.com` en `index.html`.
+Si alguna vez se rehace el grupo, o se restablece el enlace desde los ajustes,
+WhatsApp genera un código nuevo y estos cuatro enlaces dejan de servir.
 
-Si alguna vez hay que rehacer el grupo, WhatsApp genera un código de
-invitación nuevo y estos dos enlaces dejan de servir: habría que sustituirlos.
-Lo mismo si se restablece el enlace desde los ajustes del grupo.
+## Nota sobre `.sec.dark`
+
+El CSS de las dos páginas define una sección `.sec.dark` con foto de fondo
+(`img/lok-fondo-oscuro.jpg` y `img/vibra-fondo-oscuro.jpg`), pero **ningún
+elemento del HTML usa esa clase**. Las fotos se conservan por si se recupera la
+sección; mientras tanto ningún navegador las descarga, así que no pesan nada al
+visitante.

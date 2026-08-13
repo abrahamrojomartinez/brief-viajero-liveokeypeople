@@ -2,14 +2,16 @@
   publish = "."
   command = ""
 
-# El HTML siempre se revalida: así los cambios se ven al instante
-# al recargar desde WhatsApp o Instagram.
+# Por defecto, revalidar siempre: así un cambio se ve al recargar, también
+# cuando se abre desde el navegador interno de WhatsApp o Instagram.
+# Cubre "/" y "/previa/", que es como llegan de verdad las peticiones.
 [[headers]]
-  for = "/*.html"
+  for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Las imágenes no cambian: caché larga.
+# Las fotos no cambian de nombre: caché de un año. Va después a propósito,
+# para que gane sobre la regla general.
 [[headers]]
   for = "/img/*"
   [headers.values]
