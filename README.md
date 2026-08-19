@@ -1,11 +1,11 @@
-# Asturias, 15–20 septiembre — VIBRA × LiveOkey
+# Asturias, 16–20 septiembre — VIBRA × LiveOkey
 
 Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 
 | Ruta        | Quién     | Qué cuenta                         |
 |-------------|-----------|------------------------------------|
 | `/`         | LiveOkey  | El finde de surf, 18–20 sept       |
-| `/previa/`  | VIBRA     | La previa de coworking, 15–18 sept |
+| `/previa/`  | VIBRA     | La previa de coworking, 16–18 sept |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
 - URL: https://vibra-con-liveokey-trip.netlify.app
