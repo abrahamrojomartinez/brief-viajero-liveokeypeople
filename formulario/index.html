@@ -1,49 +1,33 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Formulario del viaje · Asturias 2026 · VIBRA × LiveOkey</title>
+<title>Formulario del viaje · Asturias 2026 · LiveOkey</title>
 <meta name="description" content="Formulario de gestión del viaje a Asturias del 16 al 20 de septiembre de 2026. Para quienes ya tienen la plaza reservada.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="VIBRA × LiveOkey">
+<meta property="og:site_name" content="LiveOkey People">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://vibra-con-liveokey-trip.netlify.app/formulario/">
 <meta property="og:title" content="Formulario del viaje · Asturias 2026">
 <meta property="og:description" content="Ya tienes la plaza. Ahora cuéntanos lo que necesitamos para organizarlo todo.">
-<meta property="og:image" content="https://vibra-con-liveokey-trip.netlify.app/img/og-vibra.jpg">
+<meta property="og:image" content="https://vibra-con-liveokey-trip.netlify.app/img/og-liveokey.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://vibra-con-liveokey-trip.netlify.app/formulario/">
 <meta name="color-scheme" content="only light">
 <meta name="supported-color-schemes" content="light">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet"><style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
 /* ---------------------------------------------------------------
-   Paletas. Las dos marcas, tal cual salen de sus dossieres.
-   La piel activa vive en body[data-piel] y son esas variables las
-   que usa todo lo demas: cambiar de paso = cambiar de paleta.
+   Paleta unica: la de LiveOkey, tal cual sale de su dossier. VIBRA
+   solo aparece en el pie, con su logotipo. Todo lee estas variables,
+   asi que la marca se cambia entera desde aqui.
    --------------------------------------------------------------- */
 :root{
   color-scheme:only light;
-  --paper:#F7F2E9;--paper2:#FDFAF4;--ink:#211C1E;--ink2:#5E5753;
-  --coral:#E8724C;--coral2:#D45F38;--line:#E7DFD2;
-  --lok-bg:#12100F;--lok-bg2:#1C1917;--lok-tx:#F5F1EC;--lok-tx2:#A8A09A;
-  --lok-red:#BC2813;--lok-line:#332E2B;
-}
-/* Pasos 1 y 4: papel, sin marca dominante (la palabra en italica va apagada). */
-body{
-  --pg:var(--paper);--pg2:var(--paper2);--tx:var(--ink);--tx2:var(--ink2);
-  --ac:var(--coral);--ac2:var(--coral2);--ln:var(--line);--hi:var(--ink2);
-  --err:#A32217;--foco:var(--coral);
-  --duo-a:#33292A;--duo-b:#E7DFD2;
-  --sombra:0 10px 30px rgba(33,28,30,.13);
-}
-/* Pasos 2 y 5: VIBRA. Papel y coral. */
-body[data-piel="vibra"]{--hi:var(--coral);--duo-a:#2A1A14;--duo-b:#F0C3A9}
-/* Paso 3: LiveOkey. Casi negro y rojo. */
-body[data-piel="lok"]{
-  --pg:var(--lok-bg);--pg2:var(--lok-bg2);--tx:var(--lok-tx);--tx2:var(--lok-tx2);
-  --ac:var(--lok-red);--ac2:var(--lok-red);--ln:var(--lok-line);--hi:var(--lok-red);
+  /* Una sola marca de principio a fin: LiveOkey. */
+  --pg:#12100F;--pg2:#1C1917;--tx:#F5F1EC;--tx2:#A8A09A;
+  --ac:#BC2813;--ac2:#BC2813;--ln:#332E2B;--hi:#BC2813;
   --err:#FF8A73;--foco:#E8624B;
   --duo-a:#0C0A09;--duo-b:#E4796A;
   --sombra:0 10px 30px rgba(0,0,0,.5);
@@ -51,11 +35,10 @@ body[data-piel="lok"]{
 *{margin:0;padding:0;box-sizing:border-box}
 /* Los .btn y .paso traen display propio y se comerian el atributo hidden. */
 [hidden]{display:none!important}
-html{background:var(--pg);transition:background-color .4s ease}
+html{background:var(--pg)}
 body{
   font-family:'Hanken Grotesk',sans-serif;background:var(--pg);color:var(--tx);
   line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-  transition:background-color .4s ease,color .4s ease;
   padding:70px 0 40px;
 }
 h1,h2,h3{font-family:'Fraunces',serif;line-height:1.08;letter-spacing:-.015em}
@@ -70,15 +53,13 @@ button{font:inherit;color:inherit}
   background:var(--pg);
   background:color-mix(in srgb,var(--pg) 94%,transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);
-  transition:background-color .4s ease,border-color .4s ease;
 }
 .barra-in{max-width:620px;margin:0 auto;padding:11px 22px 12px}
-.barra-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:9px}
-.wm{font-family:'Fraunces',serif;font-weight:900;font-size:16px;letter-spacing:-.01em}
-.wm .x{color:var(--ac2);font-weight:600;padding:0 2px}
+.barra-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+.lokmark{height:32px;width:auto;display:block}
 .cuenta{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)}
 .pista{height:4px;border-radius:100px;background:var(--ln);overflow:hidden}
-.relleno{height:100%;width:20%;border-radius:100px;background:var(--ac);transition:width .4s ease,background-color .4s ease}
+.relleno{height:100%;width:20%;border-radius:100px;background:var(--ac);transition:width .4s ease}
 
 /* --- Pasos ------------------------------------------------------- */
 .paso{display:none;padding-top:26px}
@@ -87,9 +68,10 @@ button{font:inherit;color:inherit}
 .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ac2);display:block;margin-bottom:10px}
 .paso h2{font-size:clamp(30px,7.4vw,44px);font-weight:900;margin-bottom:10px;outline:none}
 .lead{color:var(--tx2);font-size:16px;max-width:34em}
-/* Caveat SOLO en los pasos de VIBRA. Nunca en el 3. */
-.nota{display:block;font-family:'Caveat',cursive;color:var(--ac2);font-size:21px;
-  line-height:1.25;margin-top:14px;transform:rotate(-1.4deg)}
+/* LiveOkey no usa letra manuscrita: su equivalente es la Fraunces en italica. */
+.nota{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  letter-spacing:.01em;color:var(--ac2);font-size:clamp(19px,4.2vw,22px);
+  line-height:1.28;margin-top:14px}
 
 /* --- La foto del paso, en duotono segun la piel ------------------- */
 .foto{
@@ -97,14 +79,14 @@ button{font:inherit;color:inherit}
   border-radius:16px;overflow:hidden;border:1px solid var(--ln);
   background-color:var(--duo-a);
   background-image:linear-gradient(148deg,var(--duo-b) -10%,var(--duo-a) 72%);
-  box-shadow:var(--sombra);transition:background-color .4s ease,border-color .4s ease;
+  box-shadow:var(--sombra);
 }
 .foto img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
   background:var(--duo-a);filter:grayscale(1) contrast(1.06);mix-blend-mode:screen;
 }
 .foto::after{content:"";position:absolute;inset:0;background:var(--duo-b);
-  mix-blend-mode:multiply;pointer-events:none;transition:background-color .4s ease}
+  mix-blend-mode:multiply;pointer-events:none}
 /* Si la foto todavia no existe queda el color plano de respaldo. */
 .foto.sin-foto img{display:none}
 .foto.sin-foto::after{display:none}
@@ -122,8 +104,8 @@ input[type=text],input[type=email],input[type=tel],textarea{
 }
 textarea{min-height:104px;resize:vertical}
 input::placeholder,textarea::placeholder{color:var(--tx2);opacity:.72}
-input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,114,76,.22);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 22%,transparent)}
-.campo.mal input,.campo.mal textarea{border-color:var(--err);box-shadow:0 0 0 3px rgba(163,34,23,.16);box-shadow:0 0 0 3px color-mix(in srgb,var(--err) 16%,transparent)}
+input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(188,40,19,.28);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 22%,transparent)}
+.campo.mal input,.campo.mal textarea{border-color:var(--err);box-shadow:0 0 0 3px rgba(255,138,115,.18);box-shadow:0 0 0 3px color-mix(in srgb,var(--err) 16%,transparent)}
 .err{display:none;font-size:13.5px;font-weight:600;color:var(--err);margin-top:7px}
 .campo.mal>.err,.grupo.mal>.err{display:block}
 
@@ -142,7 +124,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 .op:hover .cara{border-color:var(--ac);border-color:color-mix(in srgb,var(--ac) 55%,var(--ln))}
 .op input:checked+.cara{border-color:var(--ac);background:var(--pg2);
   background:color-mix(in srgb,var(--ac) 9%,var(--pg2));
-  box-shadow:0 4px 16px rgba(232,114,76,.26);
+  box-shadow:0 4px 16px rgba(188,40,19,.34);
   box-shadow:0 4px 16px color-mix(in srgb,var(--ac) 26%,transparent);font-weight:600}
 .op input:focus-visible+.cara{outline:2px solid var(--foco);outline-offset:3px}
 .grupo.mal .cara{border-color:var(--err)}
@@ -167,6 +149,15 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 .enlace-sec{font-size:14.5px;font-weight:600;color:var(--ac2);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--ac2) 45%,transparent);padding-bottom:1px}
 .enlace-sec:hover{border-bottom-color:var(--ac2)}
 
+/* --- El "Otro" con su campo colgando ------------------------------ */
+.op-otro{display:flex;flex-direction:column}
+.escribe{position:relative;padding:11px 0 0 17px}
+.escribe::before{content:"";position:absolute;left:7px;top:0;bottom:15px;width:2px;
+  border-radius:2px;background:var(--ln);transition:background-color .18s}
+.op-otro:has(input[type=radio]:checked) .escribe::before{background:var(--ac)}
+.oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
 /* --- Condicionales: se despliegan sin salto ----------------------- */
 .cond{display:grid;grid-template-rows:0fr;opacity:0;
   transition:grid-template-rows .32s ease,opacity .26s ease,margin-top .32s ease;margin-top:0}
@@ -185,7 +176,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 .btn{font-weight:700;border-radius:100px;border:none;cursor:pointer;text-align:center;
   transition:transform .15s,box-shadow .2s,background-color .3s,opacity .2s;text-decoration:none;display:inline-block}
 .btn-ac{background:var(--ac);color:#fff;font-size:17px;padding:16px 34px;flex:1;
-  box-shadow:0 6px 20px rgba(232,114,76,.32);
+  box-shadow:0 6px 20px rgba(188,40,19,.42);
   box-shadow:0 6px 20px color-mix(in srgb,var(--ac) 32%,transparent)}
 .btn-ac:hover:not(:disabled){transform:translateY(-2px)}
 .btn-ac:disabled{opacity:.6;cursor:progress;transform:none}
@@ -216,8 +207,15 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   background:var(--pg2);
   background:color-mix(in srgb,var(--ac) 7%,var(--pg2));font-size:15.5px;line-height:1.5}
 .recuerda b{color:var(--ac2);font-weight:700}
-.sello{display:block;font-family:'Caveat',cursive;color:var(--ac2);font-size:21px;
-  text-align:center;margin-top:34px;transform:rotate(-1deg)}
+/* Pie: el viaje es de LiveOkey, la previa la pone VIBRA. */
+.pie{display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin-top:44px;padding:26px 0 4px;border-top:1px solid var(--ln)}
+.pie-t{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--tx2)}
+.wordmark{display:inline-flex;flex-direction:column;align-items:center;gap:3px;
+  text-decoration:none;color:var(--tx)}
+.wordmark:hover{color:var(--ac2)}
+.wm-text{font-family:'Fraunces',serif;font-weight:900;font-size:22px;line-height:1}
+.wm-onda{display:block;overflow:visible}
 
 @media(max-width:520px){
   .nav{flex-wrap:wrap}
@@ -234,21 +232,22 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   html,body{background:var(--pg)!important;color:var(--tx)!important}
   input[type=text],input[type=email],input[type=tel],textarea,
   .op .cara,.desple,.consent,.resumen{background:var(--pg2)!important;color:var(--tx)!important}
+  .wordmark{color:var(--tx)!important}
   .op input:checked+.cara{background:var(--pg2)!important;background:color-mix(in srgb,var(--ac) 9%,var(--pg2))!important}
   .lead,.ayuda,.cuenta,.op .cara .d,.resumen .k{color:var(--tx2)!important}
-  .kicker,.nota,.enlace-sec,.sello,.recuerda b{color:var(--ac2)!important}
+  .kicker,.nota,.enlace-sec,.recuerda b,.wordmark:hover{color:var(--ac2)!important}
   em,.desple summary::after{color:var(--hi)!important}
   .btn-ac{background:var(--ac)!important;color:#fff!important}
   .btn-sec{background:transparent!important;color:var(--tx2)!important}
   .err{color:var(--err)!important}
 }
 </style></head>
-<body data-piel="neutra">
+<body>
 
 <header class="barra">
   <div class="barra-in">
     <div class="barra-top">
-      <span class="wm">VIBRA<span class="x">×</span>LiveOkey</span>
+      <picture><source srcset="../img/liveokey-logo.webp" type="image/webp"><img class="lokmark" src="../img/liveokey-logo.png" alt="LiveOkey People" decoding="async"></picture>
       <span class="cuenta" id="cuenta" aria-live="polite">Paso 1 de 5</span>
     </div>
     <div class="pista" role="progressbar" aria-label="Progreso del formulario" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="pista">
@@ -271,10 +270,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   <input type="hidden" id="viaje" name="viaje" value="Asturias sept 2026">
 
   <!-- ============ PASO 1 · Quien eres (neutra) ============ -->
-  <section class="paso activo" id="paso1" data-piel="neutra" aria-labelledby="h1">
+  <section class="paso activo" id="paso1" aria-labelledby="h1">
     <span class="kicker">Empezamos</span>
     <h2 id="h1" tabindex="-1">Quién <em>eres</em></h2>
-    <p class="lead">Ya tienes la plaza. Esto es lo básico para tenerte en la lista y poder escribirte antes del viaje.</p>
+    <p class="lead">Ya tienes tu plaza. Ahora vamos a ir organizando unas cuantas cosas más para todo el viaje.</p>
 
     <figure class="foto"><img src="../img/paso-1.jpg" alt="" fetchpriority="high"></figure>
 
@@ -313,7 +312,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   </section>
 
   <!-- ============ PASO 2 · Tu viaje (VIBRA) ============ -->
-  <section class="paso" id="paso2" data-piel="vibra" aria-labelledby="h2t" hidden>
+  <section class="paso" id="paso2" aria-labelledby="h2t" hidden>
     <span class="kicker">Tu viaje</span>
     <h2 id="h2t" tabindex="-1">¿Te vienes a la <em>previa</em>?</h2>
     <p class="lead">El finde de surf ya lo tienes. La previa es lo que pasa en la misma casa los días de antes.</p>
@@ -365,8 +364,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   </section>
 
   <!-- ============ PASO 3 · El surf (LiveOkey) ============ -->
-  <section class="paso" id="paso3" data-piel="lok" aria-labelledby="h3t" hidden>
-    <span class="kicker">LiveOkey</span>
+  <section class="paso" id="paso3" aria-labelledby="h3t" hidden>
+    <span class="kicker">El agua</span>
     <h2 id="h3t" tabindex="-1">El <em>surf</em></h2>
     <p class="lead">Para armar los grupos del agua y tener tu neopreno preparado cuando llegues.</p>
 
@@ -413,10 +412,9 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   </section>
 
   <!-- ============ PASO 4 · Lo practico (neutra) ============ -->
-  <section class="paso" id="paso4" data-piel="neutra" aria-labelledby="h4t" hidden>
+  <section class="paso" id="paso4" aria-labelledby="h4t" hidden>
     <span class="kicker">Lo práctico</span>
     <h2 id="h4t" tabindex="-1">Un par de <em>detalles</em></h2>
-    <p class="lead">Cosas de cocina y de logística, para que nadie se quede fuera de nada.</p>
 
     <figure class="foto"><img src="../img/paso-4.jpg" alt="" loading="lazy"></figure>
 
@@ -433,26 +431,24 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
         <div class="ops col">
           <label class="op"><input type="radio" name="conocido" value="Por Instagram de VIBRA"><span class="cara">Por Instagram de VIBRA</span></label>
           <label class="op"><input type="radio" name="conocido" value="Por Instagram de LiveOkey"><span class="cara">Por Instagram de LiveOkey</span></label>
-          <label class="op"><input type="radio" name="conocido" value="Otro"><span class="cara">Otro</span></label>
+          <div class="op-otro">
+            <label class="op"><input type="radio" name="conocido" value="Otro"><span class="cara">Otro</span></label>
+            <!-- Se ve desde el principio: al leer "Otro" ya se entiende que ahi se escribe.
+                 Escribir dentro marca la opcion solo. -->
+            <div class="campo escribe" id="c-detalle">
+              <label class="oculto" for="detalle">Cuéntanos por dónde nos conociste</label>
+              <input type="text" id="detalle" name="detalle" placeholder="Cuéntanos: si fue por alguien, dinos por quién" autocomplete="off" aria-describedby="e-detalle" enterkeyhint="next">
+              <p class="err" id="e-detalle" role="alert"></p>
+            </div>
+          </div>
         </div>
         <p class="err" id="e-conocido" role="alert"></p>
       </fieldset>
-
-      <!-- Se abre al marcar "Otro", con el cursor ya dentro. -->
-      <div class="cond" id="cond-detalle">
-        <div class="envuelve">
-          <div class="campo" id="c-detalle">
-            <label for="detalle">Cuéntanos <span class="obl">*</span></label>
-            <input type="text" id="detalle" name="detalle" placeholder="Cuéntanos: si fue por alguien, dinos por quién" autocomplete="off" aria-describedby="e-detalle" enterkeyhint="next">
-            <p class="err" id="e-detalle" role="alert"></p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ============ PASO 5 · Cosas sobre ti (VIBRA) ============ -->
-  <section class="paso" id="paso5" data-piel="vibra" aria-labelledby="h5t" hidden>
+  <section class="paso" id="paso5" aria-labelledby="h5t" hidden>
     <span class="kicker">Casi está</span>
     <h2 id="h5t" tabindex="-1">Cosas sobre <em>ti</em></h2>
     <p class="lead">Dos preguntas para conocerte un poco antes de vernos en el norte.</p>
@@ -512,9 +508,15 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   <div class="nav">
     <a class="btn btn-ac" id="wa" href="https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc" target="_blank" rel="noopener">Entrar al grupo del viaje</a>
   </div>
-
-  <span class="sello">Que nunca te quiten tu vibra</span>
 </section>
+
+<footer class="pie">
+  <span class="pie-t">y la previa con</span>
+  <a class="wordmark" href="https://vibra-con-liveokey-trip.netlify.app/previa/"
+     target="_blank" rel="noopener" aria-label="VIBRA — ver la previa">
+    <svg class="wm-onda" width="58" height="13" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="wm-text">vibra</span>
+  </a>
+</footer>
 
 </main>
 <script>
@@ -615,10 +617,12 @@ function marcaError(regla, hay){
   var caja = document.getElementById(regla.campo);
   if (!caja) return;
   caja.classList.toggle('mal', hay);
-  var p = caja.querySelector('.err');
+  var p = caja.querySelector(':scope > .err');
   if (p) p.textContent = hay ? regla.msg : '';
-  var controles = caja.querySelectorAll('input, textarea');
-  Array.prototype.forEach.call(controles, function(c){
+  var controles = Array.prototype.filter.call(
+    caja.querySelectorAll('input, textarea'),
+    function(c){ return c.closest('.campo, .grupo') === caja; });
+  controles.forEach(function(c){
     if (hay) c.setAttribute('aria-invalid','true');
     else c.removeAttribute('aria-invalid');
   });
@@ -651,10 +655,10 @@ function limpia(e){
   var caja = e.target.closest('.campo, .grupo');
   if (caja && caja.classList.contains('mal')){
     caja.classList.remove('mal');
-    var p = caja.querySelector('.err');
+    var p = caja.querySelector(':scope > .err');
     if (p) p.textContent = '';
     Array.prototype.forEach.call(caja.querySelectorAll('[aria-invalid]'), function(c){
-      c.removeAttribute('aria-invalid');
+      if (c.closest('.campo, .grupo') === caja) c.removeAttribute('aria-invalid');
     });
   }
 }
@@ -668,7 +672,6 @@ function pinta(n, mover){
     if (activo) s.removeAttribute('hidden'); else s.setAttribute('hidden','');
   });
   var sec = secciones[n - 1];
-  document.body.dataset.piel = sec.dataset.piel;      // el fondo de la pagina funde en 400 ms
   cuenta.textContent = 'Paso ' + n + ' de ' + TOTAL;
   relleno.style.width = Math.round((n / TOTAL) * 100) + '%';
   pista.setAttribute('aria-valuenow', String(n));
@@ -724,22 +727,31 @@ $$('input[name="previa"]').forEach(function(r){
   });
 });
 
-/* "Otro" abre el campo con el cursor ya dentro. Al desmarcarlo se limpia. */
-var condDet = $('#cond-detalle');
+/* El campo de "Otro" esta siempre a la vista. Marcar la opcion lleva el
+   cursor dentro, y escribir dentro marca la opcion sin tener que pulsarla. */
+var detalle = $('#detalle');
 $$('input[name="conocido"]').forEach(function(r){
   r.addEventListener('change', function(){
-    var otro = radio('conocido') === 'Otro';
-    if (!otro){
-      $('#detalle').value = '';
+    if (radio('conocido') !== 'Otro'){
+      detalle.value = '';
       marcaError({campo:'c-detalle', msg:''}, false);
+    } else {
+      detalle.focus();
     }
-    abre(condDet, otro, '#detalle');
+  });
+});
+['focus','input'].forEach(function(ev){
+  detalle.addEventListener(ev, function(){
+    var otro = form.querySelector('input[name="conocido"][value="Otro"]');
+    if (!otro.checked){
+      otro.checked = true;
+      otro.dispatchEvent(new Event('change', {bubbles:true}));
+    }
   });
 });
 
-/* Estado inicial de los condicionales: cerrados y fuera del tabulador. */
+/* El unico condicional que queda es el dia de la previa. */
 abre(condDia, false, null);
-abre(condDet, false, null);
 
 /* ---- Foto de cada paso: color plano si todavia no existe -------- */
 $$('.foto img').forEach(function(img){
@@ -895,7 +907,6 @@ function pantallaGracias(){
   form.setAttribute('hidden','');
   gracias.removeAttribute('hidden');
   gracias.classList.add('activo');
-  document.body.dataset.piel = 'vibra';               // la pantalla de gracias es de VIBRA
   cuenta.textContent = 'Listo';
   relleno.style.width = '100%';
   pista.setAttribute('aria-valuenow', String(TOTAL));

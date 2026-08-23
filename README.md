@@ -6,7 +6,7 @@ Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 |----------------|-----------|---------------------------------------|
 | `/`            | LiveOkey  | El finde de surf, 18–20 sept          |
 | `/previa/`     | VIBRA     | La previa de coworking, 16–18 sept    |
-| `/formulario/` | Las dos   | Formulario de gestión del viaje       |
+| `/formulario/` | LiveOkey  | Formulario de gestión del viaje       |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
 - URL: https://vibra-con-liveokey-trip.netlify.app
@@ -90,21 +90,18 @@ visitante.
 Para quien **ya tiene la plaza**. No es de venta: no hay precios, ni plazas, ni
 CTA de reserva. Sirve para organizar alojamiento, cocina, neoprenos y grupos.
 
-Cinco pasos, y **la piel cambia según de quién es el bloque**. No es decorativo:
-al rellenarlo entiendes de quién es cada parte del viaje.
+Cinco pasos: Quién eres · Tu viaje · El surf · Lo práctico · Cosas sobre ti.
 
-| Paso | Título          | Piel                          |
-|------|-----------------|-------------------------------|
-| 1    | Quién eres      | papel, neutra                 |
-| 2    | Tu viaje        | **VIBRA** — papel y coral     |
-| 3    | El surf         | **LiveOkey** — negro y rojo   |
-| 4    | Lo práctico     | papel, neutra                 |
-| 5    | Cosas sobre ti  | **VIBRA** — papel y coral     |
+**Marca única: LiveOkey.** Negro `#12100F`, rojo `#BC2813`, hueso `#F5F1EC`, de
+principio a fin. La paleta entera vive en `:root` y todo lo demás lee esas
+variables, así que la marca se cambia desde un solo sitio. Nada de Caveat: la
+letra manuscrita es de VIBRA, y aquí su equivalente es la Fraunces en itálica,
+como en el dossier de LiveOkey.
 
-El fondo de la página entera funde de un paso a otro en 400 ms. La paleta activa
-vive en `body[data-piel]` y todo lo demás lee esas variables, así que cambiar de
-paso es cambiar de paleta. Caveat solo aparece en los pasos de VIBRA; en el 3
-nunca, porque la letra manuscrita no es de LiveOkey.
+VIBRA aparece **solo en el pie**, con su logotipo (la onda sobre la palabra
+`vibra` en Fraunces 900, el mismo componente que el dossier), bajo la línea
+«y la previa con». Va en hueso y no en coral: el coral de VIBRA sobre el negro
+de LiveOkey es justo lo que no toca. El logotipo enlaza a `/previa/`.
 
 ### Antes de que funcione: dos cosas en HubSpot
 
@@ -155,6 +152,12 @@ que valen fotos de cualquier procedencia y salen coherentes.
 - **Nada de `localStorage` ni `sessionStorage`.** El estado vive en memoria.
 - Se valida al pulsar Siguiente, nunca mientras se escribe. El error sale debajo
   del campo y el foco salta al primero que falla.
+- El campo de texto de «Otro» **se ve desde el principio**, colgando de la propia
+  opción: al leerla ya se entiende que ahí se escribe, sin tener que pulsar nada.
+  Escribir dentro marca la opción solo, y marcar la opción lleva el cursor dentro.
+  Cambiar a otra respuesta lo limpia. Como ese campo vive dentro del `fieldset`,
+  la validación apunta a `:scope > .err` y a los controles propios de cada caja:
+  si no, el error del grupo se escribía en la caja del campo de texto.
 - Enter avanza de paso; dentro de un textarea hace salto de línea.
 - Si HubSpot falla, **los datos siguen en pantalla** y hay botón de reintentar.
   A la segunda, el aviso remite al grupo de WhatsApp. No se pide ni se ofrece
