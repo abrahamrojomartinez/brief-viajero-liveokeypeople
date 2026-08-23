@@ -535,7 +535,6 @@ var FORM_GUID = '';
 
 var PORTAL_ID     = '246666670';                                  // cuenta europea
 var ENDPOINT      = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/';
-var EMAIL_CONTACTO = 'abrahamrojomartinez@gmail.com';             // salida de emergencia si HubSpot falla
 var WHATSAPP      = 'https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc';
 var TEXTO_CONSENT = 'Acepto que VIBRA y LiveOkey guarden estos datos para organizar el viaje y contactarme sobre él.';
 
@@ -814,16 +813,6 @@ function muestraAviso(html){
   aviso.focus({preventScroll:true});
 }
 
-function enlaceCorreo(){
-  var lineas = ETIQUETAS.map(function(e){
-    var v = e.v();
-    return v ? e.k + ': ' + v : '';
-  }).filter(Boolean).join('\n');
-  return 'mailto:' + EMAIL_CONTACTO +
-    '?subject=' + encodeURIComponent('Formulario viaje Asturias 2026 — ' + (val('nombre') || 'sin nombre')) +
-    '&body='    + encodeURIComponent('No se pudo enviar desde la web. Estos son mis datos:\n\n' + lineas + '\n');
-}
-
 /* ---- Envio ------------------------------------------------------ */
 function envia(){
   // Trampa para bots: si viene rellena, se descarta en silencio.
@@ -831,8 +820,9 @@ function envia(){
 
   if (!FORM_GUID){
     muestraAviso('<b>El formulario todavía no está conectado.</b><br>' +
-      'Falta pegar el identificador del formulario de HubSpot. Tus respuestas siguen aquí: ' +
-      'avísanos y lo dejamos listo, o mándanoslas por <a href="' + enlaceCorreo() + '">correo</a>.');
+      'No es cosa tuya: nos falta un paso por nuestro lado. Tus respuestas siguen aquí. ' +
+      'Avísanos por el <a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
+      'y lo dejamos listo en un momento.');
     return;
   }
 
@@ -861,9 +851,9 @@ function envia(){
         '<b>Reintentar envío</b>.');
     } else {
       muestraAviso('<b>Sigue sin salir.</b><br>' +
-        'Para no hacerte repetirlo, mándanoslo por correo y lo metemos a mano: ' +
-        '<a href="' + enlaceCorreo() + '">escribir a ' + EMAIL_CONTACTO + '</a> ' +
-        '(el correo se abre con tus respuestas ya escritas). También puedes volver a intentarlo.');
+        'Puede ser cosa de la conexión. Vuelve a intentarlo dentro de un rato, o dínoslo por el ' +
+        '<a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
+        'y lo apuntamos a mano. No cierres esta pantalla: tus respuestas siguen aquí.');
     }
   });
 }

@@ -157,7 +157,8 @@ que valen fotos de cualquier procedencia y salen coherentes.
   del campo y el foco salta al primero que falla.
 - Enter avanza de paso; dentro de un textarea hace salto de línea.
 - Si HubSpot falla, **los datos siguen en pantalla** y hay botón de reintentar.
-  A la segunda aparece un `mailto:` con las respuestas ya escritas en el cuerpo.
+  A la segunda, el aviso remite al grupo de WhatsApp. No se pide ni se ofrece
+  ninguna dirección de correo en ninguna parte.
 - Campo trampa `empresa_web`, oculto por CSS y no con `type="hidden"`: si llega
   relleno, el envío se descarta en silencio y se enseña la pantalla de gracias
   igual.
