@@ -56,7 +56,17 @@ button{font:inherit;color:inherit}
 }
 .barra-in{max-width:620px;margin:0 auto;padding:11px 22px 12px}
 .barra-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
-.lokmark{height:32px;width:auto;display:block}
+.lokmark{height:32px;width:auto;display:block;flex:0 0 auto}
+/* VIBRA acompana a LiveOkey, en pequeno: se reconoce sin competir. */
+.marcas{display:flex;align-items:center;gap:10px;min-width:0}
+.con-vibra{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  text-decoration:none;color:var(--tx2);padding-left:10px;border-left:1px solid var(--ln)}
+.con-vibra:hover{color:var(--tx)}
+.cv-t{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  line-height:1;white-space:nowrap}
+.cv-wm{display:flex;align-items:center;gap:5px;color:var(--tx);
+  font-family:'Fraunces',serif;font-weight:900;font-size:14px;line-height:1}
+.cv-onda{display:block;flex:0 0 auto;overflow:visible}
 .cuenta{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)}
 .pista{height:4px;border-radius:100px;background:var(--ln);overflow:hidden}
 .relleno{height:100%;width:20%;border-radius:100px;background:var(--ac);transition:width .4s ease}
@@ -81,9 +91,11 @@ button{font:inherit;color:inherit}
   background-image:linear-gradient(148deg,var(--duo-b) -10%,var(--duo-a) 72%);
   box-shadow:var(--sombra);
 }
+.foto picture{display:contents}
+.foto picture source{display:none}
 .foto img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-  background:var(--duo-a);filter:grayscale(1) contrast(1.06);mix-blend-mode:screen;
+  background:var(--duo-a);filter:grayscale(1) contrast(1.16) brightness(1.02);mix-blend-mode:screen;
 }
 .foto::after{content:"";position:absolute;inset:0;background:var(--duo-b);
   mix-blend-mode:multiply;pointer-events:none}
@@ -207,15 +219,6 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   background:var(--pg2);
   background:color-mix(in srgb,var(--ac) 7%,var(--pg2));font-size:15.5px;line-height:1.5}
 .recuerda b{color:var(--ac2);font-weight:700}
-/* Pie: el viaje es de LiveOkey, la previa la pone VIBRA. */
-.pie{display:flex;flex-direction:column;align-items:center;gap:8px;
-  margin-top:44px;padding:26px 0 4px;border-top:1px solid var(--ln)}
-.pie-t{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--tx2)}
-.wordmark{display:inline-flex;flex-direction:column;align-items:center;gap:3px;
-  text-decoration:none;color:var(--tx)}
-.wordmark:hover{color:var(--ac2)}
-.wm-text{font-family:'Fraunces',serif;font-weight:900;font-size:22px;line-height:1}
-.wm-onda{display:block;overflow:visible}
 
 @media(max-width:520px){
   .nav{flex-wrap:wrap}
@@ -232,10 +235,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
   html,body{background:var(--pg)!important;color:var(--tx)!important}
   input[type=text],input[type=email],input[type=tel],textarea,
   .op .cara,.desple,.consent,.resumen{background:var(--pg2)!important;color:var(--tx)!important}
-  .wordmark{color:var(--tx)!important}
+  .cv-wm,.lokmark{color:var(--tx)!important}
   .op input:checked+.cara{background:var(--pg2)!important;background:color-mix(in srgb,var(--ac) 9%,var(--pg2))!important}
   .lead,.ayuda,.cuenta,.op .cara .d,.resumen .k{color:var(--tx2)!important}
-  .kicker,.nota,.enlace-sec,.recuerda b,.wordmark:hover{color:var(--ac2)!important}
+  .kicker,.nota,.enlace-sec,.recuerda b{color:var(--ac2)!important}
   em,.desple summary::after{color:var(--hi)!important}
   .btn-ac{background:var(--ac)!important;color:#fff!important}
   .btn-sec{background:transparent!important;color:var(--tx2)!important}
@@ -247,7 +250,14 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 <header class="barra">
   <div class="barra-in">
     <div class="barra-top">
-      <picture><source srcset="../img/liveokey-logo.webp" type="image/webp"><img class="lokmark" src="../img/liveokey-logo.png" alt="LiveOkey People" decoding="async"></picture>
+      <div class="marcas">
+        <picture><source srcset="../img/liveokey-logo.webp" type="image/webp"><img class="lokmark" src="../img/liveokey-logo.png" alt="LiveOkey People" decoding="async"></picture>
+        <a class="con-vibra" href="https://vibra-con-liveokey-trip.netlify.app/previa/"
+           target="_blank" rel="noopener" aria-label="Y la previa con VIBRA — verla">
+          <span class="cv-t">y la previa con</span>
+          <span class="cv-wm"><svg class="cv-onda" width="26" height="7" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>vibra</span>
+        </a>
+      </div>
       <span class="cuenta" id="cuenta" aria-live="polite">Paso 1 de 5</span>
     </div>
     <div class="pista" role="progressbar" aria-label="Progreso del formulario" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="pista">
@@ -275,7 +285,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <h2 id="h1" tabindex="-1">Quién <em>eres</em></h2>
     <p class="lead">Ya tienes tu plaza. Ahora vamos a ir organizando unas cuantas cosas más para todo el viaje.</p>
 
-    <figure class="foto"><img src="../img/paso-1.jpg" alt="" fetchpriority="high"></figure>
+    <figure class="foto"><picture><source srcset="../img/lok-portada.webp" type="image/webp"><img src="../img/lok-portada.jpg" alt="La familia LiveOkey en el agua" fetchpriority="high" decoding="async"></picture></figure>
 
     <div class="campos">
       <div class="campo" id="c-nombre">
@@ -318,7 +328,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <p class="lead">El finde de surf ya lo tienes. La previa es lo que pasa en la misma casa los días de antes.</p>
     <span class="nota">Los tres días de antes son otra historia.</span>
 
-    <figure class="foto"><img src="../img/paso-2.jpg" alt="" loading="lazy"></figure>
+    <figure class="foto"><picture><source srcset="../img/cowork.webp" type="image/webp"><img src="../img/cowork.jpg" alt="Trabajando con foco" loading="lazy" decoding="async"></picture></figure>
 
     <div class="campos">
       <fieldset class="grupo" id="c-previa" aria-describedby="e-previa">
@@ -369,7 +379,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <h2 id="h3t" tabindex="-1">El <em>surf</em></h2>
     <p class="lead">Para armar los grupos del agua y tener tu neopreno preparado cuando llegues.</p>
 
-    <figure class="foto"><img src="../img/paso-3.jpg" alt="" loading="lazy"></figure>
+    <figure class="foto"><picture><source srcset="../img/surf-clase.webp" type="image/webp"><img src="../img/surf-clase.jpg" alt="Antes de la clase de surf" loading="lazy" decoding="async"></picture></figure>
 
     <div class="campos">
       <fieldset class="grupo" id="c-nivel" aria-describedby="a-nivel e-nivel">
@@ -416,7 +426,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <span class="kicker">Lo práctico</span>
     <h2 id="h4t" tabindex="-1">Un par de <em>detalles</em></h2>
 
-    <figure class="foto"><img src="../img/paso-4.jpg" alt="" loading="lazy"></figure>
+    <figure class="foto"><picture><source srcset="../img/cocina-comuna.webp" type="image/webp"><img src="../img/cocina-comuna.jpg" alt="Cocina en comuna" loading="lazy" decoding="async"></picture></figure>
 
     <div class="campos">
       <div class="campo" id="c-alergias">
@@ -454,7 +464,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <p class="lead">Dos preguntas para conocerte un poco antes de vernos en el norte.</p>
     <span class="nota">Nos gusta llegar sabiendo quién viene.</span>
 
-    <figure class="foto"><img src="../img/paso-5.jpg" alt="" loading="lazy"></figure>
+    <figure class="foto"><picture><source srcset="../img/atardecer-mar.webp" type="image/webp"><img src="../img/atardecer-mar.jpg" alt="Atardecer sobre el mar" loading="lazy" decoding="async"></picture></figure>
 
     <div class="campos">
       <div class="campo" id="c-motivacion">
@@ -509,15 +519,6 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
     <a class="btn btn-ac" id="wa" href="https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc" target="_blank" rel="noopener">Entrar al grupo del viaje</a>
   </div>
 </section>
-
-<footer class="pie">
-  <span class="pie-t">y la previa con</span>
-  <a class="wordmark" href="https://vibra-con-liveokey-trip.netlify.app/previa/"
-     target="_blank" rel="noopener" aria-label="VIBRA — ver la previa">
-    <svg class="wm-onda" width="58" height="13" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="wm-text">vibra</span>
-  </a>
-</footer>
-
 </main>
 <script>
 (function(){

@@ -98,10 +98,12 @@ variables, así que la marca se cambia desde un solo sitio. Nada de Caveat: la
 letra manuscrita es de VIBRA, y aquí su equivalente es la Fraunces en itálica,
 como en el dossier de LiveOkey.
 
-VIBRA aparece **solo en el pie**, con su logotipo (la onda sobre la palabra
-`vibra` en Fraunces 900, el mismo componente que el dossier), bajo la línea
-«y la previa con». Va en hueso y no en coral: el coral de VIBRA sobre el negro
-de LiveOkey es justo lo que no toca. El logotipo enlaza a `/previa/`.
+VIBRA aparece **en la cabecera, a la derecha del logo de LiveOkey**, separada
+por una línea fina: «y la previa con» en letra diminuta sobre su logotipo (la
+onda y la palabra `vibra` en Fraunces 900). Va deliberadamente pequeña —
+25 px de alto frente a los 32 del logo de LiveOkey — y en hueso, no en coral:
+el coral de VIBRA sobre el negro de LiveOkey es justo lo que no toca. Enlaza
+a `/previa/`. No hay pie de página.
 
 ### Antes de que funcione: dos cosas en HubSpot
 
@@ -141,11 +143,27 @@ deduplica por correo, así que reenviar actualiza en vez de duplicar.
 
 ### Las fotos
 
-Faltan `img/paso-1.jpg` … `img/paso-5.jpg`. Mientras no existan, cada hueco se
-pinta con un color plano de respaldo en la paleta del paso, así que la página se
-rellena igual de bien sin ellas. Cuando estén, van en duotono automático: el CSS
-las pasa a blanco y negro y las tiñe con los dos colores de la piel del paso, así
-que valen fotos de cualquier procedencia y salen coherentes.
+Cada paso lleva una de las fotos que ya viven en `/img/`, elegida por tema. No se
+duplica ningún archivo: se apunta a las mismas que usan los dossieres, así que
+heredan su caché de un año.
+
+| Paso | Foto | De dónde |
+|---|---|---|
+| 1 · Quién eres | `lok-portada` | LiveOkey — la familia en el agua |
+| 2 · Tu viaje | `cowork` | VIBRA — la previa es cowork |
+| 3 · El surf | `surf-clase` | LiveOkey — antes de la clase |
+| 4 · Lo práctico | `cocina-comuna` | VIBRA — la cocina, que es de lo que va el paso |
+| 5 · Cosas sobre ti | `atardecer-mar` | VIBRA — para la parte más personal |
+
+Van en **duotono automático**: el CSS las pasa a blanco y negro y las tiñe con los
+dos colores de LiveOkey (`#0C0A09` en las sombras, `#E4796A` en las luces), así
+que sirve cualquier foto y todas salen coherentes. Para cambiar una, basta con
+apuntar a otro archivo: no hay que retocar nada.
+
+Todas se sirven en **WebP** vía `<picture>` con el JPG de respaldo. `picture` va
+en `display:contents` y `picture source` en `display:none`, como en los dossieres:
+si no, el `<source>` genera caja y descoloca al `<img>` posicionado. Si una foto
+no cargara, el hueco se pinta con un color plano de la paleta.
 
 ### Detalles que no se ven pero importan
 
