@@ -105,16 +105,29 @@ onda y la palabra `vibra` en Fraunces 900). Va deliberadamente pequeña —
 el coral de VIBRA sobre el negro de LiveOkey es justo lo que no toca. Enlaza
 a `/previa/`. No hay pie de página.
 
-### Antes de que funcione: dos cosas en HubSpot
+### Cómo llega a HubSpot
 
-**1. Pegar el GUID.** Arriba del `<script>` hay una constante:
+**Igual que la pre-release de VIBRA**: una función de servidor con el token
+en variable de entorno, sin ninguna clave en el navegador y sin formulario
+de HubSpot. La función vive en `netlify/functions/formulario.mjs`, recibe el
+envío del navegador en `/.netlify/functions/formulario`, valida en servidor
+(espejo de la validación del navegador, opciones cerradas incluidas), crea el
+contacto y, si el email ya existe, lo **actualiza** en vez de duplicar. La
+primera palabra del nombre va a `firstname` y el resto a `lastname`, como en
+la pre-release.
 
-```js
-var FORM_GUID = '';
-```
+Si una propiedad no existe en el portal, aquí **no** se descarta en silencio
+(en la pre-release sí, porque Supabase guarda la verdad; aquí HubSpot es el
+único destino): la función devuelve el error con el nombre de la propiedad y
+el navegador ofrece reintentar sin perder nada.
 
-Se saca en HubSpot > Marketing > Formularios > (el formulario) > Compartir.
-Mientras esté vacía el formulario **avisa al enviar**, no falla en silencio.
+### Antes de que funcione: dos cosas
+
+**1. El token en Netlify.** En el panel del sitio `vibra-con-liveokey-trip`:
+Site configuration → Environment variables → añadir `HUBSPOT_ACCESS_TOKEN`
+con el mismo token de app privada que usa la pre-release, y redeploy.
+Mientras falte, la función responde 503 y el formulario **avisa al enviar**
+(«todavía no está conectado»), no falla en silencio.
 
 **2. Crear las propiedades que faltan.** El portal (246666670) ya tiene
 `firstname`, `email`, `city`, `mobilephone`, `instagram` y `viaje_sonado`.
@@ -132,14 +145,16 @@ Faltan nueve:
 | `motivacion_viaje` | texto multilínea | — |
 | `viaje_asturias` | texto | valor fijo «Asturias sept 2026» |
 
-Después hay que crear un formulario en HubSpot con **exactamente esos campos**
-y publicarlo. El endpoint rechaza la llamada entera si le mandas un campo que no
-está en el formulario, y los valores de las opciones tienen que coincidir letra
-por letra: cuidado con `Sí`, `Iniciación` y `Miércoles 16`.
+No hace falta crear ningún formulario en HubSpot: la función escribe el
+contacto directamente. En los desplegables, las opciones tienen que escribirse
+letra por letra como las manda el formulario: cuidado con `Sí`, `Iniciación`
+y `Miércoles 16`.
 
-Se envía desde el navegador a `api-eu1.hsforms.com` (Forms API v3): sin backend,
-sin funciones de Netlify y **sin ninguna clave en el código**. El contacto se
-deduplica por correo, así que reenviar actualiza en vez de duplicar.
+**La lista de inscritos**: todos los contactos del viaje llevan la propiedad
+`viaje_asturias` = «Asturias sept 2026». Una lista activa de contactos con el
+filtro «Viaje Asturias es conocido» (o igual a ese valor) recoge sola a todo
+el que rellene el formulario, y el mismo truco vale para Tenerife o El Palmar
+clonando la propiedad.
 
 ### Las fotos
 

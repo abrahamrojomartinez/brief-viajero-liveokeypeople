@@ -494,21 +494,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 'use strict';
 
 /* =================================================================
-   AJUSTES · lo unico que hay que tocar a mano
+   AJUSTES
    ================================================================= */
 
-/* ⚠️ PEGA AQUI EL GUID DEL FORMULARIO DE HUBSPOT ⚠️
-   Se saca en HubSpot > Marketing > Formularios > (el formulario) >
-   Compartir / Insertar: es el identificador largo con guiones que
-   aparece en la URL del editor y en el codigo de insercion.
-   Mientras este vacio, el formulario avisa al enviar en vez de
-   fallar en silencio. */
-var FORM_GUID = '';
-
-var PORTAL_ID     = '246666670';                                  // cuenta europea
-var ENDPOINT      = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/';
-var WHATSAPP      = 'https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc';
-var TEXTO_CONSENT = 'Acepto que VIBRA y LiveOkey guarden estos datos para organizar el viaje y contactarme sobre él.';
+/* El envio va a la funcion de este mismo sitio de Netlify
+   (netlify/functions/formulario.mjs), que habla con HubSpot usando el
+   token guardado en las variables de entorno del sitio: igual que la
+   pre-release de VIBRA, sin ninguna clave en el navegador. Si el token
+   aun no esta configurado, la funcion responde 503 y aqui se avisa. */
+var ENDPOINT = '/.netlify/functions/formulario';
+var WHATSAPP = 'https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc';
 
 /* ================================================================= */
 
@@ -721,53 +716,25 @@ $$('.foto img').forEach(function(img){
   }
 });
 
-/* ---- Datos que se mandan a HubSpot ------------------------------
-   Solo van campos con valor: los vacios y opcionales no se incluyen,
-   que es lo que pide el endpoint. Los valores de las opciones tienen
-   que coincidir letra por letra con las etiquetas de HubSpot.
-   ----------------------------------------------------------------- */
-function recoge(){
-  var pares = [
-    ['firstname',                     val('nombre')],
-    ['email',                         val('email')],
-    ['city',                          val('ciudad')],
-    ['mobilephone',                   val('movil')],
-    ['instagram',                     val('instagram')],
-    ['previa_vibra',                  radio('previa')],
-    ['previa_dia_inicio',             radio('previa') === 'Sí' ? radio('dia') : ''],
-    ['nivel_surf',                    radio('nivel')],
-    ['talla_neopreno',                radio('talla')],
-    ['alergias_restricciones',        val('alergias')],
-    ['como_nos_has_conocido',         radio('conocido')],
-    ['como_nos_has_conocido_detalle', radio('conocido') === 'Otro' ? val('detalle') : ''],
-    ['motivacion_viaje',              val('motivacion')],
-    ['viaje_sonado',                  val('sonado')],
-    ['viaje_asturias',                val('viaje')]
-  ];
-  return pares.filter(function(p){ return p[1] !== ''; });
-}
-
-function cookieHutk(){
-  var m = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/);
-  return m ? m[1] : '';
-}
-
+/* ---- Datos que se mandan a la funcion --------------------------- */
 function carga(){
-  var ctx = {
-    pageUri:  'https://vibra-con-liveokey-trip.netlify.app/formulario/',
-    pageName: 'Formulario viaje Asturias 2026'
-  };
-  var hutk = cookieHutk();
-  if (hutk) ctx.hutk = hutk;
   return {
-    submittedAt: Date.now(),
-    fields: recoge().map(function(p){
-      return {objectTypeId:'0-1', name:p[0], value:p[1]};
-    }),
-    context: ctx,
-    legalConsentOptions: {
-      consent: { consentToProcess: true, text: TEXTO_CONSENT }
-    }
+    nombre:     val('nombre'),
+    email:      val('email'),
+    ciudad:     val('ciudad'),
+    movil:      val('movil'),
+    instagram:  val('instagram'),
+    previa:     radio('previa'),
+    dia:        radio('dia'),
+    nivel:      radio('nivel'),
+    talla:      radio('talla'),
+    alergias:   val('alergias'),
+    conocido:   radio('conocido'),
+    detalle:    val('detalle'),
+    motivacion: val('motivacion'),
+    sonado:     val('sonado'),
+    consent:    $('#consent').checked,
+    empresa_web:val('empresa_web')
   };
 }
 
@@ -786,31 +753,33 @@ function envia(){
   // Trampa para bots: si viene rellena, se descarta en silencio.
   if (val('empresa_web') !== ''){ pantallaGracias(); return; }
 
-  if (!FORM_GUID){
-    muestraAviso('<b>El formulario todavía no está conectado.</b><br>' +
-      'No es cosa tuya: nos falta un paso por nuestro lado. Tus respuestas siguen aquí. ' +
-      'Avísanos por el <a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
-      'y lo dejamos listo en un momento.');
-    return;
-  }
-
   aviso.hidden = true;
   bSig.disabled = true;
   bSig.textContent = 'Enviando…';
 
-  fetch(ENDPOINT + PORTAL_ID + '/' + FORM_GUID, {
+  fetch(ENDPOINT, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(carga())
   })
   .then(function(r){
+    if (r.status === 503){ throw new Error('NOT_CONFIGURED'); }
     if (!r.ok) return r.text().then(function(t){ throw new Error(r.status + ' ' + t); });
     return r.json().catch(function(){ return {}; });
   })
   .then(function(){ pantallaGracias(); })
   .catch(function(err){
+    if (err && err.message === 'NOT_CONFIGURED'){
+      bSig.disabled = false;
+      bSig.textContent = 'Enviar';
+      muestraAviso('<b>El formulario todavía no está conectado.</b><br>' +
+        'No es cosa tuya: nos falta un paso por nuestro lado. Tus respuestas siguen aquí. ' +
+        'Avísanos por el <a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
+        'y lo dejamos listo en un momento.');
+      return;
+    }
     intentos++;
-    if (window.console) console.error('HubSpot:', err);
+    if (window.console) console.error('formulario:', err);
     bSig.disabled = false;
     bSig.textContent = 'Reintentar envío';
     if (intentos < 2){
