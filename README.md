@@ -168,6 +168,13 @@ no cargara, el hueco se pinta con un color plano de la paleta.
 ### Detalles que no se ven pero importan
 
 - **Nada de `localStorage` ni `sessionStorage`.** El estado vive en memoria.
+- Todos los campos son obligatorios, Instagram incluido. Los únicos valores
+  opcionales de verdad son los que dependen de otra respuesta (el día de la
+  previa, el detalle de «Otro»).
+- El día de la previa está **siempre a la vista pero atenuado** (deshabilitado,
+  42% de opacidad) hasta que responden que sí: al llegar ya se ve que ese dato
+  existe. Cambiar a «No» lo apaga y limpia. Y la previa se explica con un enlace
+  directo al dossier, en pestaña nueva, sin desplegable.
 - Se valida al pulsar Siguiente, nunca mientras se escribe. El error sale debajo
   del campo y el foco salta al primero que falla.
 - El campo de texto de «Otro» **se ve desde el principio**, colgando de la propia

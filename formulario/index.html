@@ -146,18 +146,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 .op input:checked+.cara .d{color:var(--tx)}
 .ops.col .cara{padding:15px 18px}
 
-/* --- Bloque desplegable de la previa ------------------------------ */
-.desple{margin-top:6px;background:var(--pg2);border:1px solid var(--ln);border-radius:16px;overflow:hidden}
-.desple summary{list-style:none;cursor:pointer;padding:15px 18px;font-family:'Fraunces',serif;
-  font-size:17px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.desple summary::-webkit-details-marker{display:none}
-.desple summary::after{content:"+";font-size:22px;font-weight:400;color:var(--ac2);line-height:1;transition:transform .25s}
-.desple[open] summary::after{transform:rotate(45deg)}
-.desple .dentro{padding:0 18px 17px}
-.desple ul{list-style:none;margin:0 0 14px}
-.desple li{position:relative;padding:9px 0 9px 26px;border-top:1px solid var(--ln);font-size:15px;line-height:1.45}
-.desple li:first-child{border-top:none}
-.desple li::before{content:"·";position:absolute;left:6px;top:6px;color:var(--ac2);font-weight:700;font-size:22px}
+/* --- El dia, apagado hasta que responda que si -------------------- */
+.grupo.apagado{opacity:.42;transition:opacity .3s ease}
+.grupo.apagado .op,.grupo.apagado .cara{cursor:not-allowed}
+.que-previa{font-size:15px;color:var(--tx2)}
 .enlace-sec{font-size:14.5px;font-weight:600;color:var(--ac2);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--ac2) 45%,transparent);padding-bottom:1px}
 .enlace-sec:hover{border-bottom-color:var(--ac2)}
 
@@ -169,12 +161,6 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 .op-otro:has(input[type=radio]:checked) .escribe::before{background:var(--ac)}
 .oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
-/* --- Condicionales: se despliegan sin salto ----------------------- */
-.cond{display:grid;grid-template-rows:0fr;opacity:0;
-  transition:grid-template-rows .32s ease,opacity .26s ease,margin-top .32s ease;margin-top:0}
-.cond>.envuelve{overflow:hidden;min-height:0}
-.cond.abierto{grid-template-rows:1fr;opacity:1;margin-top:18px}
 
 /* --- Consentimiento ----------------------------------------------- */
 .consent{display:flex;gap:12px;align-items:flex-start;background:var(--pg2);
@@ -234,12 +220,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
 @media (prefers-color-scheme: dark){
   html,body{background:var(--pg)!important;color:var(--tx)!important}
   input[type=text],input[type=email],input[type=tel],textarea,
-  .op .cara,.desple,.consent,.resumen{background:var(--pg2)!important;color:var(--tx)!important}
+  .op .cara,.consent,.resumen{background:var(--pg2)!important;color:var(--tx)!important}
   .cv-wm,.lokmark{color:var(--tx)!important}
   .op input:checked+.cara{background:var(--pg2)!important;background:color-mix(in srgb,var(--ac) 9%,var(--pg2))!important}
   .lead,.ayuda,.cuenta,.op .cara .d,.resumen .k{color:var(--tx2)!important}
   .kicker,.nota,.enlace-sec,.recuerda b{color:var(--ac2)!important}
-  em,.desple summary::after{color:var(--hi)!important}
+  em{color:var(--hi)!important}
   .btn-ac{background:var(--ac)!important;color:#fff!important}
   .btn-sec{background:transparent!important;color:var(--tx2)!important}
   .err{color:var(--err)!important}
@@ -313,7 +299,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
       </div>
 
       <div class="campo" id="c-instagram">
-        <label for="instagram">Instagram</label>
+        <label for="instagram">Instagram <span class="obl">*</span></label>
         <p class="ayuda" id="a-instagram">Déjanos tu Instagram para ir conectando antes del viaje. Y síguenos: @liveokeypeople y @abraham.vibra</p>
         <input type="text" id="instagram" name="instagram" placeholder="@tucuenta" autocomplete="off" aria-describedby="a-instagram e-instagram" enterkeyhint="next">
         <p class="err" id="e-instagram" role="alert"></p>
@@ -340,36 +326,19 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
         <p class="err" id="e-previa" role="alert"></p>
       </fieldset>
 
-      <!-- Solo si ha dicho que si. Si cambia a No se oculta y se limpia. -->
-      <div class="cond" id="cond-dia">
-        <div class="envuelve">
-          <fieldset class="grupo" id="c-dia" aria-describedby="e-dia">
-            <legend>¿Desde qué día? <span class="obl">*</span></legend>
-            <div class="ops">
-              <label class="op"><input type="radio" name="dia" value="Miércoles 16"><span class="cara">Miércoles 16</span></label>
-              <label class="op"><input type="radio" name="dia" value="Jueves 17"><span class="cara">Jueves 17</span></label>
-            </div>
-            <p class="err" id="e-dia" role="alert"></p>
-          </fieldset>
+      <!-- Siempre a la vista, pero apagado hasta que responda que si:
+           asi al llegar ya se ve que ese dato existe. Si cambia a No,
+           se apaga otra vez y se limpia. -->
+      <fieldset class="grupo apagado" id="c-dia" aria-describedby="e-dia">
+        <legend>¿Desde qué día? <span class="obl">*</span></legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="dia" value="Miércoles 16" disabled><span class="cara">Miércoles 16</span></label>
+          <label class="op"><input type="radio" name="dia" value="Jueves 17" disabled><span class="cara">Jueves 17</span></label>
         </div>
-      </div>
+        <p class="err" id="e-dia" role="alert"></p>
+      </fieldset>
 
-      <details class="desple">
-        <summary>¿Qué es la previa?</summary>
-        <div class="dentro">
-          <ul>
-            <li>Miércoles 16 a viernes 18, en la misma casa, antes de que llegue el finde</li>
-            <li>Espacio de cowork con foco y silencio productivo</li>
-            <li>Movilidad y stretching: el cuerpo preparado, la mente trabaja mejor</li>
-            <li>Momentos de cocina en comuna</li>
-            <li>Taller de IA para tus hábitos y tu trabajo</li>
-            <li>Talleres que trae la propia comunidad. Y si te apetece, das tú el tuyo</li>
-            <li>El mar, rutas y surf opcional</li>
-            <li>Solo 10 plazas</li>
-          </ul>
-          <a class="enlace-sec" href="https://vibra-con-liveokey-trip.netlify.app/previa/" target="_blank" rel="noopener">Ver la previa entera →</a>
-        </div>
-      </details>
+      <p class="que-previa">¿Que qué es la previa? <a class="enlace-sec" href="https://vibra-con-liveokey-trip.netlify.app/previa/" target="_blank" rel="noopener">Verla entera →</a></p>
     </div>
   </section>
 
@@ -580,7 +549,9 @@ var REGLAS = {
     {campo:'c-ciudad', foco:'#ciudad', ok:function(){ return val('ciudad').length >= 2; },
      msg:'Dinos desde qué ciudad vienes.'},
     {campo:'c-movil', foco:'#movil', ok:function(){ return (val('movil').replace(/\D/g,'')).length >= 9; },
-     msg:'Escribe un móvil con al menos 9 dígitos.'}
+     msg:'Escribe un móvil con al menos 9 dígitos.'},
+    {campo:'c-instagram', foco:'#instagram', ok:function(){ return val('instagram').length >= 2; },
+     msg:'Déjanos tu Instagram para ir conectando antes del viaje.'}
   ],
   2: [
     {campo:'c-previa', foco:'input[name="previa"]', ok:function(){ return radio('previa') !== ''; },
@@ -699,32 +670,18 @@ form.addEventListener('submit', function(e){
   else envia();
 });
 
-/* ---- Condicionales --------------------------------------------- */
-function abre(cond, si, focoSel){
-  cond.classList.toggle('abierto', si);
-  var caja = cond.querySelector('.envuelve');
-  if (si){
-    caja.removeAttribute('inert');
-    if (focoSel){
-      var el = cond.querySelector(focoSel);
-      // Esperamos a que termine el despliegue para no pelear con el scroll.
-      setTimeout(function(){ if (el) el.focus(); }, quieto ? 0 : 180);
-    }
-  } else {
-    caja.setAttribute('inert','');
-  }
-}
-
-/* El dia solo aparece si viene a la previa. Si cambia a No, se limpia. */
-var condDia = $('#cond-dia');
+/* El dia esta siempre a la vista pero apagado; responder que si lo
+   enciende. Si cambia a No, se apaga otra vez y se limpia lo elegido. */
+var cajaDia = $('#c-dia');
 $$('input[name="previa"]').forEach(function(r){
   r.addEventListener('change', function(){
     var si = radio('previa') === 'Sí';
-    if (!si){
-      $$('input[name="dia"]').forEach(function(d){ d.checked = false; });
-      marcaError({campo:'c-dia', msg:''}, false);
-    }
-    abre(condDia, si, null);
+    cajaDia.classList.toggle('apagado', !si);
+    $$('input[name="dia"]').forEach(function(d){
+      d.disabled = !si;
+      if (!si) d.checked = false;
+    });
+    if (!si) marcaError({campo:'c-dia', msg:''}, false);
   });
 });
 
@@ -751,8 +708,6 @@ $$('input[name="conocido"]').forEach(function(r){
   });
 });
 
-/* El unico condicional que queda es el dia de la previa. */
-abre(condDia, false, null);
 
 /* ---- Foto de cada paso: color plano si todavia no existe -------- */
 $$('.foto img').forEach(function(img){
