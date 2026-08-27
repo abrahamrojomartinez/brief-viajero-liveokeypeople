@@ -64,17 +64,45 @@ export default async function handler(req) {
         "https://api.hubapi.com/crm/v3/properties/contacts?limit=1", cabecera()),
     ]);
 
+    // Prueba de ESCRITURA, solo si se pide: intenta crear de verdad una de las
+    // 9 que hacen falta (viaje_asturias). Asi el error sale literal, sin
+    // interpretaciones, y si funciona ya tenemos una creada.
+    let escritura = null;
+    if (new URL(req.url).searchParams.get("probar") === "si") {
+      escritura = await prueba("CREAR una propiedad (viaje_asturias)",
+        "https://api.hubapi.com/crm/v3/properties/contacts",
+        { method: "POST",
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({ name: "viaje_asturias", label: "Viaje Asturias",
+            type: "string", fieldType: "text", groupName: "contactinformation" }) });
+    }
+
     const info = pruebas.find(p => p.ok && p.datos && (p.datos.scopes || p.datos.hubId || p.datos.portalId));
     const ambitos = info?.datos?.scopes ?? null;
     const tieneEsquemas = Array.isArray(ambitos)
       ? ambitos.some(s => /crm\.schemas\.contacts\.write|^contacts$/.test(s))
       : null;
 
-    const filasPruebas = pruebas.map(p => {
+    const todas = escritura ? [...pruebas, escritura] : pruebas;
+    const filasPruebas = todas.map(p => {
       const semaforo = p.ok ? "✅" : (p.estado === 404 ? "—" : "❌");
       return `<tr><td>${esc(p.nombre)}</td><td>${semaforo} ${p.estado || "sin respuesta"}</td>
 <td><small>${esc(p.ok && p.datos ? JSON.stringify(p.datos).slice(0, 300) : p.texto)}</small></td></tr>`;
     }).join("");
+
+    const veredicto = !escritura
+      ? `<p><a class="btn" href="?llave=${LLAVE}&probar=si">Probar si puede crear propiedades →</a></p>
+<p class="sub">Intenta crear de verdad <code>viaje_asturias</code>, una de las nueve que
+hacen falta. Es inofensivo: si ya existe, HubSpot lo dice y no pasa nada.</p>`
+      : escritura.ok || escritura.estado === 409
+        ? `<p><b class="ok">Sí puede crear propiedades.</b> ${escritura.estado === 409
+            ? "Esa ya existía." : "Acaba de crear <code>viaje_asturias</code>."}
+Ve a la página de preparación y dale a «Crear ahora» para las demás.</p>`
+        : /MISSING_SCOPES|scope/i.test(escritura.texto) || escritura.estado === 403
+          ? `<p><b class="mal">Le falta el permiso.</b> HubSpot pide
+<code>crm.schemas.contacts.write</code> en la aplicación dueña del token.</p>`
+          : `<p><b class="mal">Ha fallado por otro motivo</b> (${escritura.estado}).
+Mira el detalle en la tabla: no es cosa de permisos.</p>`;
 
     const bloqueAmbitos = ambitos
       ? `<h2>Permisos que tiene</h2>
@@ -95,6 +123,8 @@ ${info?.datos?.appId ? `<tr><td>Id de la aplicación</td><td>${esc(info.datos.ap
 ${info?.datos?.userId ? `<tr><td>Usuario</td><td>${esc(info.datos.user ?? info.datos.userId)}</td></tr>` : ""}
 </table>
 ${bloqueAmbitos}
+<h2>¿Puede crear propiedades?</h2>
+${veredicto}
 <h2>Lo que ha contestado HubSpot</h2>
 <table><tr><th>Prueba</th><th>Respuesta</th><th>Detalle</th></tr>${filasPruebas}</table>
 <p class="sub">Esta página nunca enseña el token entero, solo sus primeras letras.</p>`;
@@ -115,6 +145,8 @@ code{background:#FDFAF4;border:1px solid #E7DFD2;border-radius:5px;padding:1px 6
 small{color:#5E5753;word-break:break-word}
 .sub{color:#5E5753;font-size:14px}.ok{color:#3E7A3E}.mal{color:#A32217}
 .lista code{display:inline-block;margin:2px 2px}
+.btn{display:inline-block;margin:10px 0;background:#E8724C;color:#fff;font-weight:700;
+  text-decoration:none;padding:12px 24px;border-radius:100px}
 </style></head><body>${cuerpo}</body></html>`,
     { headers: { "Content-Type": "text/html; charset=utf-8" } }
   );
