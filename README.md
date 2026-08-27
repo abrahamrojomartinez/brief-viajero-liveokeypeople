@@ -129,36 +129,34 @@ con el mismo token de app privada que usa la pre-release, y redeploy.
 Mientras falte, la función responde 503 y el formulario **avisa al enviar**
 («todavía no está conectado»), no falla en silencio.
 
-**2. Abrir la página de preparación** (con el token ya puesto):
-`/.netlify/functions/preparar?llave=tvDYRmFzfARu` —
-enseña las propiedades que va a crear y un botón «Crear ahora». Es de un solo
-uso pero inofensiva repetida: lo que ya existe no se toca. Si al token le falta
-el permiso de esquemas (`crm.schemas.contacts.write`), el informe lo dice y
-explica dónde activarlo (Ajustes → Integraciones → Aplicaciones privadas →
-Ámbitos); el token no cambia, Netlify no se toca. Sin la llave de la URL
-responde 404 y no toca HubSpot. **Una vez preparado el portal, esta función
-se puede borrar del repo: ya no hace falta.**
+**2. Nada más.** No hay que crear propiedades ni formularios en HubSpot.
 
-Para referencia, lo que crea. El portal (246666670) ya tiene
-`firstname`, `email`, `city`, `mobilephone`, `instagram` y `viaje_sonado`.
-Faltan nueve:
+### El truco del plan gratuito (solución temporal)
 
-| Nombre interno | Tipo | Opciones |
-|---|---|---|
-| `previa_vibra` | desplegable | Sí · No |
-| `previa_dia_inicio` | desplegable | Miércoles 16 · Jueves 17 |
-| `nivel_surf` | desplegable | Debutante · Iniciación · Intermedio · Avanzado |
-| `talla_neopreno` | desplegable | S · M · L · XL · Tengo mi propio neopreno |
-| `alergias_restricciones` | texto multilínea | — |
-| `como_nos_has_conocido` | desplegable | Por Instagram de VIBRA · Por Instagram de LiveOkey · Otro |
-| `como_nos_has_conocido_detalle` | texto | — |
-| `motivacion_viaje` | texto multilínea | — |
-| `viaje_asturias` | texto | valor fijo «Asturias sept 2026» |
+HubSpot Free corta en **10 propiedades personalizadas por portal** y ya están
+todas ocupadas (9 de la pre-release + las del viaje que dieron tiempo a crear).
+Así que las respuestas propias del viaje **no van cada una a su propiedad**:
+viajan todas juntas, etiquetadas como JSON, dentro de `viaje_asturias`:
 
-No hace falta crear ningún formulario en HubSpot: la función escribe el
-contacto directamente. En los desplegables, las opciones tienen que escribirse
-letra por letra como las manda el formulario: cuidado con `Sí`, `Iniciación`
-y `Miércoles 16`.
+```json
+{"viaje":"Asturias sept 2026","previa":"Sí","dia":"Miércoles 16",
+ "nivel":"Iniciación","talla":"L","alergias":"ninguna",
+ "conocido":"Otro","detalle":"…","motiva":"…"}
+```
+
+- `instagram` y `viaje_sonado` sí se escriben en sus propiedades de siempre:
+  existen y significan lo mismo que en la pre-release.
+- **Ninguna propiedad de la pre-release se reutiliza** (`fuente`, `carta_url`…):
+  los contactos son compartidos entre proyectos y se machacarían sus datos.
+- El panel del Cuaderno desempaqueta el JSON, así que los gráficos no se
+  enteran del truco. El coste real: dentro de HubSpot no se puede filtrar por
+  nivel o talla (para eso está el panel), y la lista de inscritos se hace con
+  «viaje_asturias es conocido», que sigue funcionando.
+- `como_nos_has_conocido_detalle` existe pero no se usa (el detalle va en el
+  JSON): se puede archivar para recuperar un hueco.
+- **Migración futura**: con plan de pago o huecos libres, se crean las 7 que
+  faltan y se desempaqueta el histórico leyendo este mismo JSON. No se pierde
+  nada por el camino.
 
 **La lista de inscritos**: todos los contactos del viaje llevan la propiedad
 `viaje_asturias` = «Asturias sept 2026». Una lista activa de contactos con el
