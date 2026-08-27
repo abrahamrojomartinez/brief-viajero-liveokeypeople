@@ -11,6 +11,17 @@
  * verdad. Aquí HubSpot es el ÚNICO destino, así que una propiedad que
  * falta es un error que se devuelve con su nombre, no un dato que se
  * pierde en silencio.
+ *
+ * SOLUCIÓN TEMPORAL al límite de propiedades del plan gratuito (10 por
+ * portal, y ya están todas ocupadas): las respuestas propias del viaje no
+ * van cada una a su propiedad, sino empaquetadas como JSON dentro de
+ * viaje_asturias, que existe y es exclusiva del viaje. El panel del
+ * Cuaderno las desempaqueta. NO se reutiliza ninguna propiedad de la
+ * pre-release (fuente, carta_url…): los contactos son compartidos y se
+ * machacarían sus datos. Solo instagram y viaje_sonado se escriben en sus
+ * propiedades de siempre, porque significan lo mismo en los dos proyectos.
+ * Cuando haya hueco (plan de pago o propiedades liberadas), se crean las 7
+ * que faltan y se migra leyendo este mismo JSON.
  */
 
 const HUBSPOT_API = "https://api.hubapi.com/crm/v3/objects/contacts";
@@ -39,24 +50,30 @@ function texto(v, max = 1000) {
 function construyeProps(d) {
   // Como en la pre-release: primera palabra al nombre, el resto al apellido.
   const [firstname, ...resto] = texto(d.nombre, 120).split(/\s+/);
+
+  // El paquete del viaje, con etiquetas: lo que no cabe como propiedades.
+  const paquete = {
+    viaje: "Asturias sept 2026",
+    previa: d.previa,
+    nivel: d.nivel,
+    talla: d.talla,
+    alergias: texto(d.alergias),
+    conocido: d.conocido,
+    motiva: texto(d.motivacion, 3000),
+  };
+  if (d.previa === "Sí") paquete.dia = d.dia;
+  if (d.conocido === "Otro") paquete.detalle = texto(d.detalle, 500);
+
   const props = {
     email: texto(d.email, 254),
     firstname,
     city: texto(d.ciudad, 120),
     mobilephone: texto(d.movil, 40),
     instagram: texto(d.instagram, 120),
-    previa_vibra: d.previa,
-    nivel_surf: d.nivel,
-    talla_neopreno: d.talla,
-    alergias_restricciones: texto(d.alergias),
-    como_nos_has_conocido: d.conocido,
-    motivacion_viaje: texto(d.motivacion, 3000),
     viaje_sonado: texto(d.sonado, 3000),
-    viaje_asturias: "Asturias sept 2026",
+    viaje_asturias: JSON.stringify(paquete),
   };
   if (resto.length > 0) props.lastname = resto.join(" ");
-  if (d.previa === "Sí") props.previa_dia_inicio = d.dia;
-  if (d.conocido === "Otro") props.como_nos_has_conocido_detalle = texto(d.detalle, 500);
   return props;
 }
 
