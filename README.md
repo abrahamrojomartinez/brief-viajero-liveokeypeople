@@ -130,12 +130,14 @@ Mientras falte, la función responde 503 y el formulario **avisa al enviar**
 («todavía no está conectado»), no falla en silencio.
 
 **2. Abrir la página de preparación** (con el token ya puesto):
-`https://vibra-con-liveokey-trip.netlify.app/.netlify/functions/preparar` —
+`/.netlify/functions/preparar?llave=tvDYRmFzfARu` —
 enseña las propiedades que va a crear y un botón «Crear ahora». Es de un solo
 uso pero inofensiva repetida: lo que ya existe no se toca. Si al token le falta
 el permiso de esquemas (`crm.schemas.contacts.write`), el informe lo dice y
 explica dónde activarlo (Ajustes → Integraciones → Aplicaciones privadas →
-Ámbitos); el token no cambia, Netlify no se toca.
+Ámbitos); el token no cambia, Netlify no se toca. Sin la llave de la URL
+responde 404 y no toca HubSpot. **Una vez preparado el portal, esta función
+se puede borrar del repo: ya no hace falta.**
 
 Para referencia, lo que crea. El portal (246666670) ya tiene
 `firstname`, `email`, `city`, `mobilephone`, `instagram` y `viaje_sonado`.

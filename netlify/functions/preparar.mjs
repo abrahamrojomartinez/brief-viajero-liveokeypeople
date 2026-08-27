@@ -3,8 +3,15 @@
  * una vez las propiedades de contacto que faltan. De un solo uso, pero
  * inofensiva si se abre mas veces: lo que ya existe se deja tal cual.
  *
- * Se abre en el navegador: /.netlify/functions/preparar
+ * Se abre en el navegador con su llave en la URL:
+ *   /.netlify/functions/preparar?llave=tvDYRmFzfARu
  * Primero ensena lo que va a crear; el enlace "Crear ahora" lo ejecuta.
+ *
+ * La llave va escrita aqui a proposito (no en una variable de Netlify): no
+ * protege nada valioso —crear propiedades es aditivo, no borra nada— pero
+ * evita que la pagina quede abierta a cualquiera que adivine la ruta. Misma
+ * idea que el BACKFILL_TOKEN de la pre-release. Cuando el portal ya este
+ * preparado, esta funcion se puede borrar del repo.
  *
  * Necesita HUBSPOT_ACCESS_TOKEN (la misma variable que usa el envio del
  * formulario) y que la app privada del token tenga el permiso de esquemas
@@ -12,6 +19,7 @@
  * con el remedio, no falla en silencio.
  */
 
+const LLAVE = "tvDYRmFzfARu";
 const API = "https://api.hubapi.com/crm/v3/properties/contacts";
 const TIMEOUT_MS = 10_000;
 
@@ -70,6 +78,11 @@ async function hs(token, url, method, body) {
 }
 
 export default async function handler(req) {
+  const url = new URL(req.url);
+  if (url.searchParams.get("llave") !== LLAVE) {
+    return new Response("No encontrado", { status: 404 });
+  }
+
   const token = process.env.HUBSPOT_ACCESS_TOKEN?.trim();
   if (!token) {
     return pagina("Falta el token", `<h1>Falta el token</h1>
@@ -79,7 +92,7 @@ Environment variables → añade <code>HUBSPOT_ACCESS_TOKEN</code> con el mismo 
 usa el sitio de la pre-release, redespliega y vuelve a abrir esta página.</p>`);
   }
 
-  const quiere = new URL(req.url).searchParams.get("crear") === "si";
+  const quiere = url.searchParams.get("crear") === "si";
   if (!quiere) {
     const filas = PROPIEDADES.map(p =>
       `<tr><td><code>${p.name}</code></td><td>${p.label}</td>
@@ -89,7 +102,7 @@ usa el sitio de la pre-release, redespliega y vuelve a abrir esta página.</p>`)
 de Asturias. Lo que ya exista se deja tal cual, así que abrirlo dos veces no rompe nada.
 (<code>viaje_sonado</code> no está en la lista: ya existe, la usa la pre-release.)</p>
 <table><tr><th>Propiedad</th><th>Etiqueta</th><th>Opciones</th></tr>${filas}</table>
-<a class="btn" href="?crear=si">Crear ahora →</a>`);
+<a class="btn" href="?llave=${LLAVE}&crear=si">Crear ahora →</a>`);
   }
 
   const resultados = [];
