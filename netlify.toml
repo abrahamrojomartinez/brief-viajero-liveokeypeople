@@ -2,6 +2,21 @@
   publish = "."
   command = ""
 
+# La funcion que manda el formulario del viaje a HubSpot. Necesita la
+# variable de entorno HUBSPOT_ACCESS_TOKEN en este sitio (el mismo token
+# de app privada que usa la pre-release de VIBRA en el suyo).
+[functions]
+  directory = "netlify/functions"
+
+# Con publish = ".", la carpeta netlify/ se publicaria tambien como
+# archivos sueltos. No hay secretos en ella, pero no pinta nada servida:
+# se corta. La funcion de verdad vive en /.netlify/functions/, que es
+# otra ruta y no se ve afectada.
+[[redirects]]
+  from = "/netlify/*"
+  status = 404
+  force = true
+
 # Por defecto, revalidar siempre: así un cambio se ve al recargar, también
 # cuando se abre desde el navegador interno de WhatsApp o Instagram.
 # Cubre "/" y "/previa/", que es como llegan de verdad las peticiones.

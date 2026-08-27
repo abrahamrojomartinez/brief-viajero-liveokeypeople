@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario del viaje · Asturias 2026 · LiveOkey</title>
+<meta name="description" content="Formulario de gestión del viaje a Asturias del 16 al 20 de septiembre de 2026. Para quienes ya tienen la plaza reservada.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiveOkey People">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://vibra-con-liveokey-trip.netlify.app/formulario/">
+<meta property="og:title" content="Formulario del viaje · Asturias 2026">
+<meta property="og:description" content="Ya tienes la plaza. Ahora cuéntanos lo que necesitamos para organizarlo todo.">
+<meta property="og:image" content="https://vibra-con-liveokey-trip.netlify.app/img/og-liveokey.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://vibra-con-liveokey-trip.netlify.app/formulario/">
+<meta name="color-scheme" content="only light">
+<meta name="supported-color-schemes" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+/* ---------------------------------------------------------------
+   Paleta unica: la de LiveOkey, tal cual sale de su dossier. VIBRA
+   solo aparece en el pie, con su logotipo. Todo lee estas variables,
+   asi que la marca se cambia entera desde aqui.
+   --------------------------------------------------------------- */
+:root{
+  color-scheme:only light;
+  /* Una sola marca de principio a fin: LiveOkey. */
+  --pg:#12100F;--pg2:#1C1917;--tx:#F5F1EC;--tx2:#A8A09A;
+  --ac:#BC2813;--ac2:#BC2813;--ln:#332E2B;--hi:#BC2813;
+  --err:#FF8A73;--foco:#E8624B;
+  --duo-a:#0C0A09;--duo-b:#E4796A;
+  --sombra:0 10px 30px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* Los .btn y .paso traen display propio y se comerian el atributo hidden. */
+[hidden]{display:none!important}
+html{background:var(--pg)}
+body{
+  font-family:'Hanken Grotesk',sans-serif;background:var(--pg);color:var(--tx);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  padding:70px 0 40px;
+}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.08;letter-spacing:-.015em}
+em{font-style:italic;color:var(--hi)}
+.narrow{max-width:620px;margin:0 auto;padding:0 22px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--foco);outline-offset:3px;border-radius:4px}
+
+/* --- Barra de progreso, fija arriba ------------------------------ */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  background:var(--pg);
+  background:color-mix(in srgb,var(--pg) 94%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);
+}
+.barra-in{max-width:620px;margin:0 auto;padding:11px 22px 12px}
+.barra-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+.lokmark{height:32px;width:auto;display:block;flex:0 0 auto}
+/* VIBRA acompana a LiveOkey, en pequeno: se reconoce sin competir. */
+.marcas{display:flex;align-items:center;gap:10px;min-width:0}
+.con-vibra{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  text-decoration:none;color:var(--tx2);padding-left:10px;border-left:1px solid var(--ln)}
+.con-vibra:hover{color:var(--tx)}
+.cv-t{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  line-height:1;white-space:nowrap}
+.cv-wm{display:flex;align-items:center;gap:5px;color:var(--tx);
+  font-family:'Fraunces',serif;font-weight:900;font-size:14px;line-height:1}
+.cv-onda{display:block;flex:0 0 auto;overflow:visible}
+.cuenta{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx2)}
+.pista{height:4px;border-radius:100px;background:var(--ln);overflow:hidden}
+.relleno{height:100%;width:20%;border-radius:100px;background:var(--ac);transition:width .4s ease}
+
+/* --- Pasos ------------------------------------------------------- */
+.paso{display:none;padding-top:26px}
+.paso.activo{display:block;animation:entra .35s ease both}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ac2);display:block;margin-bottom:10px}
+.paso h2{font-size:clamp(30px,7.4vw,44px);font-weight:900;margin-bottom:10px;outline:none}
+.lead{color:var(--tx2);font-size:16px;max-width:34em}
+/* LiveOkey no usa letra manuscrita: su equivalente es la Fraunces en italica. */
+.nota{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  letter-spacing:.01em;color:var(--ac2);font-size:clamp(19px,4.2vw,22px);
+  line-height:1.28;margin-top:14px}
+
+/* --- La foto del paso, en duotono segun la piel ------------------- */
+.foto{
+  position:relative;isolation:isolate;margin:24px 0 6px;aspect-ratio:16/10;
+  border-radius:16px;overflow:hidden;border:1px solid var(--ln);
+  background-color:var(--duo-a);
+  background-image:linear-gradient(148deg,var(--duo-b) -10%,var(--duo-a) 72%);
+  box-shadow:var(--sombra);
+}
+.foto picture{display:contents}
+.foto picture source{display:none}
+.foto img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  background:var(--duo-a);filter:grayscale(1) contrast(1.16) brightness(1.02);mix-blend-mode:screen;
+}
+.foto::after{content:"";position:absolute;inset:0;background:var(--duo-b);
+  mix-blend-mode:multiply;pointer-events:none}
+/* Si la foto todavia no existe queda el color plano de respaldo. */
+.foto.sin-foto img{display:none}
+.foto.sin-foto::after{display:none}
+
+/* --- Campos ------------------------------------------------------ */
+.campos{margin-top:30px;display:flex;flex-direction:column;gap:24px}
+.campo>label,.grupo legend{display:block;font-size:15.5px;font-weight:600;color:var(--tx);margin-bottom:7px}
+.obl{color:var(--ac2);font-weight:700}
+.ayuda{font-size:13.5px;color:var(--tx2);line-height:1.45;margin:-2px 0 9px}
+input[type=text],input[type=email],input[type=tel],textarea{
+  width:100%;font-family:inherit;font-size:16px;color:var(--tx);
+  background:var(--pg2);border:1px solid var(--ln);border-radius:12px;
+  padding:13px 15px;line-height:1.45;
+  transition:border-color .18s,box-shadow .18s,background-color .4s ease,color .4s ease;
+}
+textarea{min-height:104px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--tx2);opacity:.72}
+input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(188,40,19,.28);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 22%,transparent)}
+.campo.mal input,.campo.mal textarea{border-color:var(--err);box-shadow:0 0 0 3px rgba(255,138,115,.18);box-shadow:0 0 0 3px color-mix(in srgb,var(--err) 16%,transparent)}
+.err{display:none;font-size:13.5px;font-weight:600;color:var(--err);margin-top:7px}
+.campo.mal>.err,.grupo.mal>.err{display:block}
+
+/* --- Grupos de radio: pastillas y tarjetas ------------------------ */
+.grupo{border:none}
+.grupo legend{padding:0}
+.ops{display:flex;flex-wrap:wrap;gap:9px}
+.ops.col{flex-direction:column;flex-wrap:nowrap}
+.op{position:relative;display:block;cursor:pointer}
+.op input{position:absolute;opacity:0;width:1px;height:1px}
+.op .cara{
+  display:block;background:var(--pg2);border:1px solid var(--ln);border-radius:14px;
+  padding:12px 18px;font-size:15.5px;font-weight:500;color:var(--tx);
+  transition:border-color .18s,box-shadow .18s,background-color .18s,transform .12s;
+}
+.op:hover .cara{border-color:var(--ac);border-color:color-mix(in srgb,var(--ac) 55%,var(--ln))}
+.op input:checked+.cara{border-color:var(--ac);background:var(--pg2);
+  background:color-mix(in srgb,var(--ac) 9%,var(--pg2));
+  box-shadow:0 4px 16px rgba(188,40,19,.34);
+  box-shadow:0 4px 16px color-mix(in srgb,var(--ac) 26%,transparent);font-weight:600}
+.op input:focus-visible+.cara{outline:2px solid var(--foco);outline-offset:3px}
+.grupo.mal .cara{border-color:var(--err)}
+/* Tarjeta con descripcion entera (nivel de surf) */
+.op .cara .t{display:block;font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:4px}
+.op .cara .d{display:block;font-size:14px;font-weight:400;color:var(--tx2);line-height:1.42}
+.op input:checked+.cara .d{color:var(--tx)}
+.ops.col .cara{padding:15px 18px}
+
+/* --- El dia, apagado hasta que responda que si -------------------- */
+.grupo.apagado{opacity:.42;transition:opacity .3s ease}
+.grupo.apagado .op,.grupo.apagado .cara{cursor:not-allowed}
+.que-previa{font-size:15px;color:var(--tx2)}
+.enlace-sec{font-size:14.5px;font-weight:600;color:var(--ac2);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--ac2) 45%,transparent);padding-bottom:1px}
+.enlace-sec:hover{border-bottom-color:var(--ac2)}
+
+/* --- El "Otro" con su campo colgando ------------------------------ */
+.op-otro{display:flex;flex-direction:column}
+.escribe{position:relative;padding:11px 0 0 17px}
+.escribe::before{content:"";position:absolute;left:7px;top:0;bottom:15px;width:2px;
+  border-radius:2px;background:var(--ln);transition:background-color .18s}
+.op-otro:has(input[type=radio]:checked) .escribe::before{background:var(--ac)}
+.oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* --- Consentimiento ----------------------------------------------- */
+.consent{display:flex;gap:12px;align-items:flex-start;background:var(--pg2);
+  border:1px solid var(--ln);border-radius:16px;padding:16px 18px;cursor:pointer}
+.consent input{flex:0 0 auto;width:21px;height:21px;margin-top:2px;accent-color:var(--ac);cursor:pointer}
+.consent span{font-size:15px;line-height:1.45}
+.campo.mal .consent{border-color:var(--err)}
+
+/* --- Botones ------------------------------------------------------ */
+.nav{display:flex;gap:12px;align-items:center;margin-top:34px;padding-bottom:8px}
+.btn{font-weight:700;border-radius:100px;border:none;cursor:pointer;text-align:center;
+  transition:transform .15s,box-shadow .2s,background-color .3s,opacity .2s;text-decoration:none;display:inline-block}
+.btn-ac{background:var(--ac);color:#fff;font-size:17px;padding:16px 34px;flex:1;
+  box-shadow:0 6px 20px rgba(188,40,19,.42);
+  box-shadow:0 6px 20px color-mix(in srgb,var(--ac) 32%,transparent)}
+.btn-ac:hover:not(:disabled){transform:translateY(-2px)}
+.btn-ac:disabled{opacity:.6;cursor:progress;transform:none}
+.btn-sec{background:transparent;color:var(--tx2);border:1px solid var(--ln);font-size:15.5px;padding:15px 22px}
+.btn-sec:hover{color:var(--tx);border-color:var(--tx2)}
+
+/* --- Trampa para bots (oculta por CSS, no con type=hidden) --------- */
+.trampa{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* --- Aviso de envio ----------------------------------------------- */
+.aviso{margin-top:20px;border:1px solid var(--err);border-radius:16px;padding:15px 18px;
+  background:var(--pg2);
+  background:color-mix(in srgb,var(--err) 8%,var(--pg2));font-size:15px;line-height:1.5}
+.aviso[hidden]{display:none}
+.aviso b{font-weight:700;color:var(--err)}
+.aviso a{color:var(--ac2);font-weight:600}
+
+/* --- Pantalla de gracias ------------------------------------------ */
+#gracias{display:none;padding-top:26px}
+#gracias.activo{display:block;animation:entra .4s ease both}
+#gracias h2{font-size:clamp(32px,8vw,48px);font-weight:900;margin-bottom:12px;outline:none}
+.resumen{margin-top:28px;background:var(--pg2);border:1px solid var(--ln);border-radius:18px;padding:6px 20px 14px}
+.resumen h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;padding:14px 0 4px}
+.resumen .fila{display:grid;grid-template-columns:1fr;gap:1px;padding:11px 0;border-top:1px solid var(--ln);font-size:15px}
+.resumen .k{font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tx2)}
+.resumen .v{line-height:1.45}
+.recuerda{margin-top:22px;border:1px solid var(--ac);border-radius:16px;padding:16px 19px;
+  background:var(--pg2);
+  background:color-mix(in srgb,var(--ac) 7%,var(--pg2));font-size:15.5px;line-height:1.5}
+.recuerda b{color:var(--ac2);font-weight:700}
+
+@media(max-width:520px){
+  .nav{flex-wrap:wrap}
+  .btn-ac{flex:1 1 100%;order:-1}
+  .btn-sec{flex:1 1 100%}
+  .foto{aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+/* El movil en modo oscuro no debe cambiar nada: la piel manda siempre. */
+@media (prefers-color-scheme: dark){
+  html,body{background:var(--pg)!important;color:var(--tx)!important}
+  input[type=text],input[type=email],input[type=tel],textarea,
+  .op .cara,.consent,.resumen{background:var(--pg2)!important;color:var(--tx)!important}
+  .cv-wm,.lokmark{color:var(--tx)!important}
+  .op input:checked+.cara{background:var(--pg2)!important;background:color-mix(in srgb,var(--ac) 9%,var(--pg2))!important}
+  .lead,.ayuda,.cuenta,.op .cara .d,.resumen .k{color:var(--tx2)!important}
+  .kicker,.nota,.enlace-sec,.recuerda b{color:var(--ac2)!important}
+  em{color:var(--hi)!important}
+  .btn-ac{background:var(--ac)!important;color:#fff!important}
+  .btn-sec{background:transparent!important;color:var(--tx2)!important}
+  .err{color:var(--err)!important}
+}
+</style></head>
+<body>
+
+<header class="barra">
+  <div class="barra-in">
+    <div class="barra-top">
+      <div class="marcas">
+        <picture><source srcset="../img/liveokey-logo.webp" type="image/webp"><img class="lokmark" src="../img/liveokey-logo.png" alt="LiveOkey People" decoding="async"></picture>
+        <a class="con-vibra" href="https://vibra-con-liveokey-trip.netlify.app/previa/"
+           target="_blank" rel="noopener" aria-label="Y la previa con VIBRA — verla">
+          <span class="cv-t">y la previa con</span>
+          <span class="cv-wm"><svg class="cv-onda" width="26" height="7" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>vibra</span>
+        </a>
+      </div>
+      <span class="cuenta" id="cuenta" aria-live="polite">Paso 1 de 5</span>
+    </div>
+    <div class="pista" role="progressbar" aria-label="Progreso del formulario" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="pista">
+      <div class="relleno" id="relleno"></div>
+    </div>
+  </div>
+</header>
+
+<main class="narrow">
+<form id="f" novalidate autocomplete="on">
+
+  <!-- Trampa para bots. Oculta por CSS a proposito: los rellenadores
+       automaticos no ven display:none pero si escriben aqui. -->
+  <div class="trampa" aria-hidden="true">
+    <label for="empresa_web">No rellenes este campo</label>
+    <input type="text" id="empresa_web" name="empresa_web" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- Fijo, para poder clonar el formulario a otro viaje sin rehacerlo. -->
+  <input type="hidden" id="viaje" name="viaje" value="Asturias sept 2026">
+
+  <!-- ============ PASO 1 · Quien eres (neutra) ============ -->
+  <section class="paso activo" id="paso1" aria-labelledby="h1">
+    <span class="kicker">Empezamos</span>
+    <h2 id="h1" tabindex="-1">Quién <em>eres</em></h2>
+    <p class="lead">Ya tienes tu plaza. Ahora vamos a ir organizando unas cuantas cosas más para todo el viaje.</p>
+
+    <figure class="foto"><picture><source srcset="../img/lok-portada.webp" type="image/webp"><img src="../img/lok-portada.jpg" alt="La familia LiveOkey en el agua" fetchpriority="high" decoding="async"></picture></figure>
+
+    <div class="campos">
+      <div class="campo" id="c-nombre">
+        <label for="nombre">Nombre <span class="obl">*</span></label>
+        <input type="text" id="nombre" name="nombre" autocomplete="given-name" aria-describedby="e-nombre" enterkeyhint="next">
+        <p class="err" id="e-nombre" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-email">
+        <label for="email">Correo <span class="obl">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-describedby="e-email" enterkeyhint="next">
+        <p class="err" id="e-email" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-ciudad">
+        <label for="ciudad">Ciudad <span class="obl">*</span></label>
+        <input type="text" id="ciudad" name="ciudad" autocomplete="address-level2" aria-describedby="e-ciudad" enterkeyhint="next">
+        <p class="err" id="e-ciudad" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-movil">
+        <label for="movil">Número de móvil <span class="obl">*</span></label>
+        <input type="tel" id="movil" name="movil" autocomplete="tel" inputmode="tel" aria-describedby="e-movil" enterkeyhint="next">
+        <p class="err" id="e-movil" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-instagram">
+        <label for="instagram">Instagram <span class="obl">*</span></label>
+        <p class="ayuda" id="a-instagram">Déjanos tu Instagram para ir conectando antes del viaje. Y síguenos: @liveokeypeople y @abraham.vibra</p>
+        <input type="text" id="instagram" name="instagram" placeholder="@tucuenta" autocomplete="off" aria-describedby="a-instagram e-instagram" enterkeyhint="next">
+        <p class="err" id="e-instagram" role="alert"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PASO 2 · Tu viaje (VIBRA) ============ -->
+  <section class="paso" id="paso2" aria-labelledby="h2t" hidden>
+    <span class="kicker">Tu viaje</span>
+    <h2 id="h2t" tabindex="-1">¿Te vienes a la <em>previa</em>?</h2>
+    <p class="lead">El finde de surf ya lo tienes. La previa es lo que pasa en la misma casa los días de antes.</p>
+    <span class="nota">Los tres días de antes son otra historia.</span>
+
+    <figure class="foto"><picture><source srcset="../img/cowork.webp" type="image/webp"><img src="../img/cowork.jpg" alt="Trabajando con foco" loading="lazy" decoding="async"></picture></figure>
+
+    <div class="campos">
+      <fieldset class="grupo" id="c-previa" aria-describedby="e-previa">
+        <legend>¿Te vienes a la previa de VIBRA? <span class="obl">*</span></legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="previa" value="Sí"><span class="cara">Sí</span></label>
+          <label class="op"><input type="radio" name="previa" value="No"><span class="cara">No</span></label>
+        </div>
+        <p class="err" id="e-previa" role="alert"></p>
+      </fieldset>
+
+      <!-- Siempre a la vista, pero apagado hasta que responda que si:
+           asi al llegar ya se ve que ese dato existe. Si cambia a No,
+           se apaga otra vez y se limpia. -->
+      <fieldset class="grupo apagado" id="c-dia" aria-describedby="e-dia">
+        <legend>¿Desde qué día? <span class="obl">*</span></legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="dia" value="Miércoles 16" disabled><span class="cara">Miércoles 16</span></label>
+          <label class="op"><input type="radio" name="dia" value="Jueves 17" disabled><span class="cara">Jueves 17</span></label>
+        </div>
+        <p class="err" id="e-dia" role="alert"></p>
+      </fieldset>
+
+      <p class="que-previa">¿Que qué es la previa? <a class="enlace-sec" href="https://vibra-con-liveokey-trip.netlify.app/previa/" target="_blank" rel="noopener">Verla entera →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ PASO 3 · El surf (LiveOkey) ============ -->
+  <section class="paso" id="paso3" aria-labelledby="h3t" hidden>
+    <span class="kicker">El agua</span>
+    <h2 id="h3t" tabindex="-1">El <em>surf</em></h2>
+    <p class="lead">Para armar los grupos del agua y tener tu neopreno preparado cuando llegues.</p>
+
+    <figure class="foto"><picture><source srcset="../img/surf-clase.webp" type="image/webp"><img src="../img/surf-clase.jpg" alt="Antes de la clase de surf" loading="lazy" decoding="async"></picture></figure>
+
+    <div class="campos">
+      <fieldset class="grupo" id="c-nivel" aria-describedby="a-nivel e-nivel">
+        <legend>Nivel de surf <span class="obl">*</span></legend>
+        <p class="ayuda" id="a-nivel">Indícanos el nivel que creas que más se ajusta a ti</p>
+        <div class="ops col">
+          <label class="op"><input type="radio" name="nivel" value="Debutante"><span class="cara">
+            <span class="t">Debutante</span>
+            <span class="d">Nunca he hecho surf o solo he probado alguna vez. Me da respeto el mar, o todavía no tengo una buena puesta en pie y prefiero afianzar conocimientos.</span>
+          </span></label>
+          <label class="op"><input type="radio" name="nivel" value="Iniciación"><span class="cara">
+            <span class="t">Iniciación</span>
+            <span class="d">He hecho varios surf trips, pero sigo trabajando en mi puesta en pie. Me encuentro en las espumas mejorando la estabilidad y técnica.</span>
+          </span></label>
+          <label class="op"><input type="radio" name="nivel" value="Intermedio"><span class="cara">
+            <span class="t">Intermedio</span>
+            <span class="d">Empiezo a subir al pico y leer el mar. Uso un corcho pan o una tabla evolutiva y estoy comenzando a coger olas en diagonal.</span>
+          </span></label>
+          <label class="op"><input type="radio" name="nivel" value="Avanzado"><span class="cara">
+            <span class="t">Avanzado</span>
+            <span class="d">Surfeo con tabla corta, trabajo en mejorar maniobras como el bombeo, bottom turn y cutback. Sueño con hacer un aéreo algún día y el surf es mi pasión.</span>
+          </span></label>
+        </div>
+        <p class="err" id="e-nivel" role="alert"></p>
+      </fieldset>
+
+      <fieldset class="grupo" id="c-talla" aria-describedby="a-talla e-talla">
+        <legend>Talla de neopreno <span class="obl">*</span></legend>
+        <p class="ayuda" id="a-talla">Indica tu talla para el neopreno</p>
+        <div class="ops">
+          <label class="op"><input type="radio" name="talla" value="S"><span class="cara">S</span></label>
+          <label class="op"><input type="radio" name="talla" value="M"><span class="cara">M</span></label>
+          <label class="op"><input type="radio" name="talla" value="L"><span class="cara">L</span></label>
+          <label class="op"><input type="radio" name="talla" value="XL"><span class="cara">XL</span></label>
+          <label class="op"><input type="radio" name="talla" value="Tengo mi propio neopreno"><span class="cara">Tengo mi propio neopreno</span></label>
+        </div>
+        <p class="err" id="e-talla" role="alert"></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- ============ PASO 4 · Lo practico (neutra) ============ -->
+  <section class="paso" id="paso4" aria-labelledby="h4t" hidden>
+    <span class="kicker">Lo práctico</span>
+    <h2 id="h4t" tabindex="-1">Un par de <em>detalles</em></h2>
+
+    <figure class="foto"><picture><source srcset="../img/cocina-comuna.webp" type="image/webp"><img src="../img/cocina-comuna.jpg" alt="Cocina en comuna" loading="lazy" decoding="async"></picture></figure>
+
+    <div class="campos">
+      <div class="campo" id="c-alergias">
+        <label for="alergias">¿Tienes alguna alergia o restricción alimentaria? <span class="obl">*</span></label>
+        <p class="ayuda" id="a-alergias">Si no tienes ninguna, escribe "ninguna". Nos sirve igual para organizar la cocina.</p>
+        <textarea id="alergias" name="alergias" aria-describedby="a-alergias e-alergias"></textarea>
+        <p class="err" id="e-alergias" role="alert"></p>
+      </div>
+
+      <fieldset class="grupo" id="c-conocido" aria-describedby="e-conocido">
+        <legend>Si eres nuevo/a, ¿cómo te has enterado de nuestra comunidad? <span class="obl">*</span></legend>
+        <div class="ops col">
+          <label class="op"><input type="radio" name="conocido" value="Por Instagram de VIBRA"><span class="cara">Por Instagram de VIBRA</span></label>
+          <label class="op"><input type="radio" name="conocido" value="Por Instagram de LiveOkey"><span class="cara">Por Instagram de LiveOkey</span></label>
+          <div class="op-otro">
+            <label class="op"><input type="radio" name="conocido" value="Otro"><span class="cara">Otro</span></label>
+            <!-- Se ve desde el principio: al leer "Otro" ya se entiende que ahi se escribe.
+                 Escribir dentro marca la opcion solo. -->
+            <div class="campo escribe" id="c-detalle">
+              <label class="oculto" for="detalle">Cuéntanos por dónde nos conociste</label>
+              <input type="text" id="detalle" name="detalle" placeholder="Cuéntanos: si fue por alguien, dinos por quién" autocomplete="off" aria-describedby="e-detalle" enterkeyhint="next">
+              <p class="err" id="e-detalle" role="alert"></p>
+            </div>
+          </div>
+        </div>
+        <p class="err" id="e-conocido" role="alert"></p>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- ============ PASO 5 · Cosas sobre ti (VIBRA) ============ -->
+  <section class="paso" id="paso5" aria-labelledby="h5t" hidden>
+    <span class="kicker">Casi está</span>
+    <h2 id="h5t" tabindex="-1">Cosas sobre <em>ti</em></h2>
+    <p class="lead">Dos preguntas para conocerte un poco antes de vernos en el norte.</p>
+    <span class="nota">Nos gusta llegar sabiendo quién viene.</span>
+
+    <figure class="foto"><picture><source srcset="../img/atardecer-mar.webp" type="image/webp"><img src="../img/atardecer-mar.jpg" alt="Atardecer sobre el mar" loading="lazy" decoding="async"></picture></figure>
+
+    <div class="campos">
+      <div class="campo" id="c-motivacion">
+        <label for="motivacion">¿Qué es lo que más te motiva de este viaje? <span class="obl">*</span></label>
+        <p class="ayuda" id="a-motivacion">Cuéntanos qué te motiva y qué esperas del viaje, para conocerte mejor :)</p>
+        <textarea id="motivacion" name="motivacion" aria-describedby="a-motivacion e-motivacion"></textarea>
+        <p class="err" id="e-motivacion" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-sonado">
+        <label for="sonado">Si pudieras hacer cualquier viaje soñado, ¿a dónde irías? <span class="obl">*</span></label>
+        <p class="ayuda" id="a-sonado">Otra pregunta para conocernos ;)</p>
+        <textarea id="sonado" name="sonado" aria-describedby="a-sonado e-sonado"></textarea>
+        <p class="err" id="e-sonado" role="alert"></p>
+      </div>
+
+      <div class="campo" id="c-consent">
+        <label class="consent" for="consent">
+          <input type="checkbox" id="consent" name="consent" aria-describedby="e-consent">
+          <span>Acepto que VIBRA y LiveOkey guarden estos datos para organizar el viaje y contactarme sobre él. <span class="obl">*</span></span>
+        </label>
+        <p class="err" id="e-consent" role="alert"></p>
+      </div>
+    </div>
+
+    <div class="aviso" id="aviso" hidden></div>
+  </section>
+
+  <div class="nav">
+    <button type="button" class="btn btn-sec" id="atras" hidden>← Atrás</button>
+    <button type="submit" class="btn btn-ac" id="siguiente">Siguiente</button>
+  </div>
+
+</form>
+
+<!-- ============ Gracias ============ -->
+<section id="gracias" aria-labelledby="hg" hidden>
+  <span class="kicker">Recibido</span>
+  <h2 id="hg" tabindex="-1">Ya estás <em>dentro</em></h2>
+  <p class="lead">Tenemos tus datos. Con esto organizamos alojamiento, cocina, neoprenos y grupos de agua. Si algo cambia, escríbenos por el grupo.</p>
+  <span class="nota">Nos vemos en el norte.</span>
+
+  <div class="recuerda">
+    <b>Un formulario por persona.</b> Si vienes con alguien, esa persona tiene que rellenar el suyo con su propio correo. Pásale este enlace.
+  </div>
+
+  <div class="resumen" id="resumen">
+    <h3>Lo que nos has enviado</h3>
+  </div>
+
+  <div class="nav">
+    <a class="btn btn-ac" id="wa" href="https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc" target="_blank" rel="noopener">Entrar al grupo del viaje</a>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+'use strict';
+
+/* =================================================================
+   AJUSTES
+   ================================================================= */
+
+/* El envio va a la funcion de este mismo sitio de Netlify
+   (netlify/functions/formulario.mjs), que habla con HubSpot usando el
+   token guardado en las variables de entorno del sitio: igual que la
+   pre-release de VIBRA, sin ninguna clave en el navegador. Si el token
+   aun no esta configurado, la funcion responde 503 y aqui se avisa. */
+var ENDPOINT = '/.netlify/functions/formulario';
+var WHATSAPP = 'https://chat.whatsapp.com/JJHIlEKwLEhDQYDeJ0PVSc';
+
+/* ================================================================= */
+
+var $  = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var form     = $('#f');
+var secciones= $$('.paso');
+var gracias  = $('#gracias');
+var bAtras   = $('#atras');
+var bSig     = $('#siguiente');
+var cuenta   = $('#cuenta');
+var relleno  = $('#relleno');
+var pista    = $('#pista');
+var aviso    = $('#aviso');
+var TOTAL    = secciones.length;
+var paso     = 1;
+var intentos = 0;
+
+/* ---- Utilidades ------------------------------------------------ */
+function radio(name){
+  var m = form.querySelector('input[name="'+name+'"]:checked');
+  return m ? m.value : '';
+}
+function val(id){ var e = $('#'+id); return e ? e.value.trim() : ''; }
+
+/* ---- Validacion ------------------------------------------------
+   Se valida al pulsar Siguiente, nunca mientras se escribe. El error
+   se limpia en cuanto la persona toca el campo.
+   ----------------------------------------------------------------- */
+var REGLAS = {
+  1: [
+    {campo:'c-nombre', foco:'#nombre', ok:function(){ return val('nombre').length >= 2; },
+     msg:'Escribe tu nombre para saber quién eres.'},
+    {campo:'c-email', foco:'#email', ok:function(){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email')); },
+     msg:'Necesitamos un correo válido: es por donde te escribimos.'},
+    {campo:'c-ciudad', foco:'#ciudad', ok:function(){ return val('ciudad').length >= 2; },
+     msg:'Dinos desde qué ciudad vienes.'},
+    {campo:'c-movil', foco:'#movil', ok:function(){ return (val('movil').replace(/\D/g,'')).length >= 9; },
+     msg:'Escribe un móvil con al menos 9 dígitos.'},
+    {campo:'c-instagram', foco:'#instagram', ok:function(){ return val('instagram').length >= 2; },
+     msg:'Déjanos tu Instagram para ir conectando antes del viaje.'}
+  ],
+  2: [
+    {campo:'c-previa', foco:'input[name="previa"]', ok:function(){ return radio('previa') !== ''; },
+     msg:'Dinos si te vienes a la previa.'},
+    {campo:'c-dia', foco:'input[name="dia"]',
+     ok:function(){ return radio('previa') !== 'Sí' || radio('dia') !== ''; },
+     msg:'Elige desde qué día te vienes.'}
+  ],
+  3: [
+    {campo:'c-nivel', foco:'input[name="nivel"]', ok:function(){ return radio('nivel') !== ''; },
+     msg:'Marca el nivel que más se ajuste a ti.'},
+    {campo:'c-talla', foco:'input[name="talla"]', ok:function(){ return radio('talla') !== ''; },
+     msg:'Necesitamos tu talla para tener el neopreno listo.'}
+  ],
+  4: [
+    {campo:'c-alergias', foco:'#alergias', ok:function(){ return val('alergias').length >= 2; },
+     msg:'Escríbelo aquí. Si no tienes ninguna, pon "ninguna".'},
+    {campo:'c-conocido', foco:'input[name="conocido"]', ok:function(){ return radio('conocido') !== ''; },
+     msg:'Marca una opción.'},
+    {campo:'c-detalle', foco:'#detalle',
+     ok:function(){ return radio('conocido') !== 'Otro' || val('detalle').length >= 2; },
+     msg:'Cuéntanos por dónde nos conociste.'}
+  ],
+  5: [
+    {campo:'c-motivacion', foco:'#motivacion', ok:function(){ return val('motivacion').length >= 3; },
+     msg:'Cuéntanos qué te motiva, aunque sea en una línea.'},
+    {campo:'c-sonado', foco:'#sonado', ok:function(){ return val('sonado').length >= 3; },
+     msg:'Dinos ese viaje soñado.'},
+    {campo:'c-consent', foco:'#consent', ok:function(){ return $('#consent').checked; },
+     msg:'Necesitamos tu permiso para guardar estos datos.'}
+  ]
+};
+
+function marcaError(regla, hay){
+  var caja = document.getElementById(regla.campo);
+  if (!caja) return;
+  caja.classList.toggle('mal', hay);
+  var p = caja.querySelector(':scope > .err');
+  if (p) p.textContent = hay ? regla.msg : '';
+  var controles = Array.prototype.filter.call(
+    caja.querySelectorAll('input, textarea'),
+    function(c){ return c.closest('.campo, .grupo') === caja; });
+  controles.forEach(function(c){
+    if (hay) c.setAttribute('aria-invalid','true');
+    else c.removeAttribute('aria-invalid');
+  });
+}
+
+function validaPaso(n){
+  var reglas = REGLAS[n] || [];
+  var primerFallo = null;
+  reglas.forEach(function(r){
+    var bien = r.ok();
+    marcaError(r, !bien);
+    if (!bien && !primerFallo) primerFallo = r;
+  });
+  if (primerFallo){
+    var el = form.querySelector(primerFallo.foco);
+    if (el){
+      el.focus({preventScroll:true});
+      var caja = document.getElementById(primerFallo.campo);
+      (caja || el).scrollIntoView({block:'center', behavior: quieto ? 'auto' : 'smooth'});
+    }
+    return false;
+  }
+  return true;
+}
+
+/* Limpiar el error en cuanto tocan el campo. */
+form.addEventListener('input',  limpia, true);
+form.addEventListener('change', limpia, true);
+function limpia(e){
+  var caja = e.target.closest('.campo, .grupo');
+  if (caja && caja.classList.contains('mal')){
+    caja.classList.remove('mal');
+    var p = caja.querySelector(':scope > .err');
+    if (p) p.textContent = '';
+    Array.prototype.forEach.call(caja.querySelectorAll('[aria-invalid]'), function(c){
+      if (c.closest('.campo, .grupo') === caja) c.removeAttribute('aria-invalid');
+    });
+  }
+}
+
+/* ---- Navegacion entre pasos ------------------------------------ */
+function pinta(n, mover){
+  paso = n;
+  secciones.forEach(function(s, i){
+    var activo = (i + 1) === n;
+    s.classList.toggle('activo', activo);
+    if (activo) s.removeAttribute('hidden'); else s.setAttribute('hidden','');
+  });
+  var sec = secciones[n - 1];
+  cuenta.textContent = 'Paso ' + n + ' de ' + TOTAL;
+  relleno.style.width = Math.round((n / TOTAL) * 100) + '%';
+  pista.setAttribute('aria-valuenow', String(n));
+  bAtras.hidden = (n === 1);
+  bSig.textContent = (n === TOTAL) ? 'Enviar' : 'Siguiente';
+  aviso.hidden = true;
+  if (mover){
+    window.scrollTo({top:0, behavior: quieto ? 'auto' : 'smooth'});
+    var h = sec.querySelector('h2');
+    if (h) h.focus({preventScroll:true});
+  }
+}
+
+bAtras.addEventListener('click', function(){
+  if (paso > 1) pinta(paso - 1, true);
+});
+
+/* Un solo submit: lo dispara el boton y tambien el Enter del teclado.
+   En los textarea el Enter hace salto de linea, que es lo que toca. */
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  if (!validaPaso(paso)) return;
+  if (paso < TOTAL) pinta(paso + 1, true);
+  else envia();
+});
+
+/* El dia esta siempre a la vista pero apagado; responder que si lo
+   enciende. Si cambia a No, se apaga otra vez y se limpia lo elegido. */
+var cajaDia = $('#c-dia');
+$$('input[name="previa"]').forEach(function(r){
+  r.addEventListener('change', function(){
+    var si = radio('previa') === 'Sí';
+    cajaDia.classList.toggle('apagado', !si);
+    $$('input[name="dia"]').forEach(function(d){
+      d.disabled = !si;
+      if (!si) d.checked = false;
+    });
+    if (!si) marcaError({campo:'c-dia', msg:''}, false);
+  });
+});
+
+/* El campo de "Otro" esta siempre a la vista. Marcar la opcion lleva el
+   cursor dentro, y escribir dentro marca la opcion sin tener que pulsarla. */
+var detalle = $('#detalle');
+$$('input[name="conocido"]').forEach(function(r){
+  r.addEventListener('change', function(){
+    if (radio('conocido') !== 'Otro'){
+      detalle.value = '';
+      marcaError({campo:'c-detalle', msg:''}, false);
+    } else {
+      detalle.focus();
+    }
+  });
+});
+['focus','input'].forEach(function(ev){
+  detalle.addEventListener(ev, function(){
+    var otro = form.querySelector('input[name="conocido"][value="Otro"]');
+    if (!otro.checked){
+      otro.checked = true;
+      otro.dispatchEvent(new Event('change', {bubbles:true}));
+    }
+  });
+});
+
+
+/* ---- Foto de cada paso: color plano si todavia no existe -------- */
+$$('.foto img').forEach(function(img){
+  img.addEventListener('error', function(){
+    var f = img.closest('.foto');
+    if (f) f.classList.add('sin-foto');
+  });
+  if (img.complete && img.naturalWidth === 0){
+    var f = img.closest('.foto');
+    if (f) f.classList.add('sin-foto');
+  }
+});
+
+/* ---- Datos que se mandan a la funcion --------------------------- */
+function carga(){
+  return {
+    nombre:     val('nombre'),
+    email:      val('email'),
+    ciudad:     val('ciudad'),
+    movil:      val('movil'),
+    instagram:  val('instagram'),
+    previa:     radio('previa'),
+    dia:        radio('dia'),
+    nivel:      radio('nivel'),
+    talla:      radio('talla'),
+    alergias:   val('alergias'),
+    conocido:   radio('conocido'),
+    detalle:    val('detalle'),
+    motivacion: val('motivacion'),
+    sonado:     val('sonado'),
+    consent:    $('#consent').checked,
+    empresa_web:val('empresa_web')
+  };
+}
+
+/* ---- Avisos ----------------------------------------------------- */
+function muestraAviso(html){
+  aviso.innerHTML = html;
+  aviso.hidden = false;
+  aviso.setAttribute('role','alert');
+  aviso.setAttribute('tabindex','-1');
+  aviso.scrollIntoView({block:'center', behavior: quieto ? 'auto' : 'smooth'});
+  aviso.focus({preventScroll:true});
+}
+
+/* ---- Envio ------------------------------------------------------ */
+function envia(){
+  // Trampa para bots: si viene rellena, se descarta en silencio.
+  if (val('empresa_web') !== ''){ pantallaGracias(); return; }
+
+  aviso.hidden = true;
+  bSig.disabled = true;
+  bSig.textContent = 'Enviando…';
+
+  fetch(ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(carga())
+  })
+  .then(function(r){
+    if (r.status === 503){ throw new Error('NOT_CONFIGURED'); }
+    if (!r.ok) return r.text().then(function(t){ throw new Error(r.status + ' ' + t); });
+    return r.json().catch(function(){ return {}; });
+  })
+  .then(function(){ pantallaGracias(); })
+  .catch(function(err){
+    if (err && err.message === 'NOT_CONFIGURED'){
+      bSig.disabled = false;
+      bSig.textContent = 'Enviar';
+      muestraAviso('<b>El formulario todavía no está conectado.</b><br>' +
+        'No es cosa tuya: nos falta un paso por nuestro lado. Tus respuestas siguen aquí. ' +
+        'Avísanos por el <a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
+        'y lo dejamos listo en un momento.');
+      return;
+    }
+    intentos++;
+    if (window.console) console.error('formulario:', err);
+    bSig.disabled = false;
+    bSig.textContent = 'Reintentar envío';
+    if (intentos < 2){
+      muestraAviso('<b>No hemos podido enviarlo.</b><br>' +
+        'Tus respuestas siguen aquí, no se ha perdido nada. Comprueba la conexión y pulsa ' +
+        '<b>Reintentar envío</b>.');
+    } else {
+      muestraAviso('<b>Sigue sin salir.</b><br>' +
+        'Puede ser cosa de la conexión. Vuelve a intentarlo dentro de un rato, o dínoslo por el ' +
+        '<a href="' + WHATSAPP + '" target="_blank" rel="noopener">grupo del viaje</a> ' +
+        'y lo apuntamos a mano. No cierres esta pantalla: tus respuestas siguen aquí.');
+    }
+  });
+}
+
+/* ---- Pantalla de gracias ---------------------------------------- */
+var ETIQUETAS = [
+  {k:'Nombre',              v:function(){ return val('nombre'); }},
+  {k:'Correo',              v:function(){ return val('email'); }},
+  {k:'Ciudad',              v:function(){ return val('ciudad'); }},
+  {k:'Móvil',               v:function(){ return val('movil'); }},
+  {k:'Instagram',           v:function(){ return val('instagram'); }},
+  {k:'Previa de VIBRA',     v:function(){ return radio('previa'); }},
+  {k:'Llega el',            v:function(){ return radio('previa') === 'Sí' ? radio('dia') : ''; }},
+  {k:'Nivel de surf',       v:function(){ return radio('nivel'); }},
+  {k:'Talla de neopreno',   v:function(){ return radio('talla'); }},
+  {k:'Alergias',            v:function(){ return val('alergias'); }},
+  {k:'Nos conociste por',   v:function(){
+      var c = radio('conocido');
+      if (c === 'Otro'){ var d = val('detalle'); return d ? 'Otro — ' + d : 'Otro'; }
+      return c;
+  }},
+  {k:'Te motiva',           v:function(){ return val('motivacion'); }},
+  {k:'Viaje soñado',        v:function(){ return val('sonado'); }}
+];
+
+function pantallaGracias(){
+  var caja = $('#resumen');
+  ETIQUETAS.forEach(function(e){
+    var v = e.v();
+    if (!v) return;
+    var fila = document.createElement('div');
+    fila.className = 'fila';
+    var k = document.createElement('span'); k.className = 'k'; k.textContent = e.k;
+    var s = document.createElement('span'); s.className = 'v'; s.textContent = v;
+    fila.appendChild(k); fila.appendChild(s);
+    caja.appendChild(fila);
+  });
+
+  form.setAttribute('hidden','');
+  gracias.removeAttribute('hidden');
+  gracias.classList.add('activo');
+  cuenta.textContent = 'Listo';
+  relleno.style.width = '100%';
+  pista.setAttribute('aria-valuenow', String(TOTAL));
+  window.scrollTo({top:0, behavior: quieto ? 'auto' : 'smooth'});
+  $('#hg').focus({preventScroll:true});
+}
+
+/* ---- Arranque --------------------------------------------------- */
+$('#wa').setAttribute('href', WHATSAPP);
+pinta(1, false);
+
+})();
+</script>
+</body></html>

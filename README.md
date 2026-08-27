@@ -2,10 +2,11 @@
 
 Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 
-| Ruta        | Quién     | Qué cuenta                         |
-|-------------|-----------|------------------------------------|
-| `/`         | LiveOkey  | El finde de surf, 18–20 sept       |
-| `/previa/`  | VIBRA     | La previa de coworking, 16–18 sept |
+| Ruta           | Quién     | Qué cuenta                            |
+|----------------|-----------|---------------------------------------|
+| `/`            | LiveOkey  | El finde de surf, 18–20 sept          |
+| `/previa/`     | VIBRA     | La previa de coworking, 16–18 sept    |
+| `/formulario/` | LiveOkey  | Formulario de gestión del viaje       |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
 - URL: https://vibra-con-liveokey-trip.netlify.app
@@ -15,6 +16,7 @@ Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 ```
 index.html          21 KB   — dossier de LiveOkey (marca oscura, rojo #BC2813)
 previa/index.html   23 KB   — dossier de VIBRA (papel crema, coral #E8724C)
+formulario/index.html       — formulario del viaje (5 pasos, va a HubSpot)
 img/                        — las 18 fotos + los dos recortes para compartir
 netlify.toml                — cabeceras de caché
 ```
@@ -81,3 +83,140 @@ El CSS de las dos páginas define una sección `.sec.dark` con foto de fondo
 elemento del HTML usa esa clase**. Las fotos se conservan por si se recupera la
 sección; mientras tanto ningún navegador las descarga, así que no pesan nada al
 visitante.
+
+
+## `/formulario/` — el formulario del viaje
+
+Para quien **ya tiene la plaza**. No es de venta: no hay precios, ni plazas, ni
+CTA de reserva. Sirve para organizar alojamiento, cocina, neoprenos y grupos.
+
+Cinco pasos: Quién eres · Tu viaje · El surf · Lo práctico · Cosas sobre ti.
+
+**Marca única: LiveOkey.** Negro `#12100F`, rojo `#BC2813`, hueso `#F5F1EC`, de
+principio a fin. La paleta entera vive en `:root` y todo lo demás lee esas
+variables, así que la marca se cambia desde un solo sitio. Nada de Caveat: la
+letra manuscrita es de VIBRA, y aquí su equivalente es la Fraunces en itálica,
+como en el dossier de LiveOkey.
+
+VIBRA aparece **en la cabecera, a la derecha del logo de LiveOkey**, separada
+por una línea fina: «y la previa con» en letra diminuta sobre su logotipo (la
+onda y la palabra `vibra` en Fraunces 900). Va deliberadamente pequeña —
+25 px de alto frente a los 32 del logo de LiveOkey — y en hueso, no en coral:
+el coral de VIBRA sobre el negro de LiveOkey es justo lo que no toca. Enlaza
+a `/previa/`. No hay pie de página.
+
+### Cómo llega a HubSpot
+
+**Igual que la pre-release de VIBRA**: una función de servidor con el token
+en variable de entorno, sin ninguna clave en el navegador y sin formulario
+de HubSpot. La función vive en `netlify/functions/formulario.mjs`, recibe el
+envío del navegador en `/.netlify/functions/formulario`, valida en servidor
+(espejo de la validación del navegador, opciones cerradas incluidas), crea el
+contacto y, si el email ya existe, lo **actualiza** en vez de duplicar. La
+primera palabra del nombre va a `firstname` y el resto a `lastname`, como en
+la pre-release.
+
+Si una propiedad no existe en el portal, aquí **no** se descarta en silencio
+(en la pre-release sí, porque Supabase guarda la verdad; aquí HubSpot es el
+único destino): la función devuelve el error con el nombre de la propiedad y
+el navegador ofrece reintentar sin perder nada.
+
+### Antes de que funcione: dos cosas
+
+**1. El token en Netlify.** En el panel del sitio `vibra-con-liveokey-trip`:
+Site configuration → Environment variables → añadir `HUBSPOT_ACCESS_TOKEN`
+con el mismo token de app privada que usa la pre-release, y redeploy.
+Mientras falte, la función responde 503 y el formulario **avisa al enviar**
+(«todavía no está conectado»), no falla en silencio.
+
+**2. Abrir la página de preparación** (con el token ya puesto):
+`/.netlify/functions/preparar?llave=tvDYRmFzfARu` —
+enseña las propiedades que va a crear y un botón «Crear ahora». Es de un solo
+uso pero inofensiva repetida: lo que ya existe no se toca. Si al token le falta
+el permiso de esquemas (`crm.schemas.contacts.write`), el informe lo dice y
+explica dónde activarlo (Ajustes → Integraciones → Aplicaciones privadas →
+Ámbitos); el token no cambia, Netlify no se toca. Sin la llave de la URL
+responde 404 y no toca HubSpot. **Una vez preparado el portal, esta función
+se puede borrar del repo: ya no hace falta.**
+
+Para referencia, lo que crea. El portal (246666670) ya tiene
+`firstname`, `email`, `city`, `mobilephone`, `instagram` y `viaje_sonado`.
+Faltan nueve:
+
+| Nombre interno | Tipo | Opciones |
+|---|---|---|
+| `previa_vibra` | desplegable | Sí · No |
+| `previa_dia_inicio` | desplegable | Miércoles 16 · Jueves 17 |
+| `nivel_surf` | desplegable | Debutante · Iniciación · Intermedio · Avanzado |
+| `talla_neopreno` | desplegable | S · M · L · XL · Tengo mi propio neopreno |
+| `alergias_restricciones` | texto multilínea | — |
+| `como_nos_has_conocido` | desplegable | Por Instagram de VIBRA · Por Instagram de LiveOkey · Otro |
+| `como_nos_has_conocido_detalle` | texto | — |
+| `motivacion_viaje` | texto multilínea | — |
+| `viaje_asturias` | texto | valor fijo «Asturias sept 2026» |
+
+No hace falta crear ningún formulario en HubSpot: la función escribe el
+contacto directamente. En los desplegables, las opciones tienen que escribirse
+letra por letra como las manda el formulario: cuidado con `Sí`, `Iniciación`
+y `Miércoles 16`.
+
+**La lista de inscritos**: todos los contactos del viaje llevan la propiedad
+`viaje_asturias` = «Asturias sept 2026». Una lista activa de contactos con el
+filtro «Viaje Asturias es conocido» (o igual a ese valor) recoge sola a todo
+el que rellene el formulario, y el mismo truco vale para Tenerife o El Palmar
+clonando la propiedad.
+
+### Las fotos
+
+Cada paso lleva una de las fotos que ya viven en `/img/`, elegida por tema. No se
+duplica ningún archivo: se apunta a las mismas que usan los dossieres, así que
+heredan su caché de un año.
+
+| Paso | Foto | De dónde |
+|---|---|---|
+| 1 · Quién eres | `lok-portada` | LiveOkey — la familia en el agua |
+| 2 · Tu viaje | `cowork` | VIBRA — la previa es cowork |
+| 3 · El surf | `surf-clase` | LiveOkey — antes de la clase |
+| 4 · Lo práctico | `cocina-comuna` | VIBRA — la cocina, que es de lo que va el paso |
+| 5 · Cosas sobre ti | `atardecer-mar` | VIBRA — para la parte más personal |
+
+Van en **duotono automático**: el CSS las pasa a blanco y negro y las tiñe con los
+dos colores de LiveOkey (`#0C0A09` en las sombras, `#E4796A` en las luces), así
+que sirve cualquier foto y todas salen coherentes. Para cambiar una, basta con
+apuntar a otro archivo: no hay que retocar nada.
+
+Todas se sirven en **WebP** vía `<picture>` con el JPG de respaldo. `picture` va
+en `display:contents` y `picture source` en `display:none`, como en los dossieres:
+si no, el `<source>` genera caja y descoloca al `<img>` posicionado. Si una foto
+no cargara, el hueco se pinta con un color plano de la paleta.
+
+### Detalles que no se ven pero importan
+
+- **Nada de `localStorage` ni `sessionStorage`.** El estado vive en memoria.
+- Todos los campos son obligatorios, Instagram incluido. Los únicos valores
+  opcionales de verdad son los que dependen de otra respuesta (el día de la
+  previa, el detalle de «Otro»).
+- El día de la previa está **siempre a la vista pero atenuado** (deshabilitado,
+  42% de opacidad) hasta que responden que sí: al llegar ya se ve que ese dato
+  existe. Cambiar a «No» lo apaga y limpia. Y la previa se explica con un enlace
+  directo al dossier, en pestaña nueva, sin desplegable.
+- Se valida al pulsar Siguiente, nunca mientras se escribe. El error sale debajo
+  del campo y el foco salta al primero que falla.
+- El campo de texto de «Otro» **se ve desde el principio**, colgando de la propia
+  opción: al leerla ya se entiende que ahí se escribe, sin tener que pulsar nada.
+  Escribir dentro marca la opción solo, y marcar la opción lleva el cursor dentro.
+  Cambiar a otra respuesta lo limpia. Como ese campo vive dentro del `fieldset`,
+  la validación apunta a `:scope > .err` y a los controles propios de cada caja:
+  si no, el error del grupo se escribía en la caja del campo de texto.
+- Enter avanza de paso; dentro de un textarea hace salto de línea.
+- Si HubSpot falla, **los datos siguen en pantalla** y hay botón de reintentar.
+  A la segunda, el aviso remite al grupo de WhatsApp. No se pide ni se ofrece
+  ninguna dirección de correo en ninguna parte.
+- Campo trampa `empresa_web`, oculto por CSS y no con `type="hidden"`: si llega
+  relleno, el envío se descarta en silencio y se enseña la pantalla de gracias
+  igual.
+- Modo claro forzado (`color-scheme: only light` + bloque `!important` en la
+  media query de oscuro), como en los dos dossieres.
+- `noindex`: es un formulario de gestión, no una página de captación. El enlace
+  se reparte a mano, pero lleva Open Graph para que se vea bien en WhatsApp.
+- La pantalla de gracias recuerda que es **un formulario por persona**.
