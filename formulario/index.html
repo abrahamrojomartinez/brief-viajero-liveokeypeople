@@ -405,6 +405,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 
         <p class="err" id="e-alergias" role="alert"></p>
       </div>
 
+      <div class="campo" id="c-habitacion">
+        <label for="habitacion">¿Con quién quieres compartir habitación?</label>
+        <p class="ayuda" id="a-habitacion">Si vienes con alguien y queréis dormir juntos, escribe su nombre y apellido (si sois más, todos). Si vienes por tu cuenta, déjalo en blanco: te ponemos con buena gente.</p>
+        <input type="text" id="habitacion" name="habitacion" placeholder="Nombre y apellido de esa persona" autocomplete="off" aria-describedby="a-habitacion" enterkeyhint="next">
+      </div>
+
       <fieldset class="grupo" id="c-conocido" aria-describedby="e-conocido">
         <legend>Si eres nuevo/a, ¿cómo te has enterado de nuestra comunidad? <span class="obl">*</span></legend>
         <div class="ops col">
@@ -729,6 +735,7 @@ function carga(){
     nivel:      radio('nivel'),
     talla:      radio('talla'),
     alergias:   val('alergias'),
+    habitacion: val('habitacion'),
     conocido:   radio('conocido'),
     detalle:    val('detalle'),
     motivacion: val('motivacion'),
@@ -807,6 +814,7 @@ var ETIQUETAS = [
   {k:'Nivel de surf',       v:function(){ return radio('nivel'); }},
   {k:'Talla de neopreno',   v:function(){ return radio('talla'); }},
   {k:'Alergias',            v:function(){ return val('alergias'); }},
+  {k:'Comparte habitación',  v:function(){ return val('habitacion'); }},
   {k:'Nos conociste por',   v:function(){
       var c = radio('conocido');
       if (c === 'Otro'){ var d = val('detalle'); return d ? 'Otro — ' + d : 'Otro'; }
