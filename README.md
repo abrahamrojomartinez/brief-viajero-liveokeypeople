@@ -140,7 +140,7 @@ viajan todas juntas, etiquetadas como JSON, dentro de `viaje_asturias`:
 
 ```json
 {"viaje":"Asturias sept 2026","previa":"Sí","dia":"Miércoles 16",
- "nivel":"Iniciación","talla":"L","alergias":"ninguna",
+ "nivel":"Iniciación","talla":"L","alergias":"ninguna","habitacion":"Marta García",
  "conocido":"Otro","detalle":"…","motiva":"…"}
 ```
 
@@ -218,3 +218,29 @@ no cargara, el hueco se pinta con un color plano de la paleta.
 - `noindex`: es un formulario de gestión, no una página de captación. El enlace
   se reparte a mano, pero lleva Open Graph para que se vea bien en WhatsApp.
 - La pantalla de gracias recuerda que es **un formulario por persona**.
+
+
+## Cobros de la previa y habitaciones (en el panel)
+
+El panel lee **Stripe** además de HubSpot, con la sesión de claude.ai de
+Abraham. Dos enlaces de pago, uno por día de llegada:
+
+| Día | Importe | Enlace de pago |
+|---|---|---|
+| Miércoles 16 | 80 € | `plink_1U6GNzF7jF8sW6K882OEYQZ7` |
+| Jueves 17 | 40 € | `plink_1U9KNnF7jF8sW6K8smnc9KGr` |
+
+Los dos cuelgan del mismo producto (`prod_V6TJgKiEsU44gI`, «Previa VIBRA ·
+Asturias»), así que en Stripe se leen juntos y el importe distingue el tramo.
+
+El panel consulta `GetCheckoutSessions` con `status: complete` por cada
+enlace y cruza `customer_details.email` con el correo del inscrito, en
+minúsculas. Un pago cuyo correo no case con nadie sale marcado aparte
+(«pagos huérfanos»): pagar con otro email es lo más probable, y así no
+parece que esa persona deba dinero.
+
+La pregunta de habitación es **opcional** y viaja en el paquete JSON como
+`habitacion`. El panel junta las peticiones con el inventario de las 37
+plazas (cuatro casas), escrito en el propio panel: si cambia el alojamiento,
+se cambia ahí. La habitación de Adrián Makeda y Marta va marcada como ya
+asignada.
