@@ -61,6 +61,9 @@ function construyeProps(d) {
     conocido: d.conocido,
     motiva: texto(d.motivacion, 3000),
   };
+  // Opcional: solo viaja si ha dicho con quién quiere dormir.
+  const conQuien = texto(d.habitacion, 300);
+  if (conQuien) paquete.habitacion = conQuien;
   if (d.previa === "Sí") paquete.dia = d.dia;
   if (d.conocido === "Otro") paquete.detalle = texto(d.detalle, 500);
 
