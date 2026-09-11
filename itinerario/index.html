@@ -106,8 +106,10 @@ h2{font-size:clamp(28px,6.6vw,42px);font-weight:600;line-height:1.06;letter-spac
   margin-top:20px}
 h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .lead{font-size:17px;color:var(--tx2);margin-top:9px;max-width:50ch}
-.firma-v{font-family:var(--f-m);font-size:22px;color:var(--v-ac2);text-align:right;
-  margin-top:22px}
+/* El eslogan de VIBRA cierra el documento, en su letra manuscrita y al mismo
+   cuerpo que el de LiveOkey. */
+.firma-v{font-family:var(--f-m);font-size:clamp(28px,6.8vw,46px);line-height:1.12;
+  color:var(--v-ac);text-wrap:balance}
 
 /* ---- Mosaico de fotos ----------------------------------------------- */
 .mosaico{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
@@ -141,8 +143,8 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
   padding:2px 8px;margin-top:12px}
 
 /* ---- La linea de tiempo dentro del cajon ---------------------------- */
-.horas{list-style:none;padding:16px 18px 20px;--carril:84px}
-.hora{position:relative;display:grid;grid-template-columns:70px 1fr;gap:0 30px;
+.horas{list-style:none;padding:16px 18px 20px;--carril:99px}
+.hora{position:relative;display:grid;grid-template-columns:84px 1fr;gap:0 30px;
   padding-bottom:24px}
 .hora:last-child{padding-bottom:0}
 .hora::before{content:'';position:absolute;left:var(--carril);top:13px;bottom:-2px;
@@ -183,8 +185,11 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
   box-shadow:var(--som)}
 .ficha h4{font-size:18px;font-weight:600;line-height:1.25}
 .ficha p{font-size:14.5px;color:var(--tx2);margin-top:7px}
-.ficha.incl{border-left:3px solid #4B7A2A}
 .ficha.tuyo{border-left:3px solid var(--ac)}
+.ficha.ancha{grid-column:1/-1}
+.sitios{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;
+  margin-top:15px}
+.sitios .donde{max-width:100%;margin-top:0}
 .ficha ul{margin:10px 0 0;padding-left:19px}
 .ficha li{font-size:14.5px;color:var(--tx2);line-height:1.6;margin-top:5px}
 .ficha li b{color:var(--tx);font-weight:600}
@@ -194,7 +199,8 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .frase{font-family:var(--f-d);font-size:clamp(27px,6.6vw,44px);font-weight:600;
   line-height:1.1;letter-spacing:-.025em;text-wrap:balance;margin-bottom:28px}
 .frase em{font-style:italic;font-weight:400;color:var(--ac)}
-footer .centro{padding-block:26px 46px;font-size:13px;color:var(--tx2);line-height:1.75}
+footer .centro{padding-block:26px 52px;font-size:13px;color:var(--tx2);line-height:1.75}
+.enlaces{margin-top:26px;font-size:12.5px;letter-spacing:.02em}
 footer hr{border:0;border-top:1px solid var(--ln);margin:0 0 24px}
 footer .centro{text-align:center}
 
@@ -434,8 +440,6 @@ footer .centro{text-align:center}
     </ol>
   </details>
 
-    <p class="firma-v">Que nunca te quiten tu vibra</p>
-
   </div>
 </section>
 
@@ -510,13 +514,13 @@ footer .centro{text-align:center}
         <span class="h">09:30</span>
         <div class="qu">
           <h4>Desayuno</h4>
-          <p>En el finde, incluido.</p>
+          <p>Incluido.</p>
         </div>
       </li>
       <li class="hora">
         <span class="h">10:30</span>
         <div class="qu">
-          <h4>Surf &middot; primera clase</h4>
+          <h4>Clase de surf</h4>
           <p>Por niveles, en tandas con monitor. Ya sabemos en qu&eacute; grupo va cada uno por
             lo que pusiste en el formulario.</p>
         </div>
@@ -528,15 +532,16 @@ footer .centro{text-align:center}
       <li class="hora">
         <span class="h">16:30</span>
         <div class="qu">
-          <h4>Surf &middot; segunda clase</h4>
-          <p>Mismos grupos que por la ma&ntilde;ana.</p>
+          <h4>Surf guiado</h4>
+          <p>Por la tarde tenemos el material disponible para quien quiera meterse.</p>
         </div>
       </li>
       <li class="hora">
         <span class="h">20:00</span>
         <div class="qu">
           <h4>Espicha asturiana</h4>
-          <p>Cena de pie, sidra y comida asturiana de la tierra.</p>
+          <p>Cena de pie, sidra y comida asturiana de la tierra. Es la cena que entra con
+            LiveOkey.</p>
         </div>
       </li>
       <li class="hora">
@@ -560,11 +565,14 @@ footer .centro{text-align:center}
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
-    <p class="dintro">&Uacute;ltimo ba&ntilde;o, comida tranquila y vuelta a casa.<br><span class="prov">Horas por confirmar</span></p>
+    <p class="dintro">&Uacute;ltimo ba&ntilde;o, din&aacute;mica de despedida, comida tranquila y vuelta a casa.<br><span class="prov">Horas por confirmar</span></p>
     <ol class="horas">
       <li class="hora">
         <span class="h">09:00</span>
-        <div class="qu"><h4>Desayuno</h4></div>
+        <div class="qu">
+          <h4>Desayuno</h4>
+          <p>Incluido, como el del s&aacute;bado.</p>
+        </div>
       </li>
       <li class="hora">
         <span class="h">10:00</span>
@@ -575,6 +583,13 @@ footer .centro{text-align:center}
       </li>
       <li class="hora">
         <span class="h">13:00</span>
+        <div class="qu">
+          <h4>Din&aacute;mica de despedida</h4>
+          <p>Lo &uacute;ltimo que hacemos todos juntos, justo antes de comer.</p>
+        </div>
+      </li>
+      <li class="hora">
+        <span class="h">Despu&eacute;s</span>
         <div class="qu"><h4>Comida</h4></div>
       </li>
       <li class="hora">
@@ -596,45 +611,75 @@ footer .centro{text-align:center}
     <div class="rot"><span class="t">Antes de salir</span><span class="l"></span></div>
     <h2>Lo que tienes que <em>saber</em></h2>
     <div class="fichas">
-      <div class="ficha tuyo">
-        <h4>Las comidas de la previa</h4>
-        <p>Los desayunos, comidas y cenas del mi&eacute;rcoles al viernes <b>van por cuenta de
-          cada uno</b>. Hacemos una compra conjunta, se reparte el gasto y cocinamos
-          juntos: no tienes que traer nada de casa.</p>
-      </div>
-      <div class="ficha incl">
-        <h4>Las del finde, incluidas</h4>
-        <p>Del viernes por la noche al domingo, las comidas entran con LiveOkey. Ah&iacute; no
-          hay que organizar nada.</p>
-      </div>
-      <div class="ficha tuyo">
-        <h4>El neopreno, cubierto</h4>
-        <p>Quien tenga el suyo, que lo traiga. Al resto se le alquila all&iacute;, con la talla
-          que pusiste en el formulario. No hay que hacer nada.</p>
+      <div class="ficha ancha">
+        <h4>Las comidas</h4>
+        <p>Del finde entran <b>la cena del s&aacute;bado &mdash;la espicha asturiana&mdash; y los
+          desayunos del s&aacute;bado y del domingo</b>. Eso es lo que est&aacute; incluido, y nada
+          m&aacute;s.</p>
+        <p>El resto va por cuenta de cada uno, pero no tienes que traer nada de casa: en
+          la previa hacemos una compra conjunta, se reparte el gasto entre todos y
+          cocinamos juntos, y lo que se come fuera se paga en el sitio.</p>
       </div>
       <div class="ficha">
         <h4>Qu&eacute; meter en la maleta</h4>
         <ul>
-          <li><b>El port&aacute;til</b>, si vas a trabajar</li>
-          <li><b>Zapatillas de andar</b>, para el trekking del jueves</li>
-          <li><b>Ropa de abrigo</b>: en Asturias, en septiembre, refresca al caer el sol</li>
           <li><b>El disfraz del s&aacute;bado</b> &mdash; el tuyo, el que te dijimos en privado</li>
+          <li><b>Ropa de abrigo</b>: en Asturias, en septiembre, refresca al caer el sol</li>
+          <li><b>Zapatillas de andar</b>, para el trekking del jueves</li>
+          <li><b>Ba&ntilde;ador, toalla y chanclas</b>, que se entra y se sale del agua</li>
+          <li><b>Crema solar</b> &mdash; el sol del norte enga&ntilde;a</li>
+          <li><b>Chubasquero</b> o cortavientos, por si el mar manda lluvia</li>
+          <li><b>El port&aacute;til y el cargador</b>, si vas a trabajar</li>
+          <li><b>Una libreta</b>, para los talleres</li>
+          <li><b>Botella de agua</b> reutilizable</li>
         </ul>
       </div>
-      <div class="ficha">
-        <h4>C&oacute;mo llegar</h4>
+      <div class="ficha tuyo">
+        <h4>Y lo que no ocupa sitio</h4>
+        <p>Que es, al final, lo que hace el viaje:</p>
+        <ul>
+          <li><b>Ganas de abrirte</b>, aunque no conozcas a nadie</li>
+          <li><b>Ganas de conocer gente</b> de verdad, no de intercambiar Instagram</li>
+          <li><b>Ganas de aprender</b> de lo que hace cada uno</li>
+          <li><b>Ganas de disfrutar</b>, sin culpa</li>
+          <li><b>Vivir el presente</b>: cinco d&iacute;as sin pensar en el lunes</li>
+          <li><b>Dejarse fluir</b> con lo que salga</li>
+        </ul>
+      </div>
+      <div class="ficha ancha">
+        <h4>C&oacute;mo llegar y d&oacute;nde es cada cosa</h4>
         <p>La casa est&aacute; en <b>Naveces</b>, concejo de Castrill&oacute;n. Desde Madrid son unas
           cinco horas en coche. Si vienes en tren o en avi&oacute;n a Avil&eacute;s o Gij&oacute;n, d&iacute;nos
-          la hora y lo cuadramos con los coches.</p>
+          la hora y lo cuadramos con los coches. Aqu&iacute; tienes todos los sitios del viaje,
+          cada uno con su enlace al mapa.</p>
+        <div class="sitios">
         <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=RuralSurf%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
           <span class="k">La casa</span>
           <span class="v">RuralSurf &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
         </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=El%20Cruce%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">El finde</span>
+          <span class="v">El Cruce &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Salinas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Mi&eacute;rcoles, al atardecer</span>
+          <span class="v">Playa de Salinas<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Munielles%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">El trekking del jueves</span>
+          <span class="v">Playa de Munielles<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Casa%20Demetrio%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Desayunos, a cien metros</span>
+          <span class="v">Casa Demetrio &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        </div>
       </div>
-      <div class="ficha">
+      <div class="ficha ancha">
         <h4>Cualquier cosa</h4>
-        <p>Si te surge una duda, si llegas a otra hora o si algo no te cuadra, escribe a
-          Abraham por el grupo de WhatsApp y lo miramos.</p>
+        <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
+          o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
+          o por privado, lo que te venga mejor.</p>
       </div>
     </div>
   </div>
@@ -643,20 +688,16 @@ footer .centro{text-align:center}
 <!-- ================= CIERRE ================= -->
 <section class="franja hondo cierre">
   <div class="centro">
-    <p class="frase">No es dejarlo todo.<br><em>Es empezar algo.</em></p>
-    <div class="banda"><picture><source type="image/webp" srcset="../img/grupo.webp"></source><img loading="lazy" src="../img/grupo.jpg" alt="El grupo saliendo del agua con las tablas, al atardecer"></picture></div>
+    <p class="frase">Esta vida <em>pide otra</em></p>
+    <div class="banda"><picture><source type="image/webp" srcset="../img/cierre.webp"></source><img loading="lazy" src="../img/cierre.jpg" alt="El grupo saliendo del agua con las tablas al atardecer, con el sello del viaje"></picture></div>
   </div>
 </section>
 
 <footer class="franja hondo">
   <div class="centro">
     <hr>
-    Un viaje de <b>LiveOkey</b> &middot; la previa, con <b>VIBRA</b><br>
-    Asturias, 16 al 20 de septiembre de 2026<br>
-    <a href="../">El dossier del finde</a> &nbsp;&middot;&nbsp; <a href="../previa/">El dossier de la previa</a><br>
-    Las horas del s&aacute;bado y el domingo est&aacute;n por confirmar con LiveOkey; el resto est&aacute;
-    cerrado. Si algo cambia, lo actualizamos aqu&iacute; mismo.<br>
-    Actualizado el 11 de septiembre de 2026.
+    <p class="firma-v">Que nunca te quiten tu vibra</p>
+    <p class="enlaces"><a href="../">El dossier del finde</a> &nbsp;&middot;&nbsp; <a href="../previa/">El dossier de la previa</a></p>
   </div>
 </footer>
 </body></html>
