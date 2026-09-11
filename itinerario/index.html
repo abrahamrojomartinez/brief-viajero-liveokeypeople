@@ -187,6 +187,13 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .ficha p{font-size:14.5px;color:var(--tx2);margin-top:7px}
 .ficha.tuyo{border-left:3px solid var(--ac)}
 .ficha.ancha{grid-column:1/-1}
+/* Las dos caras de quien organiza, en redondo, encima del texto. */
+.caras{display:flex;flex-wrap:wrap;gap:22px;margin:15px 0 18px}
+.caras figure{margin:0;text-align:center}
+.caras img{display:block;width:104px;height:104px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--ln)}
+.caras figcaption{font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ac2);margin-top:10px}
 .sitios{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;
   margin-top:15px}
 .sitios .donde{max-width:100%;margin-top:0}
@@ -686,6 +693,10 @@ footer .centro{text-align:center}
       </div>
       <div class="ficha ancha">
         <h4>Cualquier cosa</h4>
+        <div class="caras">
+          <figure><picture><source type="image/webp" srcset="../img/abraham.webp"></source><img loading="lazy" src="../img/abraham.jpg" alt="Abraham"></picture><figcaption>Abraham</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="../img/sergio.webp"></source><img loading="lazy" src="../img/sergio.jpg" alt="Sergio"></picture><figcaption>Sergio</figcaption></figure>
+        </div>
         <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
           o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
           o por privado, lo que te venga mejor. Y b&uacute;scanos en cualquier momento del viaje.</p>
