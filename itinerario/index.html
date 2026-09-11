@@ -75,37 +75,22 @@ a{color:var(--ac2)}
   color:var(--ac);white-space:nowrap}
 .rot .l{flex:1 1 auto;height:1px;background:var(--ln)}
 
-/* ---- Portada: la franja que se come la pantalla --------------------- */
-.hero{position:relative;overflow:hidden;isolation:isolate}
+/* ---- Portada: la foto, el logo y la fecha. Nada mas. ----------------
+   Sin titular, sin bajada, sin cifras y sin tira de dias: el documento
+   arranca en la foto del jardin. La franja tiene alto propio para que la
+   foto se vea, y el contenido se apoya abajo sobre el velo.
+   --------------------------------------------------------------------- */
+.hero{position:relative;overflow:hidden;isolation:isolate;
+  min-height:clamp(300px,64vw,440px);display:flex;align-items:flex-end}
 .hero .fondo{position:absolute;inset:0;z-index:-2}
 .hero .fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;
   display:block}
 .hero::before{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(10,9,8,.86) 0%,rgba(10,9,8,.46) 46%,
-    rgba(10,9,8,.82) 100%)}
-.hero .centro{padding-block:52px 46px}
-.sello{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--k-ac-tx);margin-bottom:16px}
-h1{font-size:clamp(38px,9.4vw,68px);font-weight:900;line-height:.98;letter-spacing:-.03em;
-  color:#FDFAF4}
-h1 em{font-style:italic;font-weight:400;color:var(--k-ac-tx)}
-.bajada{font-size:17.5px;color:#DED3CC;margin-top:17px;max-width:44ch}
-.hechos{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;
-  background:rgba(245,241,236,.16);border:1px solid rgba(245,241,236,.16);margin-top:32px}
-.hecho{background:rgba(10,9,8,.46);padding:15px 16px}
-.hecho .v{font-family:var(--f-d);font-size:27px;font-weight:600;line-height:1.05;
-  color:#FDFAF4;font-variant-numeric:tabular-nums}
-.hecho .k{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:#C8BCB6;margin-top:6px;line-height:1.4}
-.tira{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-.tira a,.tira button{font-family:var(--f-u);font-size:12.5px;font-weight:600;
-  letter-spacing:.04em;text-decoration:none;color:#E7DFD9;background:rgba(245,241,236,.07);
-  border:1px solid rgba(245,241,236,.26);padding:8px 14px;border-radius:2px;
-  cursor:pointer;transition:background .16s,border-color .16s,color .16s}
-.tira a b{font-family:var(--f-d);font-weight:600;color:#FDFAF4}
-.tira a:hover,.tira button:hover{background:var(--k-ac);border-color:var(--k-ac);color:#fff}
-.tira a:hover b{color:#fff}
-.tira button{border-style:dashed}
+  background:linear-gradient(180deg,rgba(10,9,8,.22) 0%,rgba(10,9,8,.52) 52%,
+    rgba(10,9,8,.96) 100%)}
+.hero .centro{width:100%;padding-block:70px 34px}
+h1.sello{font-family:var(--f-u);font-size:11.5px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--k-ac-tx);line-height:1.7}
 
 /* ---- Cabecera de capitulo ------------------------------------------- */
 .cap .centro{padding-block:46px 8px}
@@ -140,25 +125,25 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
   margin-top:12px;scroll-margin-top:14px;box-shadow:var(--som)}
 .dia > summary{cursor:pointer;list-style:none;padding:16px 18px}
 .dia > summary::-webkit-details-marker{display:none}
-.dcab{display:flex;align-items:flex-start;gap:15px}
+.dcab{display:flex;align-items:center;gap:15px}
 .dnum{flex:0 0 auto;font-size:10px;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--ac);padding-top:7px;width:44px;line-height:1.4}
+  text-transform:uppercase;color:var(--ac);width:44px;line-height:1.4}
 .dtx{flex:1 1 auto;min-width:0}
 .dtx h3{font-size:23px;font-weight:600;line-height:1.15;letter-spacing:-.015em}
-.dlead{font-size:14.5px;color:var(--tx2);margin-top:5px;max-width:48ch}
-.dres{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ac2);margin-top:9px}
+/* La frase del dia vive DENTRO del cajon: cerrado no adelanta nada. */
+.dintro{padding:0 18px;font-size:15px;color:var(--tx2);max-width:52ch}
 .chev{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:transparent;
   border:1px solid var(--ln);color:var(--ac);font-size:10px;line-height:28px;
-  text-align:center;margin-top:5px;transition:all .22s}
+  text-align:center;transition:all .22s}
 .dia[open] .chev{background:var(--ac);border-color:var(--ac);color:#fff;
   transform:rotate(180deg)}
 .dia > summary:hover .chev{border-color:var(--ac)}
 .prov{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.15em;
   text-transform:uppercase;color:var(--ac);border:1px solid var(--ac);
-  padding:2px 8px;margin-top:10px}
+  padding:2px 8px;margin-top:12px}
 
 /* ---- La linea de tiempo dentro del cajon ---------------------------- */
-.horas{list-style:none;padding:2px 18px 20px;--carril:84px}
+.horas{list-style:none;padding:16px 18px 20px;--carril:84px}
 .hora{position:relative;display:grid;grid-template-columns:70px 1fr;gap:0 30px;
   padding-bottom:24px}
 .hora:last-child{padding-bottom:0}
@@ -218,11 +203,12 @@ footer .centro{text-align:center}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 @media(max-width:620px){
   body{font-size:15.5px}
-  .hero .centro{padding-block:40px 38px}
-  .sello{font-size:10px;letter-spacing:.19em}
+  .hero .centro{padding-block:56px 28px}
+  h1.sello{font-size:10px;letter-spacing:.19em}
   .mosaico{gap:7px}
   .mosaico figcaption{font-size:10px;letter-spacing:0}
   .horas{padding-inline:14px;--carril:62px}
+  .dintro{padding-inline:15px}
   .hora{grid-template-columns:52px 1fr;gap:0 22px;padding-bottom:20px}
   .h{font-size:10.5px;letter-spacing:.06em}
   .qu h4{font-size:17px}
@@ -237,27 +223,10 @@ footer .centro{text-align:center}
 
 <!-- ================= PORTADA ================= -->
 <section class="franja hondo hero">
-  <div ><picture><source type="image/webp" srcset="../img/atardecer-mar.webp"></source><img loading="lazy" src="../img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar en la costa asturiana"></picture></div>
+  <div class="fondo"><picture><source type="image/webp" srcset="../img/atardecer-mar.webp"></source><img fetchpriority="high" src="../img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar en la costa asturiana"></picture></div>
   <div class="centro">
     <picture><source type="image/webp" srcset="../img/liveokey-logo.webp"></source><img class="marca" src="../img/liveokey-logo.png" alt="LiveOkey People"></picture>
-    <div class="sello">Surf trip &middot; Asturias &middot; 16 al 20 de septiembre</div>
-    <h1>Cinco d&iacute;as<br><em>hora a hora</em></h1>
-    <p class="bajada">El finde de surf con LiveOkey y, para quien quiera, tres d&iacute;as
-      antes de previa con VIBRA. Aqu&iacute; est&aacute; todo, con el sitio de cada cosa.</p>
-    <div class="hechos">
-      <div class="hecho"><div class="v">5</div><div class="k">d&iacute;as</div></div>
-      <div class="hecho"><div class="v">3</div><div class="k">d&iacute;as de cowork</div></div>
-      <div class="hecho"><div class="v">3</div><div class="k">sesiones de surf</div></div>
-      <div class="hecho"><div class="v">2</div><div class="k">atardeceres en la playa</div></div>
-    </div>
-    <nav class="tira" aria-label="Ir a un d&iacute;a">
-      <a href="#d1"><b>Mi&eacute; 16</b> &middot; Llegada</a>
-      <a href="#d2"><b>Jue 17</b> &middot; El d&iacute;a entero</a>
-      <a href="#d3"><b>Vie 18</b> &middot; Empieza el finde</a>
-      <a href="#d4"><b>S&aacute;b 19</b> &middot; Surf y fiesta</a>
-      <a href="#d5"><b>Dom 20</b> &middot; Vuelta</a>
-      <button type="button" id="todos" aria-expanded="false">Abrir los cinco d&iacute;as</button>
-    </nav>
+    <h1 class="sello">Surf trip &middot; Asturias &middot; 16 al 20 de septiembre</h1>
   </div>
 </section>
 
@@ -288,12 +257,11 @@ footer .centro{text-align:center}
         <div class="dnum">D&iacute;a 1</div>
         <div class="dtx">
           <h3>Mi&eacute;rcoles 16</h3>
-          <p class="dlead">Se llega poco a poco. Deshacer la maleta, y al caer el sol, playa.</p>
-          <p class="dres">Check-in en RuralSurf &middot; atardecer en Salinas</p>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
+    <p class="dintro">Se llega poco a poco. Deshacer la maleta, y al caer el sol, playa.</p>
     <ol class="horas">
       <li class="hora">
         <span class="h">18:00</span>
@@ -330,13 +298,12 @@ footer .centro{text-align:center}
         <div class="dnum">D&iacute;a 2</div>
         <div class="dtx">
           <h3>Jueves 17</h3>
-          <p class="dlead">El &uacute;nico d&iacute;a entero, y el que lleva el peso: cowork por la
-            ma&ntilde;ana, cocina social al mediod&iacute;a y taller por la tarde.</p>
-          <p class="dres">Movilidad &middot; cowork &middot; cocina social &middot; taller de h&aacute;bitos con IA &middot; trekking al atardecer</p>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
+    <p class="dintro">El &uacute;nico d&iacute;a entero, y el que lleva el peso: cowork por la
+            ma&ntilde;ana, cocina social al mediod&iacute;a y taller por la tarde.</p>
     <ol class="horas">
       <li class="hora">
         <span class="h">08:00</span>
@@ -433,13 +400,12 @@ footer .centro{text-align:center}
         <div class="dnum">D&iacute;a 3</div>
         <div class="dtx">
           <h3>Viernes 18</h3>
-          <p class="dlead">La misma ma&ntilde;ana que el jueves. Comemos fuera y a las ocho de
-            la tarde arranca el finde con LiveOkey.</p>
-          <p class="dres">Taller de prop&oacute;sito &middot; comida fuera &middot; a las 20:00 empieza el finde</p>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
+    <p class="dintro">La misma ma&ntilde;ana que el jueves. Comemos fuera y a las ocho de
+            la tarde arranca el finde con LiveOkey.</p>
     <ol class="horas">
       <li class="hora">
         <span class="h">08:00</span>
@@ -518,14 +484,12 @@ footer .centro{text-align:center}
         <div class="dnum">D&iacute;a 4</div>
         <div class="dtx">
           <h3>S&aacute;bado 19</h3>
-          <p class="dlead">Agua por la ma&ntilde;ana y por la tarde, espicha asturiana al caer
-            el d&iacute;a y fiesta de disfraces para acabar.</p>
-          <p class="dres">Dos clases de surf &middot; espicha &middot; fiesta de disfraces</p>
-          <span class="prov">Horas por confirmar</span>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
+    <p class="dintro">Agua por la ma&ntilde;ana y por la tarde, espicha asturiana al caer
+            el d&iacute;a y fiesta de disfraces para acabar.<br><span class="prov">Horas por confirmar</span></p>
     <ol class="horas">
       <li class="hora">
         <span class="h">08:30</span>
@@ -584,13 +548,11 @@ footer .centro{text-align:center}
         <div class="dnum">D&iacute;a 5</div>
         <div class="dtx">
           <h3>Domingo 20</h3>
-          <p class="dlead">&Uacute;ltimo ba&ntilde;o, comida tranquila y vuelta a casa.</p>
-          <p class="dres">Surf de despedida &middot; comida &middot; salida por la tarde</p>
-          <span class="prov">Horas por confirmar</span>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
+    <p class="dintro">&Uacute;ltimo ba&ntilde;o, comida tranquila y vuelta a casa.<br><span class="prov">Horas por confirmar</span></p>
     <ol class="horas">
       <li class="hora">
         <span class="h">09:00</span>
@@ -689,36 +651,4 @@ footer .centro{text-align:center}
     Actualizado el 11 de septiembre de 2026.
   </div>
 </footer>
-
-<script>
-(function(){
-  'use strict';
-  var dias=[].slice.call(document.querySelectorAll('details.dia'));
-
-  /* Los enlaces de la tira abren el día al que llevan. */
-  [].forEach.call(document.querySelectorAll('.tira a'),function(a){
-    a.addEventListener('click',function(){
-      var d=document.querySelector(a.getAttribute('href'));
-      if(d){d.open=true;pinta()}
-    });
-  });
-
-  /* Un botón para abrir o cerrar los cinco de golpe. */
-  var b=document.getElementById('todos');
-  function pinta(){
-    var abiertos=dias.filter(function(d){return d.open}).length;
-    var todos=abiertos===dias.length;
-    b.textContent=todos?'Cerrar los cinco días':'Abrir los cinco días';
-    b.setAttribute('aria-expanded',todos?'true':'false');
-  }
-  b.addEventListener('click',function(){
-    var abrir=dias.some(function(d){return !d.open});
-    dias.forEach(function(d){d.open=abrir});
-    pinta();
-  });
-  dias.forEach(function(d){d.addEventListener('toggle',pinta)});
-  pinta();
-})();
-</script>
-
 </body></html>
