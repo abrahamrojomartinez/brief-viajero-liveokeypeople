@@ -2,11 +2,12 @@
 
 Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 
-| Ruta           | Quién     | Qué cuenta                            |
-|----------------|-----------|---------------------------------------|
-| `/`            | LiveOkey  | El finde de surf, 18–20 sept          |
-| `/previa/`     | VIBRA     | La previa de coworking, 16–18 sept    |
-| `/formulario/` | LiveOkey  | Formulario de gestión del viaje       |
+| Ruta            | Quién     | Qué cuenta                            |
+|-----------------|-----------|---------------------------------------|
+| `/`             | LiveOkey  | El finde de surf, 18–20 sept          |
+| `/previa/`      | VIBRA     | La previa de coworking, 16–18 sept    |
+| `/formulario/`  | LiveOkey  | Formulario de gestión del viaje       |
+| `/itinerario/`  | LiveOkey  | Los cinco días hora a hora            |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
 - URL: https://vibra-con-liveokey-trip.netlify.app
@@ -17,6 +18,7 @@ Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 index.html          21 KB   — dossier de LiveOkey (marca oscura, rojo #BC2813)
 previa/index.html   23 KB   — dossier de VIBRA (papel crema, coral #E8724C)
 formulario/index.html       — formulario del viaje (5 pasos, va a HubSpot)
+itinerario/index.html 34 KB — los cinco días hora a hora (para quien ya viene)
 img/                        — las 18 fotos + los dos recortes para compartir
 netlify.toml                — cabeceras de caché
 ```
@@ -244,3 +246,80 @@ La pregunta de habitación es **opcional** y viaja en el paquete JSON como
 plazas (cuatro casas), escrito en el propio panel: si cambia el alojamiento,
 se cambia ahí. La habitación de Adrián Makeda y Marta va marcada como ya
 asignada.
+
+
+## `/itinerario/` — los cinco días hora a hora
+
+Para quien **ya tiene la plaza**: qué pasa cada día, a qué hora y en qué sitio.
+No vende nada. Es el enlace que se manda al grupo de WhatsApp cuando alguien
+pregunta «¿y esto cómo va?».
+
+**La marca es de LiveOkey en todo el documento** — el viaje es suyo — y VIBRA
+solo viste la previa, que es lo único que pone. Es decir: portada, el finde,
+«Antes de salir», cierre y pie en negro `#12100F` con rojo `#BC2813`; y en
+medio, una isla de papel crema `#F7F2E9` con coral `#E8724C` y una nota a mano
+en Caveat, que es la previa. La Caveat no aparece en ninguna otra parte: es
+letra de VIBRA. Los tokens de las dos marcas viven juntos en `:root` con
+prefijo (`--v-*` y `--k-*`), y cada franja elige el suyo con una clase:
+
+| Clase          | Fondo     | Para qué                                    |
+|----------------|-----------|---------------------------------------------|
+| (ninguna)      | `#12100F` | LiveOkey, por defecto                       |
+| `.hondo`       | `#0A0908` | portada y cierre                            |
+| `.mate`        | `#1C1917` | «Antes de salir», para que se separe        |
+| `.v`           | `#F7F2E9` | **solo la previa**: papel crema de VIBRA    |
+
+Sobre negro, el rojo `#BC2813` no llega a contrastar lo suficiente para texto
+pequeño, así que los rótulos y los enlaces usan `--k-ac-tx` (`#E04A2E`, el
+mismo rojo un poco más claro) y el `#BC2813` se reserva para rellenos
+—chivatos, puntos de la línea de tiempo, hover—.
+
+### Cada día es un desplegable
+
+Los cinco días son `<details>` **cerrados**, para que el viaje entero se vea de
+un vistazo. Cerrado, cada cajón enseña el día, la frase del día y un resumen de
+una línea; abierto, la línea de tiempo completa con las horas, las fotos y los
+enlaces al mapa. Hay un botón en la portada que abre o cierra los cinco de
+golpe, y los enlaces de la tira de días abren el día al que llevan (por si
+estaba plegado). El texto del botón se recalcula con el evento `toggle`, así
+que también se entera si abres los días a mano.
+
+### Las ubicaciones
+
+Los sitios que no son la casa llevan ficha con enlace a Google Maps
+(`maps/search/?api=1&query=…`, que funciona en el navegador y abre la app si
+está instalada): RuralSurf, la playa de Salinas, la playa de Munielles y El
+Cruce. Lo que pasa en la casa no lleva ficha: se entiende.
+
+### Las fotos
+
+**No se ha añadido ni un archivo nuevo**: las 15 fotos son las que ya vivían en
+`/img/`, así que heredan la caché de un año. Misma mecánica que los dossieres
+(`<picture>` con WebP y el JPG de respaldo, `picture{display:contents}`,
+`picture source{display:none}`, sin atributos `width`/`height`), y las bandas
+recortan por CSS con `aspect-ratio` + `object-fit:cover` para que todas tengan
+la misma proporción aunque los originales no la tengan.
+
+| Dónde | Foto |
+|---|---|
+| Portada (fondo) | `atardecer-mar` |
+| La previa · banda | `vibra-portada` — el jardín de la casa al amanecer |
+| La previa · mosaico | `cowork` · `cocina-comuna` · `movilidad` |
+| Miércoles · atardecer en Salinas | `surf-atardecer` |
+| Jueves · descanso activo | `descanso-activo` |
+| Jueves · taller | `taller` |
+| Jueves · trekking | `atardecer-mar` |
+| El finde · banda | `lok-portada` — la familia en el agua |
+| El finde · mosaico | `surf-clase` · `espicha` · `fiesta-1` |
+| Sábado · gimnasia natural | `stretching` |
+| Cierre | `grupo` |
+
+### Lo que NO lleva
+
+`noindex`, como el formulario: el enlace se reparte a mano. Y nada interno:
+ni quién duerme dónde, ni precios, ni el disfraz de nadie (solo que a cada uno
+le ha tocado el suyo y que es secreto), ni marcas de lo que está por cerrar
+más allá de «horas por confirmar» en sábado y domingo.
+
+El pie enlaza a los otros dos dossieres con rutas relativas (`../` y
+`../previa/`), igual que ellos entre sí.
