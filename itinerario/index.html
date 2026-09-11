@@ -81,13 +81,13 @@ a{color:var(--ac2)}
    foto se vea, y el contenido se apoya abajo sobre el velo.
    --------------------------------------------------------------------- */
 .hero{position:relative;overflow:hidden;isolation:isolate;
-  min-height:clamp(300px,64vw,440px);display:flex;align-items:flex-end}
+  min-height:clamp(365px,78vw,530px);display:flex;align-items:flex-end}
 .hero .fondo{position:absolute;inset:0;z-index:-2}
-.hero .fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;
+.hero .fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 52%;
   display:block}
 .hero::before{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(10,9,8,.22) 0%,rgba(10,9,8,.52) 52%,
-    rgba(10,9,8,.96) 100%)}
+  background:linear-gradient(180deg,rgba(10,9,8,.10) 0%,rgba(10,9,8,.14) 46%,
+    rgba(10,9,8,.52) 70%,rgba(10,9,8,.93) 89%,var(--k-bg0) 100%)}
 .hero .centro{width:100%;padding-block:70px 34px}
 h1.sello{font-family:var(--f-u);font-size:11.5px;font-weight:700;letter-spacing:.28em;
   text-transform:uppercase;color:var(--k-ac-tx);line-height:1.7}
@@ -200,7 +200,6 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
   line-height:1.1;letter-spacing:-.025em;text-wrap:balance;margin-bottom:28px}
 .frase em{font-style:italic;font-weight:400;color:var(--ac)}
 footer .centro{padding-block:26px 52px;font-size:13px;color:var(--tx2);line-height:1.75}
-.enlaces{margin-top:26px;font-size:12.5px;letter-spacing:.02em}
 footer hr{border:0;border-top:1px solid var(--ln);margin:0 0 24px}
 footer .centro{text-align:center}
 
@@ -227,7 +226,7 @@ footer .centro{text-align:center}
 
 <!-- ================= PORTADA ================= -->
 <section class="franja hondo hero">
-  <div class="fondo"><picture><source type="image/webp" srcset="../img/atardecer-mar.webp"></source><img fetchpriority="high" src="../img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar en la costa asturiana"></picture></div>
+  <div class="fondo"><picture><source type="image/webp" srcset="../img/portada-atardecer.webp"></source><img fetchpriority="high" src="../img/portada-atardecer.jpg" alt="El sol cayendo sobre el mar, con la playa y la gente en silueta"></picture></div>
   <div class="centro">
     <picture><source type="image/webp" srcset="../img/liveokey-logo.webp"></source><img class="marca" src="../img/liveokey-logo.png" alt="LiveOkey People"></picture>
     <h1 class="sello">Surf trip &middot; Asturias &middot; 16 al 20 de septiembre</h1>
@@ -630,8 +629,6 @@ footer .centro{text-align:center}
           <li><b>Crema solar</b> &mdash; el sol del norte enga&ntilde;a</li>
           <li><b>Chubasquero</b> o cortavientos, por si el mar manda lluvia</li>
           <li><b>El port&aacute;til y el cargador</b>, si vas a trabajar</li>
-          <li><b>Una libreta</b>, para los talleres</li>
-          <li><b>Botella de agua</b> reutilizable</li>
         </ul>
       </div>
       <div class="ficha tuyo">
@@ -679,7 +676,9 @@ footer .centro{text-align:center}
         <h4>Cualquier cosa</h4>
         <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
           o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
-          o por privado, lo que te venga mejor.</p>
+          o por privado, lo que te venga mejor. Y b&uacute;scanos en cualquier momento del viaje.</p>
+        <p>Y para tener una conversaci&oacute;n bonita, profunda y m&iacute;stica, tambi&eacute;n:
+          lo agradecemos mucho y nos encanta.</p>
       </div>
     </div>
   </div>
@@ -697,7 +696,6 @@ footer .centro{text-align:center}
   <div class="centro">
     <hr>
     <p class="firma-v">Que nunca te quiten tu vibra</p>
-    <p class="enlaces"><a href="../">El dossier del finde</a> &nbsp;&middot;&nbsp; <a href="../previa/">El dossier de la previa</a></p>
   </div>
 </footer>
 </body></html>
