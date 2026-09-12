@@ -7,8 +7,9 @@
 <meta name="description" content="La dinámica de propósito del viaje: puntúa cómo de alimentados tienes al oso, al tigre y al dragón, y mira tu triángulo.">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Oso, Tigre y Dragón · Tu triángulo">
+<meta property="og:title" content="Oso, Tigre y Dragón · un taller de VIBRA">
 <meta property="og:description" content="Tres radios: las emociones, la acción y el propósito. Cuatro minutos.">
+<meta property="og:site_name" content="VIBRA">
 <meta property="og:locale" content="es_ES">
 <meta name="theme-color" content="#F7F2E9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,18 +17,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@600&display=swap">
 <style>
 /* =====================================================================
-   Taller «Oso, Tigre y Dragón» · VIBRA
-   Identidad de VIBRA (crema, negro cálido, Fraunces + Hanken + Caveat)
-   y, encima, un tono por animal que sale de SU PLANO en el libro: la
-   tierra del oso, el calor del tigre en la superficie, el frío de la
-   altura del dragón. Misma familia visual que la guía del facilitador.
+   Taller «Oso, Tigre y Dragón» · un taller de la comunidad VIBRA
+   Esto es de VIBRA, así que lleva SU identidad tal cual: los mismos
+   valores que app/globals.css de la plataforma -crema, negro cálido,
+   coral, Fraunces + Hanken + Caveat- y sus radios de 16 y 10, que es lo
+   que de verdad hace que se reconozca. Copiados, no aproximados: el día
+   que Momo cambie la marca, se cambian aquí los mismos tokens.
+   Encima, un tono por animal que sale de SU PLANO en el libro: la tierra
+   del oso, el calor del tigre en la superficie, el frío de la altura del
+   dragón. El coral de VIBRA es, de propina, el del tigre.
    ===================================================================== */
 :root{
-  --paper:#F7F2E9; --paper2:#FDFAF4; --sunk:#F1EADD;
-  --ink:#211C1E; --ink2:#5E5753; --faint:#8A8078; --line:#E7DFD2;
-  --oso:#8E5524;    --oso-tx:#7A4619;    --oso-wash:#F0E4D4;
-  --tigre:#E8724C;  --tigre-tx:#B54A28;  --tigre-wash:#FAE3D9;
-  --dragon:#44617E; --dragon-tx:#34506B; --dragon-wash:#E1E7EE;
+  --paper:#F7F2E9; --paper2:#FFFDF7; --sunk:#F0E8D9;
+  --ink:#211C1E; --ink2:#4A4145; --faint:#6F6569; --light:#9A8F92;
+  --line:#E6DCCB; --line-s:#EFE8DA;
+  --oso:#8E5524;    --oso-tx:#7A4619;    --oso-wash:#F1E5D5;
+  --tigre:#E8724C;  --tigre-tx:#C4552F;  --tigre-wash:#FBEDE5;
+  --dragon:#44617E; --dragon-tx:#34506B; --dragon-wash:#E3E8EE;
+  --r:16px; --rs:10px;
   --f-d:'Fraunces',Georgia,'Times New Roman',serif;
   --f-u:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;
   --f-m:'Caveat','Bradley Hand',cursive;
@@ -44,6 +51,14 @@ p{max-width:60ch}
 :focus-visible{outline:2px solid var(--tigre-tx);outline-offset:3px;border-radius:3px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 
+/* El wordmark de VIBRA, igual que en la plataforma: Fraunces 600 con el
+   mismo letter-spacing. No hay logo en archivo; la marca es la palabra. */
+.marca{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-block:18px 0}
+.wm{font-family:var(--f-d);font-weight:600;font-size:16px;letter-spacing:.16em;
+  color:var(--ink);text-decoration:none}
+.marca .con{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--light);text-align:right;line-height:1.5}
 .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
   color:var(--faint)}
 .nota{font-family:var(--f-m);font-size:20px;line-height:1.35;color:var(--tigre-tx)}
@@ -69,7 +84,7 @@ p{max-width:60ch}
 .portada h1 em{font-style:italic;font-weight:400}
 .portada .dice{font-size:17.5px;color:var(--ink2);margin-top:16px}
 .datos{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);
-  border:1px solid var(--line);margin-top:24px}
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:24px}
 .datos div{flex:1 1 130px;background:var(--paper2);padding:11px 14px}
 .datos dt{font-size:9.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
   color:var(--faint)}
@@ -81,11 +96,41 @@ p{max-width:60ch}
   text-transform:uppercase;color:var(--faint);margin-bottom:7px}
 .campo input[type=text],.campo input[type=email]{width:100%;font-family:inherit;
   font-size:17px;color:var(--ink);background:var(--paper2);border:1px solid var(--line);
-  padding:13px 14px}
+  border-radius:var(--rs);padding:13px 14px}
 .campo input:focus{outline:none;border-color:var(--tigre)}
 .campo .pista{font-size:13.5px;color:var(--faint);margin-top:6px}
 .campo.mal input{border-color:var(--tigre-tx)}
 .campo .error{font-size:13.5px;font-weight:600;color:var(--tigre-tx);margin-top:6px}
+
+/* ---- La lectura: el contexto antes de puntuar -------------------------
+   Entra gente que llega al enlace en frío, así que aquí se cuenta de qué
+   van los tres animales aunque luego Abraham lo explique en voz alta. */
+.fabula{background:var(--sunk);border-radius:var(--r);border-left:3px solid var(--ink);
+  padding:18px 20px;margin-top:22px}
+.fabula p{font-size:15.5px;color:var(--ink2);line-height:1.6}
+.fabula p + p{margin-top:10px}
+.fabula i{color:var(--ink)}
+.tesis{font-family:var(--f-d);font-size:19px;line-height:1.45;margin-top:22px;
+  max-width:46ch}
+.trio{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+.trio article{background:var(--paper2);border:1px solid var(--line);
+  border-radius:var(--r);border-top:4px solid var(--tono);padding:15px 18px 17px}
+.trio article.a-oso{--tono:var(--oso);--tono-tx:var(--oso-tx)}
+.trio article.a-tigre{--tono:var(--tigre);--tono-tx:var(--tigre-tx)}
+.trio article.a-dragon{--tono:var(--dragon);--tono-tx:var(--dragon-tx)}
+.trio .cab{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 11px}
+.trio h3{font-size:23px;color:var(--tono-tx)}
+.trio .donde{font-size:10.5px;font-weight:700;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--light)}
+.trio p{font-size:15.5px;color:var(--ink2);line-height:1.58;margin-top:8px;max-width:50ch}
+.trio p b{color:var(--ink);font-weight:600}
+.clave{background:var(--ink);color:var(--paper);border-radius:var(--r);
+  padding:22px 22px 24px;margin-top:22px}
+.clave h3{font-family:var(--f-d);font-size:clamp(20px,4.8vw,25px);font-weight:600;
+  line-height:1.28;max-width:30ch}
+.clave p{font-size:15.5px;color:var(--line);line-height:1.6;margin-top:13px;max-width:48ch}
+.clave p + p{margin-top:10px}
+.clave b{color:var(--paper);font-weight:600}
 
 /* ---- Un animal -------------------------------------------------------- */
 .bestia{--tono:var(--tigre);--tono-tx:var(--tigre-tx);--tono-wash:var(--tigre-wash)}
@@ -96,7 +141,8 @@ p{max-width:60ch}
 .bestia h2{font-size:clamp(30px,7.6vw,40px);color:var(--tono-tx);margin-top:4px}
 .bestia .que{font-family:var(--f-d);font-size:18.5px;font-style:italic;line-height:1.45;
   margin-top:12px;max-width:52ch}
-.preg{background:var(--tono-wash);padding:16px 18px 18px;margin-top:22px}
+.preg{background:var(--tono-wash);border-radius:var(--r);padding:16px 18px 18px;
+  margin-top:22px}
 .preg h3{font-family:var(--f-u);font-size:11.5px;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--tono-tx)}
 .preg ol{margin-top:9px;padding-left:20px}
@@ -114,8 +160,9 @@ p{max-width:60ch}
 .mando .cuanto{font-size:13.5px;color:var(--faint);margin-top:2px}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;
   background:transparent;margin-top:8px;display:block;cursor:pointer}
-input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--line)}
-input[type=range]::-moz-range-track{height:6px;background:var(--line)}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--line);
+  border-radius:99px}
+input[type=range]::-moz-range-track{height:6px;background:var(--line);border-radius:99px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
   width:30px;height:30px;border-radius:50%;background:var(--tono);
   border:3px solid var(--paper);box-shadow:0 1px 5px rgba(33,28,30,.3);margin-top:-12px}
@@ -127,17 +174,18 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
 .mando.futuro .val{color:var(--ink2)}
 
 /* ---- El triángulo ----------------------------------------------------- */
-.figura{background:var(--paper2);border:1px solid var(--line);padding:14px 12px 8px;
-  margin-top:22px}
+.figura{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 12px 8px;margin-top:22px}
 .figura svg{display:block;width:100%;height:auto;max-width:420px;margin-inline:auto}
 .marcador{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);
-  margin-top:20px}
+  border-radius:var(--r);overflow:hidden;margin-top:20px}
 .marcador div{flex:1 1 0;background:var(--paper2);padding:12px 8px;text-align:center}
 .marcador dt{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--faint)}
 .marcador dd{font-family:var(--f-d);font-size:27px;font-weight:600;
   font-variant-numeric:tabular-nums;margin-top:2px}
-.veredicto{background:var(--ink);color:var(--paper);padding:20px 22px;margin-top:18px}
+.veredicto{background:var(--ink);color:var(--paper);border-radius:var(--r);
+  padding:20px 22px;margin-top:18px}
 .veredicto p{font-family:var(--f-d);font-size:clamp(19px,4.6vw,24px);font-weight:600;
   line-height:1.3;max-width:32ch}
 .veredicto span{display:block;font-family:var(--f-u);font-size:15px;color:var(--line);
@@ -150,12 +198,15 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
 
 /* ---- El compromiso ---------------------------------------------------- */
 .frase{background:var(--paper2);border:1px solid var(--line);
-  border-left:3px solid var(--tigre);padding:18px 20px;margin-top:22px}
+  border-left:3px solid var(--tigre);border-radius:var(--rs);padding:18px 20px;
+  margin-top:22px}
 .frase .linea{font-family:var(--f-d);font-size:19px;line-height:1.5}
 .frase select{font-family:var(--f-u);font-size:16px;font-weight:700;color:var(--ink);
-  background:var(--paper);border:1px solid var(--line);padding:7px 9px;margin-inline:3px}
+  background:var(--paper);border:1px solid var(--line);border-radius:8px;
+  padding:7px 9px;margin-inline:3px}
 .frase input{width:100%;font-family:inherit;font-size:17px;color:var(--ink);
-  background:var(--paper);border:1px solid var(--line);padding:12px 13px;margin-top:12px}
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--rs);
+  padding:12px 13px;margin-top:12px}
 .frase input:focus,.frase select:focus{outline:none;border-color:var(--tigre)}
 .ejemplos{font-size:13.5px;color:var(--faint);margin-top:10px}
 
@@ -164,30 +215,28 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
 .btn{display:inline-block;font-family:var(--f-u);font-size:13px;font-weight:700;
   letter-spacing:.13em;text-transform:uppercase;text-decoration:none;
   color:var(--paper);background:var(--ink);border:1px solid var(--ink);
-  padding:15px 26px;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+  border-radius:99px;padding:15px 26px;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s}
 .btn:hover{background:var(--tigre);border-color:var(--tigre);color:#fff}
 .btn:disabled{opacity:.45;cursor:progress}
 .btn.suave{background:transparent;color:var(--ink2);border-color:var(--line)}
 .btn.suave:hover{background:transparent;color:var(--ink);border-color:var(--ink2)}
 .btn.fina{padding:11px 18px;font-size:12px}
 
-/* ---- Sesión ----------------------------------------------------------- */
-.sesion{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:22px;
-  font-size:13.5px;color:var(--faint)}
-.sesion button{font-family:var(--f-u);font-size:12px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink2);background:var(--paper2);
-  border:1px solid var(--line);padding:8px 15px;cursor:pointer}
-.sesion button[aria-pressed=true]{color:var(--paper);background:var(--ink);
-  border-color:var(--ink)}
-
 /* ---- Final ------------------------------------------------------------ */
 .gracias{padding-block:48px 0;text-align:center}
 .gracias h2{font-size:clamp(30px,7.4vw,42px)}
 .gracias .dice{margin-inline:auto;margin-top:14px}
 .gracias .pies{justify-content:center}
-.firma{font-family:var(--f-m);font-size:27px;color:var(--tigre-tx);margin-top:34px}
-.aviso{background:var(--tigre-wash);border:1px solid var(--tigre);padding:14px 17px;
-  margin-top:20px;font-size:15px}
+.firma{font-family:var(--f-m);font-size:29px;color:var(--tigre-tx);margin-top:6px}
+/* El cierre: la marca, el sello y una puerta abierta. Sin vender nada. */
+.casa{background:var(--sunk);border-radius:var(--r);padding:26px 22px 24px;
+  margin-top:34px;text-align:center}
+.casa .wm{font-size:19px;display:inline-block}
+.casa p{font-size:15.5px;color:var(--ink2);margin:12px auto 0;max-width:40ch}
+.casa .btn{margin-top:18px}
+.aviso{background:var(--tigre-wash);border:1px solid var(--tigre);
+  border-radius:var(--rs);padding:14px 17px;margin-top:20px;font-size:15px}
 .aviso b{font-weight:700;color:var(--tigre-tx)}
 #lienzo{display:none}
 
@@ -212,32 +261,85 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     <div class="barra"><i id="barra-i"></i></div>
   </div>
 
+  <div class="marca">
+    <span class="wm">VIBRA</span>
+    <span class="con">Asturias 2026<br>con LiveOkey</span>
+  </div>
+
   <!-- ============ 0 · Portada ============ -->
   <section class="pantalla portada" id="p-portada">
-    <span class="eyebrow">Din&aacute;mica de prop&oacute;sito &middot; Asturias</span>
+    <span class="eyebrow">Un taller de la comunidad VIBRA</span>
     <h1>Oso, Tigre<br>y <em>Drag&oacute;n</em></h1>
-    <p class="dice">Tres animales viven en ti. El <b>oso</b> ordena tus emociones, el
-      <b>tigre</b> mueve tus acciones y el <b>drag&oacute;n</b> mira tu vida desde arriba y
-      le da sentido. Vas a puntuar c&oacute;mo de alimentado tienes a cada uno.</p>
-    <p class="dice">No es un test de personalidad. No hay &laquo;yo soy oso&raquo;: los
-      tres son tuyos y los tres se pueden alimentar. Lo que buscamos es cu&aacute;l tienes
-      muerto de hambre.</p>
+    <p class="dice">Una rueda de la vida de tres radios. No se punt&uacute;a para saber
+      qui&eacute;n eres: se punt&uacute;a para ver cu&aacute;l de los tres tienes muerto de
+      hambre.</p>
+    <p class="dice">Empieza con una lectura corta &mdash;dos minutos&mdash; para que
+      sepas de qu&eacute; va cada animal antes de ponerle un n&uacute;mero.</p>
     <dl class="datos">
-      <div><dt>Dura</dt><dd>4 minutos</dd></div>
+      <div><dt>Dura</dt><dd>6 minutos</dd></div>
       <div><dt>Preguntas</dt><dd>6 n&uacute;meros</dd></div>
       <div><dt>Al final</dt><dd>Tu tri&aacute;ngulo</dd></div>
     </dl>
-    <div class="sesion">
-      <span>Est&aacute;s en la sesi&oacute;n de:</span>
-      <button type="button" id="s-viernes" aria-pressed="true">Viernes</button>
-      <button type="button" id="s-domingo" aria-pressed="false">Domingo</button>
-    </div>
     <div class="pies">
-      <button type="button" class="btn" id="btn-empezar">Empezar</button>
+      <button type="button" class="btn" id="btn-empezar">Empezar por la lectura</button>
     </div>
   </section>
 
-  <!-- ============ 1 · Quién eres ============ -->
+  <!-- ============ 1 · La lectura ============ -->
+  <section class="pantalla" id="p-lectura" hidden>
+    <span class="eyebrow">L&eacute;elo antes de puntuar</span>
+    <h2>Tres animales viven en ti</h2>
+
+    <div class="fabula">
+      <p>Hay un libro, <i>El oso, el tigre y el drag&oacute;n</i>, que cuenta la historia de
+        Gabriel: un sastre de una ciudad gris al que se le hunde el negocio y que est&aacute;
+        tan perdido que ya no mira a los ojos a su mujer y a su hija.</p>
+      <p>Un d&iacute;a recibe un legado raro &mdash;un oso, un tigre y un drag&oacute;n&mdash; con
+        la promesa de que esos tres animales le van a cambiar la vida.</p>
+    </div>
+
+    <p class="tesis">La idea es esta: los tres viven en ti, cada uno en su plano, y solo
+      funcionan juntos.</p>
+
+    <div class="trio">
+      <article class="a-oso">
+        <div class="cab"><h3>El oso</h3><span class="donde">La tierra</span></div>
+        <p>Ordena tus <b>emociones</b> y te da la capacidad de amar. Vive en el calor de
+          la tierra y busca el cobijo del amor incondicional. Es el que te hace llamar a
+          alguien sin motivo, y el que te deja pedir ayuda.</p>
+      </article>
+      <article class="a-tigre">
+        <div class="cab"><h3>El tigre</h3><span class="donde">La superficie</span></div>
+        <p>Gestiona tus <b>acciones</b> para que llegues a tus metas en el mundo de las
+          cosas. Opera a ras de suelo: administra los recursos y da el paso. Es el que
+          empieza, el que decide y el que entrena.</p>
+      </article>
+      <article class="a-dragon">
+        <div class="cab"><h3>El drag&oacute;n</h3><span class="donde">El cielo</span></div>
+        <p>Observa tu existencia desde lo alto y le da un <b>sentido</b> que va m&aacute;s
+          all&aacute; de las emociones y las acciones del d&iacute;a a d&iacute;a. Es el que toma
+          distancia y el que sabe para qu&eacute; haces lo que haces.</p>
+      </article>
+    </div>
+
+    <div class="clave">
+      <h3>Los tres tienen que estar igual de alimentados.</h3>
+      <p>Un <b>tigre</b> enorme con el <b>drag&oacute;n</b> en los huesos consigue cosas que
+        luego no sabe para qu&eacute; quer&iacute;a. Un <b>drag&oacute;n</b> enorme sin <b>tigre</b> lo
+        tiene todo clar&iacute;simo y no mueve nada. Y sin <b>oso</b>, da igual lo que
+        consigas: no tienes con qui&eacute;n cont&aacute;rselo.</p>
+      <p>Ahora te toca puntuar c&oacute;mo de alimentado tienes a cada uno. Y ojo:
+        <b>no es un test de personalidad</b>. No hay &laquo;yo soy oso&raquo;. Los tres
+        son tuyos y los tres se pueden alimentar.</p>
+    </div>
+
+    <div class="pies">
+      <button type="button" class="btn" data-va="quien">Lo he le&iacute;do</button>
+      <button type="button" class="btn suave" data-va="portada">Atr&aacute;s</button>
+    </div>
+  </section>
+
+  <!-- ============ 2 · Quién eres ============ -->
   <section class="pantalla" id="p-quien" hidden>
     <h2>Antes de nada, &iquest;qui&eacute;n eres?</h2>
     <p class="dice">Para que tu tri&aacute;ngulo se quede guardado y lo podamos comparar el
@@ -259,11 +361,11 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
            aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
     <div class="pies">
       <button type="button" class="btn" data-va="oso">Seguir</button>
-      <button type="button" class="btn suave" data-va="portada">Atr&aacute;s</button>
+      <button type="button" class="btn suave" data-va="lectura">Atr&aacute;s</button>
     </div>
   </section>
 
-  <!-- ============ 2 · El oso ============ -->
+  <!-- ============ 3 · El oso ============ -->
   <section class="pantalla bestia" id="p-oso" data-a="oso" hidden>
     <span class="plano">La tierra</span>
     <h2>El oso</h2>
@@ -483,8 +585,8 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
         &laquo;diez minutos en silencio antes de coger el m&oacute;vil&raquo;.</p>
       <div class="error" id="e-compromiso" hidden></div>
     </div>
-    <p class="nota">Cu&eacute;ntasela a tu mejor amigo del juego. &Eacute;l es quien te va a
-      preguntar el domingo.</p>
+    <p class="nota">Se la cuentas a tu mejor amigo del juego, y el domingo lo
+      hablamos todos juntos.</p>
     <div class="pies">
       <button type="button" class="btn" id="btn-guardar">Guardar mi tri&aacute;ngulo</button>
       <button type="button" class="btn suave" data-va="figura">Atr&aacute;s</button>
@@ -496,17 +598,28 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
   <section class="pantalla gracias" id="p-gracias" hidden>
     <span class="eyebrow">Guardado</span>
     <h2>Ya est&aacute;</h2>
-    <p class="dice" id="g-dice">Tu tri&aacute;ngulo est&aacute; guardado. El domingo, en la
-      din&aacute;mica de despedida, vuelves a entrar aqu&iacute; y comparamos.</p>
+    <p class="dice" id="g-dice">Tu tri&aacute;ngulo est&aacute; guardado, y tu frase tambi&eacute;n.
+      Ahora cu&eacute;ntasela a tu mejor amigo del juego: &eacute;l es quien te va a preguntar el
+      domingo.</p>
     <div class="figura" id="g-figura"></div>
     <div class="pies">
       <button type="button" class="btn" id="btn-imagen">Llevarme la imagen</button>
-      <button type="button" class="btn suave" id="btn-otra">Hacerlo otra vez</button>
+      <button type="button" class="btn suave" id="btn-otra">Empezar de nuevo</button>
     </div>
-    <p class="firma">Que nunca te quiten tu vibra</p>
+
+    <div class="casa">
+      <span class="wm">VIBRA</span>
+      <p>Esto es lo que hacemos: juntar gente que quiere vivir despierta y
+        darle herramientas que se usan de verdad. Si te ha servido, hay m&aacute;s
+        por donde ha salido esto.</p>
+      <a class="btn suave" href="https://www.instagram.com/abraham.vibra/"
+         target="_blank" rel="noopener">Seguir el rastro</a>
+      <p class="firma">Que nunca te quiten tu vibra</p>
+    </div>
   </section>
 
   <footer>
+    <p>Un taller de <b>VIBRA</b>, dentro del viaje a Asturias con LiveOkey.</p>
     <p>El marco de los tres animales est&aacute; tomado de <i>El oso, el tigre y el
       drag&oacute;n</i>, de Andr&eacute;s Pascual y Ecequiel Barricart (Ediciones Urano, 2017).
       Si te ha resonado, lee el libro: esto es solo la punta.</p>
@@ -559,6 +672,9 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
 
   var $ = function(id){ return document.getElementById(id) };
 
+  /* La sesión va fija: el taller se hace el viernes y la del domingo es de
+     viva voz, sin enlace. El campo se sigue mandando porque la función
+     guarda por sesión y así el dato queda fechado donde toca. */
   var estado = {
     sesion: 'viernes',
     nombre: '', email: '',
@@ -568,10 +684,13 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
   };
 
   /* ---- Navegación entre pantallas ---------------------------------- */
-  var PASOS = ['portada','quien','oso','tigre','dragon','figura','compromiso','gracias'];
+  var PASOS = ['portada','lectura','quien','oso','tigre','dragon','figura',
+               'compromiso','gracias'];
+  var TOTAL = PASOS.length - 2;   /* la portada y el final no cuentan */
   var ROT = {
-    portada:'', quien:'Quién eres', oso:'El oso', tigre:'El tigre',
-    dragon:'El dragón', figura:'Tu triángulo', compromiso:'Tu frase', gracias:''
+    portada:'', lectura:'La lectura', quien:'Quién eres', oso:'El oso',
+    tigre:'El tigre', dragon:'El dragón', figura:'Tu triángulo',
+    compromiso:'Tu frase', gracias:''
   };
   var actual = 'portada';
 
@@ -586,8 +705,8 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     $('avance').hidden = !visible;
     if (visible) {
       $('paso-rot').textContent = ROT[cual] || '';
-      $('paso-num').textContent = i + ' de 6';
-      $('barra-i').style.width = Math.round((i/6)*100) + '%';
+      $('paso-num').textContent = i + ' de ' + TOTAL;
+      $('barra-i').style.width = Math.round((i/TOTAL)*100) + '%';
     }
     window.scrollTo(0, 0);
   }
@@ -601,24 +720,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     ve(destino);
   });
 
-  $('btn-empezar').addEventListener('click', function(){ ve('quien') });
-
-  /* ---- La sesión: viernes o domingo -------------------------------- */
-  function pintaSesion(){
-    $('s-viernes').setAttribute('aria-pressed', String(estado.sesion === 'viernes'));
-    $('s-domingo').setAttribute('aria-pressed', String(estado.sesion === 'domingo'));
-  }
-  /* Se propone por la fecha: el 20 es domingo, el resto viernes. Pero manda
-     lo que toque el usuario, que los viajes se mueven. */
-  (function proponSesion(){
-    var d = new Date();
-    if (d.getFullYear() === 2026 && d.getMonth() === 8 && d.getDate() >= 20) {
-      estado.sesion = 'domingo';
-    }
-    pintaSesion();
-  })();
-  $('s-viernes').addEventListener('click', function(){ estado.sesion='viernes'; pintaSesion() });
-  $('s-domingo').addEventListener('click', function(){ estado.sesion='domingo'; pintaSesion() });
+  $('btn-empezar').addEventListener('click', function(){ ve('lectura') });
 
   /* ---- Quién eres -------------------------------------------------- */
   function marcaError(campo, mensaje){
@@ -781,17 +883,45 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     destino.appendChild($('svg-tri').cloneNode(true));
     var leyenda = $('p-figura').querySelector('.leyenda');
     if (leyenda) destino.appendChild(leyenda.cloneNode(true));
-    $('g-dice').textContent = estado.sesion === 'domingo'
-      ? 'Guardado. Ya tenemos tu antes y tu después del viaje.'
-      : 'Guardado. El domingo, en la dinámica de despedida, vuelves a entrar aquí y comparamos.';
   }
 
-  $('btn-otra').addEventListener('click', function(){ ve('figura') });
+  /* Empezar de nuevo de verdad: se borra todo y se vuelve a la portada, para
+     que el siguiente coja el móvil y no encuentre lo del anterior. */
+  $('btn-otra').addEventListener('click', function(){
+    estado.nombre = ''; estado.email = ''; estado.animal = null;
+    estado.compromiso = '';
+    $('f-nombre').value = ''; $('f-email').value = '';
+    $('f-compromiso').value = '';
+    marcaError('nombre', ''); marcaError('email', '');
+    $('e-compromiso').hidden = true; $('aviso-error').hidden = true;
+    tocado = false;
+    ANIMALES.forEach(function(a){
+      var rHoy = $('r-'+a+'-hoy'), rDic = $('r-'+a+'-dic');
+      rHoy.value = 5; rDic.value = 7;
+      rHoy.dispatchEvent(new Event('input'));
+      rDic.dispatchEvent(new Event('input'));
+    });
+    ve('portada');
+  });
 
   /* ---- La imagen para llevarse ------------------------------------- */
   $('btn-imagen').addEventListener('click', async function(){
     var c = $('lienzo'), x = c.getContext('2d');
     var W = c.width, H = c.height;
+
+    /* El canvas no espera a las fuentes web: si no están cargadas cuando se
+       dibuja, cae al sustituto en silencio y el sello sale en serif. Se
+       piden las tres caras que se usan aquí y luego se pinta. */
+    if (document.fonts && document.fonts.load) {
+      try {
+        await Promise.all([
+          document.fonts.load('600 74px Fraunces'),
+          document.fonts.load('700 25px "Hanken Grotesk"'),
+          document.fonts.load('600 62px Caveat')
+        ]);
+        await document.fonts.ready;
+      } catch (_) { /* si falla, se pinta con lo que haya */ }
+    }
 
     x.fillStyle = '#F7F2E9'; x.fillRect(0, 0, W, H);
 
@@ -810,7 +940,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     }
 
     /* La rejilla y los tres ejes */
-    x.strokeStyle = '#E7DFD2'; x.lineWidth = 2;
+    x.strokeStyle = '#E6DCCB'; x.lineWidth = 2;
     [2,4,6,8,10].forEach(function(v){
       traza({oso:v, tigre:v, dragon:v}); x.stroke();
     });
@@ -820,14 +950,14 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     });
 
     /* Diciembre, de puntos. Y hoy, relleno. */
-    x.setLineDash([14, 11]); x.strokeStyle = '#8A8078'; x.lineWidth = 5;
+    x.setLineDash([14, 11]); x.strokeStyle = '#9A8F92'; x.lineWidth = 5;
     traza(estado.dic); x.stroke(); x.setLineDash([]);
 
     traza(estado.hoy);
     x.fillStyle = 'rgba(232,114,76,.22)'; x.fill();
     x.strokeStyle = '#E8724C'; x.lineWidth = 7; x.stroke();
 
-    x.fillStyle = '#B54A28';
+    x.fillStyle = '#C4552F';
     ANIMALES.forEach(function(a){
       var p = pt(a, estado.hoy[a]);
       x.beginPath(); x.arc(p[0], p[1], 11, 0, Math.PI*2); x.fill();
@@ -837,29 +967,40 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     x.textAlign = 'center';
     x.font = '700 34px "Hanken Grotesk", Arial, sans-serif';
     x.fillStyle = '#34506B';
-    x.fillText('DRAGÓN ' + estado.hoy.dragon, ecx, ecy - eR - 38);
-    x.fillStyle = '#B54A28';
+    x.fillText('DRAGÓN ' + estado.hoy.dragon, ecx, ecy - eR - 26);
+    x.fillStyle = '#C4552F';
     x.fillText('TIGRE ' + estado.hoy.tigre, ecx + eR*0.866 + 22, ecy + eR*0.5 + 68);
     x.fillStyle = '#7A4619';
     x.fillText('OSO ' + estado.hoy.oso, ecx - eR*0.866 - 22, ecy + eR*0.5 + 68);
 
-    /* Cabecera y pie */
-    x.fillStyle = '#8A8078';
-    x.font = '700 28px "Hanken Grotesk", Arial, sans-serif';
-    x.fillText('OSO, TIGRE Y DRAGÓN · ASTURIAS 2026', ecx, 118);
+    /* Cabecera: primero la marca, como en la plataforma. El letterSpacing
+       del canvas no está en todos los navegadores; si falta, se ignora y
+       el wordmark sale sin tracking, que es un mal menor. */
+    x.fillStyle = '#211C1E';
+    try { x.letterSpacing = '9px' } catch (_) {}
+    x.font = '600 46px Fraunces, Georgia, serif';
+    x.fillText('VIBRA', ecx + 4, 100);
+    try { x.letterSpacing = '0px' } catch (_) {}
+
+    x.strokeStyle = '#E6DCCB'; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(ecx - 120, 133); x.lineTo(ecx + 120, 133); x.stroke();
+
+    x.fillStyle = '#6F6569';
+    x.font = '700 25px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('OSO, TIGRE Y DRAGÓN · ASTURIAS 2026', ecx, 175);
 
     x.fillStyle = '#211C1E';
-    x.font = '600 76px Fraunces, Georgia, serif';
-    x.fillText(estado.nombre.split(/\s+/)[0], ecx, 210);
+    x.font = '600 74px Fraunces, Georgia, serif';
+    x.fillText(estado.nombre.split(/\s+/)[0], ecx, 249);
 
     var f = fuerza(estado.hoy).toFixed(1).replace('.', ',');
-    x.fillStyle = '#5E5753';
+    x.fillStyle = '#4A4145';
     x.font = '500 36px "Hanken Grotesk", Arial, sans-serif';
-    x.fillText('Fuerza ' + f + '   ·   Equilibrio ' + equilibrio(estado.hoy), ecx, 1154);
+    x.fillText('Fuerza ' + f + '   ·   Equilibrio ' + equilibrio(estado.hoy), ecx, 1120);
 
-    x.fillStyle = '#B54A28';
+    x.fillStyle = '#C4552F';
     x.font = '600 62px Caveat, cursive';
-    x.fillText('Que nunca te quiten tu vibra', ecx, 1262);
+    x.fillText('Que nunca te quiten tu vibra', ecx, 1235);
 
     /* Se intenta compartir (móvil) y, si no, se descarga. */
     var nombreArchivo = 'mi-triangulo-' +
