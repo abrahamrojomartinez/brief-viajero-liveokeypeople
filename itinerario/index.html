@@ -235,10 +235,15 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .fila p{font-size:15px;color:var(--tx);margin-top:6px;line-height:1.55}
 /* La cama que sobra no es un nombre: se apaga para que no se lea como uno. */
 .fila p i{color:var(--tx2);font-style:italic}
-/* Las parejas del juego: la flecha marca el cruce y el numerito no compite
-   con los nombres. */
-.fila .cr{color:var(--ac);font-weight:700;padding:0 4px}
-.fila .co2{font-size:13px;color:var(--tx2)}
+/* Las parejas del juego, con su tel&eacute;fono debajo. En el m&oacute;vil, si no
+   caben los dos al lado, el segundo baja de l&iacute;nea y sigue legible. */
+.par{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:6px}
+.par .per{display:flex;flex-direction:column;gap:0}
+.par .per b{line-height:1.2}
+.par .per a{font-family:var(--f-u);font-size:13.5px;font-weight:600;color:var(--ac2);
+  text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.par .per a:hover{text-decoration:underline}
+.fila .cr{color:var(--ac);font-weight:700;padding:0 2px}
 /* Las dos caras de quien organiza, en redondo, encima del texto. */
 .caras{display:flex;flex-wrap:wrap;gap:22px;margin:15px 0 18px}
 .caras figure{margin:0;text-align:center}
@@ -847,20 +852,20 @@ footer .centro{text-align:center}
       preguntaros estas cuatro cosas y alguna m&aacute;s que quer&aacute;is.</p>
     <div class="listas">
       <div class="bloque">
-        <div class="bt"><h4>Las parejas</h4></div>
-        <div class="fila"><b>01</b><p>H&eacute;ctor <span class="cr">&harr;</span> Lorena Lara</p></div>
-        <div class="fila"><b>02</b><p>Jorge <span class="cr">&harr;</span> Eva</p></div>
-        <div class="fila"><b>03</b><p>Ovidi <span class="cr">&harr;</span> Alba Tienda</p></div>
-        <div class="fila"><b>04</b><p>Jes&uacute;s <span class="cr">&harr;</span> Carla</p></div>
-        <div class="fila"><b>05</b><p>Guille <span class="cr">&harr;</span> Tania</p></div>
-        <div class="fila"><b>06</b><p>Carolina <span class="cr">&harr;</span> Emilio</p></div>
-        <div class="fila"><b>07</b><p>Silvia Rodr&iacute;guez <span class="cr">&harr;</span> Adri&aacute;n Byczek</p></div>
-        <div class="fila"><b>08</b><p>Mar&iacute;a R&iacute;os <span class="cr">&harr;</span> Sandra Tienda</p></div>
-        <div class="fila"><b>09</b><p>Patricia <span class="cr">&harr;</span> Mar&iacute;a Orlandi</p></div>
-        <div class="fila"><b>10</b><p>Marta Asensio <span class="cr">&harr;</span> Raquel Mim&oacute;</p></div>
-        <div class="fila"><b>11</b><p>Adri&aacute;n Maqueda <span class="cr">&harr;</span> Momo</p></div>
-        <div class="fila"><b>12</b><p>Abraham <span class="cr">&harr;</span> Genoveva</p></div>
-        <div class="fila"><b>13</b><p>Bel&eacute;n <span class="cr">&harr;</span> Irene <span class="cr">&harr;</span> Sergio</p></div>
+        <div class="bt"><h4>Las parejas</h4><span class="cu">toca el n&uacute;mero y se abre WhatsApp</span></div>
+        <div class="fila"><b>01</b><div class="par"><span class="per"><b>H&eacute;ctor</b><a href="https://wa.me/34669587094" target="_blank" rel="noopener">669 58 70 94</a></span><span class="cr">&harr;</span><span class="per"><b>Lorena Lara</b><a href="https://wa.me/34618263585" target="_blank" rel="noopener">618 26 35 85</a></span></div></div>
+        <div class="fila"><b>02</b><div class="par"><span class="per"><b>Jorge</b><a href="https://wa.me/34627669317" target="_blank" rel="noopener">627 66 93 17</a></span><span class="cr">&harr;</span><span class="per"><b>Eva</b><a href="https://wa.me/34615413732" target="_blank" rel="noopener">615 41 37 32</a></span></div></div>
+        <div class="fila"><b>03</b><div class="par"><span class="per"><b>Ovidi</b><a href="https://wa.me/34685123760" target="_blank" rel="noopener">685 12 37 60</a></span><span class="cr">&harr;</span><span class="per"><b>Alba Tienda</b><a href="https://wa.me/34606871110" target="_blank" rel="noopener">606 87 11 10</a></span></div></div>
+        <div class="fila"><b>04</b><div class="par"><span class="per"><b>Jes&uacute;s</b><a href="https://wa.me/34669984209" target="_blank" rel="noopener">669 98 42 09</a></span><span class="cr">&harr;</span><span class="per"><b>Carla</b><a href="https://wa.me/34665693965" target="_blank" rel="noopener">665 69 39 65</a></span></div></div>
+        <div class="fila"><b>05</b><div class="par"><span class="per"><b>Guille</b><a href="https://wa.me/34600290776" target="_blank" rel="noopener">600 29 07 76</a></span><span class="cr">&harr;</span><span class="per"><b>Tania</b><a href="https://wa.me/34610395828" target="_blank" rel="noopener">610 39 58 28</a></span></div></div>
+        <div class="fila"><b>06</b><div class="par"><span class="per"><b>Carolina</b><a href="https://wa.me/34608545976" target="_blank" rel="noopener">608 54 59 76</a></span><span class="cr">&harr;</span><span class="per"><b>Emilio</b><a href="https://wa.me/34646013968" target="_blank" rel="noopener">646 01 39 68</a></span></div></div>
+        <div class="fila"><b>07</b><div class="par"><span class="per"><b>Silvia Rodr&iacute;guez</b><a href="https://wa.me/34657361937" target="_blank" rel="noopener">657 36 19 37</a></span><span class="cr">&harr;</span><span class="per"><b>Adri&aacute;n Byczek</b><a href="https://wa.me/34616440637" target="_blank" rel="noopener">616 44 06 37</a></span></div></div>
+        <div class="fila"><b>08</b><div class="par"><span class="per"><b>Mar&iacute;a R&iacute;os</b><a href="https://wa.me/34695312583" target="_blank" rel="noopener">695 31 25 83</a></span><span class="cr">&harr;</span><span class="per"><b>Sandra Tienda</b><a href="https://wa.me/34679902613" target="_blank" rel="noopener">679 90 26 13</a></span></div></div>
+        <div class="fila"><b>09</b><div class="par"><span class="per"><b>Patricia</b><a href="https://wa.me/34638548937" target="_blank" rel="noopener">638 54 89 37</a></span><span class="cr">&harr;</span><span class="per"><b>Mar&iacute;a Orlandi</b><a href="https://wa.me/34674810106" target="_blank" rel="noopener">674 81 01 06</a></span></div></div>
+        <div class="fila"><b>10</b><div class="par"><span class="per"><b>Marta Asensio</b><a href="https://wa.me/34646934937" target="_blank" rel="noopener">646 93 49 37</a></span><span class="cr">&harr;</span><span class="per"><b>Raquel Mim&oacute;</b><a href="https://wa.me/34659054958" target="_blank" rel="noopener">659 05 49 58</a></span></div></div>
+        <div class="fila"><b>11</b><div class="par"><span class="per"><b>Adri&aacute;n Maqueda</b><a href="https://wa.me/34636450568" target="_blank" rel="noopener">636 45 05 68</a></span><span class="cr">&harr;</span><span class="per"><b>Momo</b><a href="https://wa.me/34674786626" target="_blank" rel="noopener">674 78 66 26</a></span></div></div>
+        <div class="fila"><b>12</b><div class="par"><span class="per"><b>Abraham</b><a href="https://wa.me/34678703227" target="_blank" rel="noopener">678 70 32 27</a></span><span class="cr">&harr;</span><span class="per"><b>Genoveva</b><a href="https://wa.me/34663130074" target="_blank" rel="noopener">663 13 00 74</a></span></div></div>
+        <div class="fila"><b>13</b><div class="par"><span class="per"><b>Bel&eacute;n</b><a href="https://wa.me/34680793268" target="_blank" rel="noopener">680 79 32 68</a></span><span class="cr">&harr;</span><span class="per"><b>Irene</b><a href="https://wa.me/34646109819" target="_blank" rel="noopener">646 10 98 19</a></span><span class="cr">&harr;</span><span class="per"><b>Sergio</b><a href="https://wa.me/34618246576" target="_blank" rel="noopener">618 24 65 76</a></span></div></div>
       </div>
       <div class="bloque">
         <div class="bt"><h4>Las cuatro preguntas</h4></div>
