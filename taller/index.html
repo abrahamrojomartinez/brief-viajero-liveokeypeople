@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oso, Tigre y Dragón · Tu triángulo · VIBRA</title>
+<meta name="description" content="La dinámica de propósito del viaje: puntúa cómo de alimentados tienes al oso, al tigre y al dragón, y mira tu triángulo.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oso, Tigre y Dragón · Tu triángulo">
+<meta property="og:description" content="Tres radios: las emociones, la acción y el propósito. Cuatro minutos.">
+<meta property="og:locale" content="es_ES">
+<meta name="theme-color" content="#F7F2E9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@600&display=swap">
+<style>
+/* =====================================================================
+   Taller «Oso, Tigre y Dragón» · VIBRA
+   Identidad de VIBRA (crema, negro cálido, Fraunces + Hanken + Caveat)
+   y, encima, un tono por animal que sale de SU PLANO en el libro: la
+   tierra del oso, el calor del tigre en la superficie, el frío de la
+   altura del dragón. Misma familia visual que la guía del facilitador.
+   ===================================================================== */
+:root{
+  --paper:#F7F2E9; --paper2:#FDFAF4; --sunk:#F1EADD;
+  --ink:#211C1E; --ink2:#5E5753; --faint:#8A8078; --line:#E7DFD2;
+  --oso:#8E5524;    --oso-tx:#7A4619;    --oso-wash:#F0E4D4;
+  --tigre:#E8724C;  --tigre-tx:#B54A28;  --tigre-wash:#FAE3D9;
+  --dragon:#44617E; --dragon-tx:#34506B; --dragon-wash:#E1E7EE;
+  --f-d:'Fraunces',Georgia,'Times New Roman',serif;
+  --f-u:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;
+  --f-m:'Caveat','Bradley Hand',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-u);
+  font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.hoja{max-width:620px;margin:0 auto;padding-inline:20px;padding-block:0 60px}
+h1,h2,h3{font-family:var(--f-d);font-weight:600;letter-spacing:-.018em;line-height:1.16;
+  text-wrap:balance}
+p{max-width:60ch}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--tigre-tx);outline-offset:3px;border-radius:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--faint)}
+.nota{font-family:var(--f-m);font-size:20px;line-height:1.35;color:var(--tigre-tx)}
+
+/* ---- Barra de avance -------------------------------------------------- */
+.avance{position:sticky;top:0;z-index:5;background:var(--paper);
+  padding-block:14px 12px;border-bottom:1px solid var(--line)}
+.barra{height:4px;background:var(--line);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--tigre);
+  transition:width .35s ease}
+.paso-n{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-bottom:8px;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint)}
+
+/* ---- Pantallas -------------------------------------------------------- */
+.pantalla{padding-block:32px 0}
+.pantalla > h2{font-size:clamp(26px,6.4vw,34px)}
+.pantalla > .dice{font-size:17px;color:var(--ink2);margin-top:12px}
+
+/* ---- Portada ---------------------------------------------------------- */
+.portada{padding-block:52px 0}
+.portada h1{font-size:clamp(38px,10vw,58px);font-weight:900;margin-top:10px}
+.portada h1 em{font-style:italic;font-weight:400}
+.portada .dice{font-size:17.5px;color:var(--ink2);margin-top:16px}
+.datos{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:24px}
+.datos div{flex:1 1 130px;background:var(--paper2);padding:11px 14px}
+.datos dt{font-size:9.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--faint)}
+.datos dd{font-family:var(--f-d);font-size:16px;font-weight:600;margin-top:2px}
+
+/* ---- Campos ----------------------------------------------------------- */
+.campo{margin-top:20px}
+.campo label{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.campo input[type=text],.campo input[type=email]{width:100%;font-family:inherit;
+  font-size:17px;color:var(--ink);background:var(--paper2);border:1px solid var(--line);
+  padding:13px 14px}
+.campo input:focus{outline:none;border-color:var(--tigre)}
+.campo .pista{font-size:13.5px;color:var(--faint);margin-top:6px}
+.campo.mal input{border-color:var(--tigre-tx)}
+.campo .error{font-size:13.5px;font-weight:600;color:var(--tigre-tx);margin-top:6px}
+
+/* ---- Un animal -------------------------------------------------------- */
+.bestia{--tono:var(--tigre);--tono-tx:var(--tigre-tx);--tono-wash:var(--tigre-wash)}
+.bestia[data-a=oso]{--tono:var(--oso);--tono-tx:var(--oso-tx);--tono-wash:var(--oso-wash)}
+.bestia[data-a=dragon]{--tono:var(--dragon);--tono-tx:var(--dragon-tx);--tono-wash:var(--dragon-wash)}
+.bestia .plano{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--tono-tx)}
+.bestia h2{font-size:clamp(30px,7.6vw,40px);color:var(--tono-tx);margin-top:4px}
+.bestia .que{font-family:var(--f-d);font-size:18.5px;font-style:italic;line-height:1.45;
+  margin-top:12px;max-width:52ch}
+.preg{background:var(--tono-wash);padding:16px 18px 18px;margin-top:22px}
+.preg h3{font-family:var(--f-u);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tono-tx)}
+.preg ol{margin-top:9px;padding-left:20px}
+.preg li{font-size:15.5px;line-height:1.5;margin-top:8px;max-width:50ch}
+.preg li::marker{color:var(--tono-tx);font-weight:700}
+
+/* ---- Deslizadores ----------------------------------------------------- */
+.mando{margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.mando + .mando{margin-top:18px}
+.mando .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mando .rot{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink2)}
+.mando .val{font-family:var(--f-d);font-size:34px;font-weight:600;line-height:1;
+  color:var(--tono-tx);font-variant-numeric:tabular-nums}
+.mando .cuanto{font-size:13.5px;color:var(--faint);margin-top:2px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;
+  background:transparent;margin-top:8px;display:block;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--line)}
+input[type=range]::-moz-range-track{height:6px;background:var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+  width:30px;height:30px;border-radius:50%;background:var(--tono);
+  border:3px solid var(--paper);box-shadow:0 1px 5px rgba(33,28,30,.3);margin-top:-12px}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
+  background:var(--tono);border:3px solid var(--paper);
+  box-shadow:0 1px 5px rgba(33,28,30,.3)}
+.escala{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);
+  margin-top:2px}
+.mando.futuro .val{color:var(--ink2)}
+
+/* ---- El triángulo ----------------------------------------------------- */
+.figura{background:var(--paper2);border:1px solid var(--line);padding:14px 12px 8px;
+  margin-top:22px}
+.figura svg{display:block;width:100%;height:auto;max-width:420px;margin-inline:auto}
+.marcador{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);
+  margin-top:20px}
+.marcador div{flex:1 1 0;background:var(--paper2);padding:12px 8px;text-align:center}
+.marcador dt{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint)}
+.marcador dd{font-family:var(--f-d);font-size:27px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:2px}
+.veredicto{background:var(--ink);color:var(--paper);padding:20px 22px;margin-top:18px}
+.veredicto p{font-family:var(--f-d);font-size:clamp(19px,4.6vw,24px);font-weight:600;
+  line-height:1.3;max-width:32ch}
+.veredicto span{display:block;font-family:var(--f-u);font-size:15px;color:var(--line);
+  margin-top:10px;line-height:1.55;max-width:46ch}
+.leyenda{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;
+  font-size:12.5px;color:var(--ink2);padding:10px 4px 4px}
+.leyenda span{display:flex;align-items:center;gap:7px}
+.leyenda i{width:18px;height:0;border-top:3px solid var(--tigre);display:block}
+.leyenda i.fut{border-top-style:dashed;border-color:var(--faint)}
+
+/* ---- El compromiso ---------------------------------------------------- */
+.frase{background:var(--paper2);border:1px solid var(--line);
+  border-left:3px solid var(--tigre);padding:18px 20px;margin-top:22px}
+.frase .linea{font-family:var(--f-d);font-size:19px;line-height:1.5}
+.frase select{font-family:var(--f-u);font-size:16px;font-weight:700;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);padding:7px 9px;margin-inline:3px}
+.frase input{width:100%;font-family:inherit;font-size:17px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);padding:12px 13px;margin-top:12px}
+.frase input:focus,.frase select:focus{outline:none;border-color:var(--tigre)}
+.ejemplos{font-size:13.5px;color:var(--faint);margin-top:10px}
+
+/* ---- Botones ---------------------------------------------------------- */
+.pies{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
+.btn{display:inline-block;font-family:var(--f-u);font-size:13px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;text-decoration:none;
+  color:var(--paper);background:var(--ink);border:1px solid var(--ink);
+  padding:15px 26px;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+.btn:hover{background:var(--tigre);border-color:var(--tigre);color:#fff}
+.btn:disabled{opacity:.45;cursor:progress}
+.btn.suave{background:transparent;color:var(--ink2);border-color:var(--line)}
+.btn.suave:hover{background:transparent;color:var(--ink);border-color:var(--ink2)}
+.btn.fina{padding:11px 18px;font-size:12px}
+
+/* ---- Sesión ----------------------------------------------------------- */
+.sesion{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:22px;
+  font-size:13.5px;color:var(--faint)}
+.sesion button{font-family:var(--f-u);font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink2);background:var(--paper2);
+  border:1px solid var(--line);padding:8px 15px;cursor:pointer}
+.sesion button[aria-pressed=true]{color:var(--paper);background:var(--ink);
+  border-color:var(--ink)}
+
+/* ---- Final ------------------------------------------------------------ */
+.gracias{padding-block:48px 0;text-align:center}
+.gracias h2{font-size:clamp(30px,7.4vw,42px)}
+.gracias .dice{margin-inline:auto;margin-top:14px}
+.gracias .pies{justify-content:center}
+.firma{font-family:var(--f-m);font-size:27px;color:var(--tigre-tx);margin-top:34px}
+.aviso{background:var(--tigre-wash);border:1px solid var(--tigre);padding:14px 17px;
+  margin-top:20px;font-size:15px}
+.aviso b{font-weight:700;color:var(--tigre-tx)}
+#lienzo{display:none}
+
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--faint);line-height:1.65}
+
+@media(max-width:480px){
+  .hoja{padding-inline:17px}
+  .mando .val{font-size:29px}
+  .btn{padding:14px 20px;letter-spacing:.1em}
+  .pies{gap:10px}
+  .pies .btn{flex:1 1 auto;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="hoja">
+
+  <div class="avance" id="avance" hidden>
+    <div class="paso-n"><span id="paso-rot">&nbsp;</span><span id="paso-num">&nbsp;</span></div>
+    <div class="barra"><i id="barra-i"></i></div>
+  </div>
+
+  <!-- ============ 0 · Portada ============ -->
+  <section class="pantalla portada" id="p-portada">
+    <span class="eyebrow">Din&aacute;mica de prop&oacute;sito &middot; Asturias</span>
+    <h1>Oso, Tigre<br>y <em>Drag&oacute;n</em></h1>
+    <p class="dice">Tres animales viven en ti. El <b>oso</b> ordena tus emociones, el
+      <b>tigre</b> mueve tus acciones y el <b>drag&oacute;n</b> mira tu vida desde arriba y
+      le da sentido. Vas a puntuar c&oacute;mo de alimentado tienes a cada uno.</p>
+    <p class="dice">No es un test de personalidad. No hay &laquo;yo soy oso&raquo;: los
+      tres son tuyos y los tres se pueden alimentar. Lo que buscamos es cu&aacute;l tienes
+      muerto de hambre.</p>
+    <dl class="datos">
+      <div><dt>Dura</dt><dd>4 minutos</dd></div>
+      <div><dt>Preguntas</dt><dd>6 n&uacute;meros</dd></div>
+      <div><dt>Al final</dt><dd>Tu tri&aacute;ngulo</dd></div>
+    </dl>
+    <div class="sesion">
+      <span>Est&aacute;s en la sesi&oacute;n de:</span>
+      <button type="button" id="s-viernes" aria-pressed="true">Viernes</button>
+      <button type="button" id="s-domingo" aria-pressed="false">Domingo</button>
+    </div>
+    <div class="pies">
+      <button type="button" class="btn" id="btn-empezar">Empezar</button>
+    </div>
+  </section>
+
+  <!-- ============ 1 · Quién eres ============ -->
+  <section class="pantalla" id="p-quien" hidden>
+    <h2>Antes de nada, &iquest;qui&eacute;n eres?</h2>
+    <p class="dice">Para que tu tri&aacute;ngulo se quede guardado y lo podamos comparar el
+      domingo.</p>
+    <div class="campo" id="c-nombre">
+      <label for="f-nombre">Tu nombre</label>
+      <input type="text" id="f-nombre" name="nombre" autocomplete="name"
+             placeholder="Como te llama la gente" maxlength="120">
+      <div class="error" id="e-nombre" hidden></div>
+    </div>
+    <div class="campo" id="c-email">
+      <label for="f-email">Tu email</label>
+      <input type="email" id="f-email" name="email" autocomplete="email"
+             inputmode="email" placeholder="el.mismo@queusaste.com" maxlength="254">
+      <p class="pista">Mejor el mismo con el que te apuntaste al viaje.</p>
+      <div class="error" id="e-email" hidden></div>
+    </div>
+    <input type="text" id="f-empresa" name="empresa_web" tabindex="-1" autocomplete="off"
+           aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <div class="pies">
+      <button type="button" class="btn" data-va="oso">Seguir</button>
+      <button type="button" class="btn suave" data-va="portada">Atr&aacute;s</button>
+    </div>
+  </section>
+
+  <!-- ============ 2 · El oso ============ -->
+  <section class="pantalla bestia" id="p-oso" data-a="oso" hidden>
+    <span class="plano">La tierra</span>
+    <h2>El oso</h2>
+    <p class="que">Ordena tus emociones y te da la capacidad de amar. Habita en el calor
+      de la tierra y busca el cobijo del amor incondicional.</p>
+    <div class="preg">
+      <h3>Antes de puntuar, cont&eacute;state esto</h3>
+      <ol>
+        <li>&iquest;A qui&eacute;n has llamado esta semana sin que hubiera un motivo?</li>
+        <li>Cuando te pas&oacute; algo bueno, &iquest;ten&iacute;as a qui&eacute;n cont&aacute;rselo antes
+          de publicarlo?</li>
+        <li>&iquest;Cu&aacute;ndo fue la &uacute;ltima vez que lloraste, o que te re&iacute;ste hasta
+          que doli&oacute;?</li>
+      </ol>
+    </div>
+    <div class="mando">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo est&aacute; hoy</div>
+          <div class="cuanto" id="t-oso-hoy">Ni bien ni mal</div>
+        </div>
+        <div class="val" id="v-oso-hoy">5</div>
+      </div>
+      <input type="range" id="r-oso-hoy" min="1" max="10" step="1" value="5"
+             aria-label="El oso, hoy, del 1 al 10">
+      <div class="escala"><span>1 &middot; en los huesos</span><span>10 &middot; cebado</span></div>
+    </div>
+    <div class="mando futuro">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo lo quieres en diciembre</div>
+          <div class="cuanto">Ah&iacute; es donde aparece el trabajo</div>
+        </div>
+        <div class="val" id="v-oso-dic">7</div>
+      </div>
+      <input type="range" id="r-oso-dic" min="1" max="10" step="1" value="7"
+             aria-label="El oso, en diciembre, del 1 al 10">
+      <div class="escala"><span>1</span><span>10</span></div>
+    </div>
+    <div class="pies">
+      <button type="button" class="btn" data-va="tigre">Seguir</button>
+      <button type="button" class="btn suave" data-va="quien">Atr&aacute;s</button>
+    </div>
+  </section>
+
+  <!-- ============ 3 · El tigre ============ -->
+  <section class="pantalla bestia" id="p-tigre" data-a="tigre" hidden>
+    <span class="plano">La superficie</span>
+    <h2>El tigre</h2>
+    <p class="que">Gestiona tus acciones para que alcances tus metas en el mundo de las
+      cosas. Opera en la superficie: es el que administra los recursos y da el paso.</p>
+    <div class="preg">
+      <h3>Antes de puntuar, cont&eacute;state esto</h3>
+      <ol>
+        <li>&iquest;Qu&eacute; has empezado en los &uacute;ltimos tres meses que antes no
+          exist&iacute;a?</li>
+        <li>&iquest;Cu&aacute;nto tiempo pasa entre que decides algo y das el primer paso?</li>
+        <li>&iquest;Tu cuerpo est&aacute; entrenado para lo que le pides?</li>
+      </ol>
+    </div>
+    <div class="mando">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo est&aacute; hoy</div>
+          <div class="cuanto" id="t-tigre-hoy">Ni bien ni mal</div>
+        </div>
+        <div class="val" id="v-tigre-hoy">5</div>
+      </div>
+      <input type="range" id="r-tigre-hoy" min="1" max="10" step="1" value="5"
+             aria-label="El tigre, hoy, del 1 al 10">
+      <div class="escala"><span>1 &middot; en los huesos</span><span>10 &middot; cebado</span></div>
+    </div>
+    <div class="mando futuro">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo lo quieres en diciembre</div>
+          <div class="cuanto">Ah&iacute; es donde aparece el trabajo</div>
+        </div>
+        <div class="val" id="v-tigre-dic">7</div>
+      </div>
+      <input type="range" id="r-tigre-dic" min="1" max="10" step="1" value="7"
+             aria-label="El tigre, en diciembre, del 1 al 10">
+      <div class="escala"><span>1</span><span>10</span></div>
+    </div>
+    <div class="pies">
+      <button type="button" class="btn" data-va="dragon">Seguir</button>
+      <button type="button" class="btn suave" data-va="oso">Atr&aacute;s</button>
+    </div>
+  </section>
+
+  <!-- ============ 4 · El dragón ============ -->
+  <section class="pantalla bestia" id="p-dragon" data-a="dragon" hidden>
+    <span class="plano">El cielo</span>
+    <h2>El drag&oacute;n</h2>
+    <p class="que">Observa tu existencia desde lo alto y le da un sentido que va m&aacute;s
+      all&aacute; de las emociones y las acciones del d&iacute;a a d&iacute;a. Es el que toma
+      distancia.</p>
+    <div class="preg">
+      <h3>Antes de puntuar, cont&eacute;state esto</h3>
+      <ol>
+        <li>&iquest;Sabes para qu&eacute; haces lo que haces, sin mirar el resultado?</li>
+        <li>&iquest;Cu&aacute;ndo estuviste solo y en silencio, sin pantalla, m&aacute;s de veinte
+          minutos?</li>
+        <li>Si ma&ntilde;ana te salieran bien todos los planes, &iquest;te gustar&iacute;a la vida
+          que sale?</li>
+      </ol>
+    </div>
+    <div class="mando">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo est&aacute; hoy</div>
+          <div class="cuanto" id="t-dragon-hoy">Ni bien ni mal</div>
+        </div>
+        <div class="val" id="v-dragon-hoy">5</div>
+      </div>
+      <input type="range" id="r-dragon-hoy" min="1" max="10" step="1" value="5"
+             aria-label="El drag&oacute;n, hoy, del 1 al 10">
+      <div class="escala"><span>1 &middot; en los huesos</span><span>10 &middot; cebado</span></div>
+    </div>
+    <div class="mando futuro">
+      <div class="top">
+        <div>
+          <div class="rot">C&oacute;mo lo quieres en diciembre</div>
+          <div class="cuanto">Ah&iacute; es donde aparece el trabajo</div>
+        </div>
+        <div class="val" id="v-dragon-dic">7</div>
+      </div>
+      <input type="range" id="r-dragon-dic" min="1" max="10" step="1" value="7"
+             aria-label="El drag&oacute;n, en diciembre, del 1 al 10">
+      <div class="escala"><span>1</span><span>10</span></div>
+    </div>
+    <div class="pies">
+      <button type="button" class="btn" data-va="figura">Ver mi tri&aacute;ngulo</button>
+      <button type="button" class="btn suave" data-va="tigre">Atr&aacute;s</button>
+    </div>
+  </section>
+
+  <!-- ============ 5 · El triángulo ============ -->
+  <section class="pantalla" id="p-figura" hidden>
+    <span class="eyebrow">Tu figura</span>
+    <h2>Este es tu tri&aacute;ngulo</h2>
+    <p class="dice">M&iacute;ralo un minuto antes de seguir leyendo. La l&iacute;nea rellena es
+      hoy; la de puntos, diciembre.</p>
+
+    <div class="figura">
+      <svg id="svg-tri" viewBox="0 0 300 240" role="img" aria-labelledby="tri-alt">
+        <title id="tri-alt">Tu tri&aacute;ngulo: oso, tigre y drag&oacute;n</title>
+        <g fill="none" stroke="var(--line)" stroke-width="1">
+          <polygon points="150,36 241.8,195 58.2,195"></polygon>
+          <polygon points="150,78.4 205.1,173.8 94.9,173.8"></polygon>
+          <polygon points="150,120.8 168.4,152.6 131.6,152.6"></polygon>
+          <line x1="150" y1="142" x2="150" y2="36"></line>
+          <line x1="150" y1="142" x2="241.8" y2="195"></line>
+          <line x1="150" y1="142" x2="58.2" y2="195"></line>
+        </g>
+        <polygon id="poly-dic" points="" fill="none" stroke="var(--faint)"
+                 stroke-width="2" stroke-dasharray="5 4"></polygon>
+        <polygon id="poly-hoy" points="" fill="rgba(232,114,76,.20)"
+                 stroke="var(--tigre)" stroke-width="2.6"></polygon>
+        <g id="puntos-hoy" fill="var(--tigre-tx)" stroke="none"></g>
+        <g font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700"
+           stroke="none">
+          <text id="lbl-dragon" x="150" y="24" text-anchor="middle"
+                fill="var(--dragon-tx)">Drag&oacute;n</text>
+          <text id="lbl-tigre" x="247" y="216" text-anchor="middle"
+                fill="var(--tigre-tx)">Tigre</text>
+          <text id="lbl-oso" x="53" y="216" text-anchor="middle"
+                fill="var(--oso-tx)">Oso</text>
+        </g>
+      </svg>
+      <div class="leyenda">
+        <span><i></i> Hoy</span>
+        <span><i class="fut"></i> Diciembre</span>
+      </div>
+    </div>
+
+    <dl class="marcador">
+      <div><dt>Fuerza</dt><dd id="m-fuerza">5,0</dd></div>
+      <div><dt>Equilibrio</dt><dd id="m-equi">10</dd></div>
+    </dl>
+
+    <div class="veredicto">
+      <p id="v-frase">No gana el que tiene el n&uacute;mero m&aacute;s alto. Gana el que tiene el
+        tri&aacute;ngulo m&aacute;s equil&aacute;tero.</p>
+      <span id="v-detalle">Fuerza es la media de los tres: cu&aacute;nto est&aacute;s alimentado
+        en total. Equilibrio es 10 menos la diferencia entre tu radio m&aacute;s alto y el
+        m&aacute;s bajo.</span>
+    </div>
+
+    <div class="pies">
+      <button type="button" class="btn" data-va="compromiso">Seguir</button>
+      <button type="button" class="btn suave" data-va="dragon">Cambiar mis n&uacute;meros</button>
+    </div>
+  </section>
+
+  <!-- ============ 6 · El compromiso ============ -->
+  <section class="pantalla" id="p-compromiso" hidden>
+    <span class="eyebrow">Lo &uacute;nico que te pedimos</span>
+    <h2>Una frase, y es tuya</h2>
+    <p class="dice">Tu animal m&aacute;s hambriento ya viene marcado, pero puedes cambiarlo si
+      no te cuadra. Y la acci&oacute;n, concreta: algo que se pueda hacer esta semana, no una
+      intenci&oacute;n bonita.</p>
+    <div class="frase">
+      <div class="linea">
+        Esta semana alimento a mi
+        <select id="f-animal" aria-label="Qu&eacute; animal alimentas">
+          <option value="oso">oso</option>
+          <option value="tigre">tigre</option>
+          <option value="dragon">drag&oacute;n</option>
+        </select>
+        haciendo esto:
+      </div>
+      <input type="text" id="f-compromiso" maxlength="200"
+             placeholder="Llamar a mi hermana el martes" aria-label="Qu&eacute; vas a hacer">
+      <p class="ejemplos">Ejemplos: &laquo;llamar a mi hermana el martes&raquo; &middot;
+        &laquo;mandar el presupuesto que llevo tres semanas sin mandar&raquo; &middot;
+        &laquo;diez minutos en silencio antes de coger el m&oacute;vil&raquo;.</p>
+      <div class="error" id="e-compromiso" hidden></div>
+    </div>
+    <p class="nota">Cu&eacute;ntasela a tu mejor amigo del juego. &Eacute;l es quien te va a
+      preguntar el domingo.</p>
+    <div class="pies">
+      <button type="button" class="btn" id="btn-guardar">Guardar mi tri&aacute;ngulo</button>
+      <button type="button" class="btn suave" data-va="figura">Atr&aacute;s</button>
+    </div>
+    <div class="aviso" id="aviso-error" hidden></div>
+  </section>
+
+  <!-- ============ 7 · Gracias ============ -->
+  <section class="pantalla gracias" id="p-gracias" hidden>
+    <span class="eyebrow">Guardado</span>
+    <h2>Ya est&aacute;</h2>
+    <p class="dice" id="g-dice">Tu tri&aacute;ngulo est&aacute; guardado. El domingo, en la
+      din&aacute;mica de despedida, vuelves a entrar aqu&iacute; y comparamos.</p>
+    <div class="figura" id="g-figura"></div>
+    <div class="pies">
+      <button type="button" class="btn" id="btn-imagen">Llevarme la imagen</button>
+      <button type="button" class="btn suave" id="btn-otra">Hacerlo otra vez</button>
+    </div>
+    <p class="firma">Que nunca te quiten tu vibra</p>
+  </section>
+
+  <footer>
+    <p>El marco de los tres animales est&aacute; tomado de <i>El oso, el tigre y el
+      drag&oacute;n</i>, de Andr&eacute;s Pascual y Ecequiel Barricart (Ediciones Urano, 2017).
+      Si te ha resonado, lee el libro: esto es solo la punta.</p>
+  </footer>
+
+</div>
+
+<canvas id="lienzo" width="1080" height="1350"></canvas>
+
+<script>
+(function(){
+  'use strict';
+
+  var ANIMALES = ['oso','tigre','dragon'];
+  var NOMBRE = {oso:'oso', tigre:'tigre', dragon:'dragón'};
+
+  /* Los tres ejes del triángulo. El dragón arriba porque está en el cielo;
+     el oso y el tigre abajo, a ras de suelo. Mismo dibujo que la guía. */
+  var CX = 150, CY = 142, R = 106;
+  var EJE = {
+    dragon: {dx: 0,       dy: -1},
+    tigre:  {dx: 0.86603, dy: 0.5},
+    oso:    {dx:-0.86603, dy: 0.5}
+  };
+  function punto(animal, v){
+    var e = EJE[animal], f = (v/10) * R;
+    return [CX + e.dx*f, CY + e.dy*f];
+  }
+  function puntos(trio){
+    return ANIMALES.map(function(a){
+      var p = punto(a, trio[a]);
+      return p[0].toFixed(1) + ',' + p[1].toFixed(1);
+    }).join(' ');
+  }
+  /* El orden de pintado va dragón → tigre → oso para que el polígono no se
+     cruce consigo mismo. */
+  var ORDEN = ['dragon','tigre','oso'];
+  function puntosOrden(trio){
+    return ORDEN.map(function(a){
+      var p = punto(a, trio[a]);
+      return p[0].toFixed(1) + ',' + p[1].toFixed(1);
+    }).join(' ');
+  }
+
+  var ROTULO = {
+    1:'En los huesos', 2:'Muy flojo', 3:'Flojo', 4:'Justito',
+    5:'Ni bien ni mal', 6:'Se sostiene', 7:'Bien', 8:'Muy bien',
+    9:'Fuerte', 10:'Cebado'
+  };
+
+  var $ = function(id){ return document.getElementById(id) };
+
+  var estado = {
+    sesion: 'viernes',
+    nombre: '', email: '',
+    hoy: {oso:5, tigre:5, dragon:5},
+    dic: {oso:7, tigre:7, dragon:7},
+    animal: null, compromiso: ''
+  };
+
+  /* ---- Navegación entre pantallas ---------------------------------- */
+  var PASOS = ['portada','quien','oso','tigre','dragon','figura','compromiso','gracias'];
+  var ROT = {
+    portada:'', quien:'Quién eres', oso:'El oso', tigre:'El tigre',
+    dragon:'El dragón', figura:'Tu triángulo', compromiso:'Tu frase', gracias:''
+  };
+  var actual = 'portada';
+
+  function ve(cual){
+    PASOS.forEach(function(p){
+      var el = $('p-'+p);
+      if (el) el.hidden = (p !== cual);
+    });
+    actual = cual;
+    var i = PASOS.indexOf(cual);
+    var visible = (cual !== 'portada' && cual !== 'gracias');
+    $('avance').hidden = !visible;
+    if (visible) {
+      $('paso-rot').textContent = ROT[cual] || '';
+      $('paso-num').textContent = i + ' de 6';
+      $('barra-i').style.width = Math.round((i/6)*100) + '%';
+    }
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-va]') : null;
+    if (!b) return;
+    var destino = b.getAttribute('data-va');
+    /* Avanzar desde «quién eres» exige nombre y email válidos. */
+    if (actual === 'quien' && destino !== 'portada' && !validaQuien()) return;
+    ve(destino);
+  });
+
+  $('btn-empezar').addEventListener('click', function(){ ve('quien') });
+
+  /* ---- La sesión: viernes o domingo -------------------------------- */
+  function pintaSesion(){
+    $('s-viernes').setAttribute('aria-pressed', String(estado.sesion === 'viernes'));
+    $('s-domingo').setAttribute('aria-pressed', String(estado.sesion === 'domingo'));
+  }
+  /* Se propone por la fecha: el 20 es domingo, el resto viernes. Pero manda
+     lo que toque el usuario, que los viajes se mueven. */
+  (function proponSesion(){
+    var d = new Date();
+    if (d.getFullYear() === 2026 && d.getMonth() === 8 && d.getDate() >= 20) {
+      estado.sesion = 'domingo';
+    }
+    pintaSesion();
+  })();
+  $('s-viernes').addEventListener('click', function(){ estado.sesion='viernes'; pintaSesion() });
+  $('s-domingo').addEventListener('click', function(){ estado.sesion='domingo'; pintaSesion() });
+
+  /* ---- Quién eres -------------------------------------------------- */
+  function marcaError(campo, mensaje){
+    $('c-'+campo).classList.toggle('mal', !!mensaje);
+    var e = $('e-'+campo);
+    e.textContent = mensaje || '';
+    e.hidden = !mensaje;
+  }
+  function validaQuien(){
+    estado.nombre = $('f-nombre').value.trim();
+    estado.email = $('f-email').value.trim();
+    var ok = true;
+    if (estado.nombre.length < 2) {
+      marcaError('nombre', 'Pon tu nombre, aunque sea solo el de pila.'); ok = false;
+    } else marcaError('nombre', '');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(estado.email)) {
+      marcaError('email', 'Ese email no parece completo. Revísalo.'); ok = false;
+    } else marcaError('email', '');
+    if (!ok) $('p-quien').querySelector('.mal input').focus();
+    return ok;
+  }
+
+  /* ---- Los seis deslizadores --------------------------------------- */
+  ANIMALES.forEach(function(a){
+    var rHoy = $('r-'+a+'-hoy'), rDic = $('r-'+a+'-dic');
+    function pintaHoy(){
+      var v = Number(rHoy.value);
+      estado.hoy[a] = v;
+      $('v-'+a+'-hoy').textContent = v;
+      $('t-'+a+'-hoy').textContent = ROTULO[v];
+      dibuja();
+    }
+    function pintaDic(){
+      var v = Number(rDic.value);
+      estado.dic[a] = v;
+      $('v-'+a+'-dic').textContent = v;
+      dibuja();
+    }
+    rHoy.addEventListener('input', pintaHoy);
+    rDic.addEventListener('input', pintaDic);
+    pintaHoy(); pintaDic();
+  });
+
+  /* ---- El triángulo y los dos marcadores --------------------------- */
+  function fuerza(t){ return (t.oso + t.tigre + t.dragon) / 3 }
+  function equilibrio(t){
+    var v = [t.oso, t.tigre, t.dragon];
+    return 10 - (Math.max.apply(null, v) - Math.min.apply(null, v));
+  }
+  function hambriento(t){
+    return ANIMALES.reduce(function(peor, a){ return t[a] < t[peor] ? a : peor }, 'oso');
+  }
+
+  function dibuja(){
+    $('poly-hoy').setAttribute('points', puntosOrden(estado.hoy));
+    $('poly-dic').setAttribute('points', puntosOrden(estado.dic));
+
+    var g = $('puntos-hoy');
+    g.textContent = '';
+    ANIMALES.forEach(function(a){
+      var p = punto(a, estado.hoy[a]);
+      var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx', p[0].toFixed(1));
+      c.setAttribute('cy', p[1].toFixed(1));
+      c.setAttribute('r', '4');
+      g.appendChild(c);
+    });
+
+    $('lbl-dragon').textContent = 'Dragón ' + estado.hoy.dragon;
+    $('lbl-tigre').textContent = 'Tigre ' + estado.hoy.tigre;
+    $('lbl-oso').textContent = 'Oso ' + estado.hoy.oso;
+
+    var f = fuerza(estado.hoy), eq = equilibrio(estado.hoy);
+    $('m-fuerza').textContent = f.toFixed(1).replace('.', ',');
+    $('m-equi').textContent = eq;
+
+    var peor = hambriento(estado.hoy);
+    if (eq >= 8) {
+      $('v-frase').textContent = 'Tu triángulo es casi equilátero. Eso es lo difícil.';
+      $('v-detalle').textContent = 'Los tres comen parecido. Ahora la pregunta no es ' +
+        'cuál alimentas, es si quieres subir los tres a la vez.';
+    } else {
+      $('v-frase').textContent = 'Tu ' + NOMBRE[peor] + ' es el que está más hambriento.';
+      $('v-detalle').textContent = 'No gana el que tiene el número más alto: gana el ' +
+        'que tiene el triángulo más equilátero. Con fuerza ' +
+        f.toFixed(1).replace('.', ',') + ' y equilibrio ' + eq +
+        ', lo que te falta no es empujar más, es darle de comer al ' + NOMBRE[peor] + '.';
+    }
+  }
+  dibuja();
+
+  /* Al llegar a la frase, se propone el animal más hambriento. */
+  var tocado = false;
+  $('f-animal').addEventListener('change', function(){ tocado = true });
+  var observa = new MutationObserver(function(){
+    if (!$('p-compromiso').hidden && !tocado) {
+      $('f-animal').value = hambriento(estado.hoy);
+    }
+  });
+  observa.observe($('p-compromiso'), {attributes:true, attributeFilter:['hidden']});
+
+  /* ---- Guardar ----------------------------------------------------- */
+  $('btn-guardar').addEventListener('click', async function(){
+    estado.animal = $('f-animal').value;
+    estado.compromiso = $('f-compromiso').value.trim();
+    if (estado.compromiso.length < 3) {
+      var e = $('e-compromiso');
+      e.textContent = 'Escribe qué vas a hacer. Cortito vale, pero concreto.';
+      e.hidden = false;
+      $('f-compromiso').focus();
+      return;
+    }
+    $('e-compromiso').hidden = true;
+    $('aviso-error').hidden = true;
+
+    var btn = this;
+    btn.disabled = true;
+    var antes = btn.textContent;
+    btn.textContent = 'Guardando…';
+
+    try {
+      var res = await fetch('/.netlify/functions/taller', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          nombre: estado.nombre,
+          email: estado.email,
+          hoy: estado.hoy,
+          diciembre: estado.dic,
+          animal: estado.animal,
+          compromiso: estado.compromiso,
+          sesion: estado.sesion,
+          empresa_web: $('f-empresa').value
+        })
+      });
+      if (!res.ok) {
+        var d = {};
+        try { d = await res.json() } catch (_) {}
+        throw new Error(d.error === 'NOT_CONFIGURED'
+          ? 'El guardado no está configurado todavía. Haz una captura de tu triángulo y avisa a Abraham.'
+          : 'No se ha podido guardar. Vuelve a darle en un momento; si sigue fallando, haz una captura y avisa a Abraham.');
+      }
+      preparaGracias();
+      ve('gracias');
+    } catch (err) {
+      var a = $('aviso-error');
+      a.innerHTML = '<b>No se ha guardado.</b> ' +
+        String(err.message || 'Algo ha fallado por el camino.');
+      a.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = antes;
+    }
+  });
+
+  /* La pantalla final se queda con una copia del triángulo ya dibujado. */
+  function preparaGracias(){
+    var destino = $('g-figura');
+    destino.textContent = '';
+    destino.appendChild($('svg-tri').cloneNode(true));
+    var leyenda = $('p-figura').querySelector('.leyenda');
+    if (leyenda) destino.appendChild(leyenda.cloneNode(true));
+    $('g-dice').textContent = estado.sesion === 'domingo'
+      ? 'Guardado. Ya tenemos tu antes y tu después del viaje.'
+      : 'Guardado. El domingo, en la dinámica de despedida, vuelves a entrar aquí y comparamos.';
+  }
+
+  $('btn-otra').addEventListener('click', function(){ ve('figura') });
+
+  /* ---- La imagen para llevarse ------------------------------------- */
+  $('btn-imagen').addEventListener('click', async function(){
+    var c = $('lienzo'), x = c.getContext('2d');
+    var W = c.width, H = c.height;
+
+    x.fillStyle = '#F7F2E9'; x.fillRect(0, 0, W, H);
+
+    var ecx = W/2, ecy = 700, eR = 340;
+    function pt(a, v){
+      var e = EJE[a], f = (v/10) * eR;
+      return [ecx + e.dx*f, ecy + e.dy*f];
+    }
+    function traza(trio){
+      x.beginPath();
+      ORDEN.forEach(function(a, i){
+        var p = pt(a, trio[a]);
+        if (i === 0) x.moveTo(p[0], p[1]); else x.lineTo(p[0], p[1]);
+      });
+      x.closePath();
+    }
+
+    /* La rejilla y los tres ejes */
+    x.strokeStyle = '#E7DFD2'; x.lineWidth = 2;
+    [2,4,6,8,10].forEach(function(v){
+      traza({oso:v, tigre:v, dragon:v}); x.stroke();
+    });
+    ANIMALES.forEach(function(a){
+      var p = pt(a, 10);
+      x.beginPath(); x.moveTo(ecx, ecy); x.lineTo(p[0], p[1]); x.stroke();
+    });
+
+    /* Diciembre, de puntos. Y hoy, relleno. */
+    x.setLineDash([14, 11]); x.strokeStyle = '#8A8078'; x.lineWidth = 5;
+    traza(estado.dic); x.stroke(); x.setLineDash([]);
+
+    traza(estado.hoy);
+    x.fillStyle = 'rgba(232,114,76,.22)'; x.fill();
+    x.strokeStyle = '#E8724C'; x.lineWidth = 7; x.stroke();
+
+    x.fillStyle = '#B54A28';
+    ANIMALES.forEach(function(a){
+      var p = pt(a, estado.hoy[a]);
+      x.beginPath(); x.arc(p[0], p[1], 11, 0, Math.PI*2); x.fill();
+    });
+
+    /* Los rótulos de cada vértice */
+    x.textAlign = 'center';
+    x.font = '700 34px "Hanken Grotesk", Arial, sans-serif';
+    x.fillStyle = '#34506B';
+    x.fillText('DRAGÓN ' + estado.hoy.dragon, ecx, ecy - eR - 38);
+    x.fillStyle = '#B54A28';
+    x.fillText('TIGRE ' + estado.hoy.tigre, ecx + eR*0.866 + 22, ecy + eR*0.5 + 68);
+    x.fillStyle = '#7A4619';
+    x.fillText('OSO ' + estado.hoy.oso, ecx - eR*0.866 - 22, ecy + eR*0.5 + 68);
+
+    /* Cabecera y pie */
+    x.fillStyle = '#8A8078';
+    x.font = '700 28px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('OSO, TIGRE Y DRAGÓN · ASTURIAS 2026', ecx, 118);
+
+    x.fillStyle = '#211C1E';
+    x.font = '600 76px Fraunces, Georgia, serif';
+    x.fillText(estado.nombre.split(/\s+/)[0], ecx, 210);
+
+    var f = fuerza(estado.hoy).toFixed(1).replace('.', ',');
+    x.fillStyle = '#5E5753';
+    x.font = '500 36px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('Fuerza ' + f + '   ·   Equilibrio ' + equilibrio(estado.hoy), ecx, 1154);
+
+    x.fillStyle = '#B54A28';
+    x.font = '600 62px Caveat, cursive';
+    x.fillText('Que nunca te quiten tu vibra', ecx, 1262);
+
+    /* Se intenta compartir (móvil) y, si no, se descarga. */
+    var nombreArchivo = 'mi-triangulo-' +
+      estado.nombre.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+        .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + '.png';
+
+    var blob = await new Promise(function(r){ c.toBlob(r, 'image/png') });
+    if (!blob) return;
+    var file = new File([blob], nombreArchivo, {type: 'image/png'});
+    if (navigator.canShare && navigator.canShare({files: [file]})) {
+      try { await navigator.share({files: [file]}); return } catch (_) { /* siguió a descarga */ }
+    }
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = nombreArchivo;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url) }, 4000);
+  });
+
+})();
+</script>
+</body>
+</html>
