@@ -187,10 +187,18 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .ficha p{font-size:14.5px;color:var(--tx2);margin-top:7px}
 .ficha.tuyo{border-left:3px solid var(--ac)}
 .ficha.ancha{grid-column:1/-1}
-/* Los dos cajones de "quién duerme dónde" y "los grupos de agua": misma
-   caja que los días, pero con listas dentro. */
+/* Los tres cajones del final: misma caja que los días, pero con un globo
+   con icono en la cabecera, para que cerrados ya digan qué llevan dentro. */
 .extra{margin-top:14px}
-.extra .dnum{width:auto;padding-right:4px}
+.glob{flex:0 0 auto;width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;color:var(--ac);
+  background:var(--bg);background:color-mix(in srgb,var(--ac) 13%,transparent);
+  border:1px solid var(--ln)}
+.glob svg{width:23px;height:23px;display:block}
+.extra > summary:hover .glob{border-color:var(--ac)}
+.extra[open] .glob{background:var(--ac);border-color:var(--ac);color:#fff}
+.gnum{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ac);line-height:1.4;margin-bottom:2px}
 .listas{padding:2px 18px 22px}
 .bloque{margin-top:20px}
 .bloque:first-child{margin-top:4px}
@@ -338,6 +346,7 @@ footer .centro{text-align:center}
           <h4>Movilidad y stretching</h4>
           <p>Lo primero que hace el grupo junto, antes de desayunar. Opcional, pero
             engancha.</p>
+          <figure class="foto"><img loading="lazy" src="../img/taller.jpg" alt="El grupo en el jard&iacute;n, a primera hora"><figcaption>Lo primero de la ma&ntilde;ana</figcaption></figure>
         </div>
       </li>
       <li class="hora">
@@ -363,7 +372,6 @@ footer .centro{text-align:center}
           <h4>Descanso activo</h4>
           <p>Un rato de pie y en corro para contar en qu&eacute; anda cada uno ahora mismo.
             No es presentarse: es enterarse de lo que hacen los dem&aacute;s y llevarse algo.</p>
-          <figure class="foto"><img loading="lazy" src="../img/descanso-activo.jpg" alt="El grupo en corro durante el descanso activo"><figcaption>El par&oacute;n de media ma&ntilde;ana</figcaption></figure>
         </div>
       </li>
       <li class="hora">
@@ -381,7 +389,6 @@ footer .centro{text-align:center}
         <div class="qu">
           <h4>Taller de h&aacute;bitos con IA</h4>
           <p>Cada uno trae un reto de los suyos y sale con &eacute;l resuelto.</p>
-          <figure class="foto"><img loading="lazy" src="../img/taller.jpg" alt="Un taller al aire libre, el grupo sentado en corro"><figcaption>Los talleres, fuera y en corro</figcaption></figure>
         </div>
       </li>
       <li class="hora">
@@ -531,7 +538,7 @@ footer .centro{text-align:center}
         <span class="h">08:30</span>
         <div class="qu">
           <h4>Gimnasia natural</h4>
-          <figure class="foto"><picture><source type="image/webp" srcset="../img/stretching.webp"></source><img loading="lazy" src="../img/stretching.jpg" alt="Gimnasia natural con vistas al mar"></picture><figcaption>Para arrancar el d&iacute;a</figcaption></figure>
+          <figure class="foto"><img loading="lazy" src="../img/descanso-activo.jpg" alt="Gimnasia natural, el grupo en corro"><figcaption>Animal flow para arrancar</figcaption></figure>
         </div>
       </li>
       <li class="hora">
@@ -641,12 +648,11 @@ footer .centro{text-align:center}
     <div class="fichas">
       <div class="ficha ancha">
         <h4>Las comidas</h4>
-        <p>Del finde entran <b>la cena del s&aacute;bado &mdash;la espicha asturiana&mdash; y los
-          desayunos del s&aacute;bado y del domingo</b>. Eso es lo que est&aacute; incluido, y nada
-          m&aacute;s.</p>
-        <p>El resto va por cuenta de cada uno, pero no tienes que traer nada de casa: en
-          la previa hacemos una compra conjunta, se reparte el gasto entre todos y
-          cocinamos juntos, y lo que se come fuera se paga en el sitio.</p>
+        <p>Del finde entran <b>la cena del s&aacute;bado y los desayunos del s&aacute;bado y del
+          domingo</b>.</p>
+        <p>Traeros desayunos para la previa, o ten&eacute;is <b>Casa Demetrio</b> al lado.</p>
+        <p>La <b>comida del jueves es en comuna</b>: hacemos compra conjunta y cocinamos
+          juntos.</p>
       </div>
       <div class="ficha">
         <h4>Qu&eacute; meter en la maleta</h4>
@@ -672,62 +678,14 @@ footer .centro{text-align:center}
           <li><b>Dejarse fluir</b> con lo que salga</li>
         </ul>
       </div>
-      <div class="ficha ancha">
-        <h4>C&oacute;mo llegar y d&oacute;nde es cada cosa</h4>
-        <p>La casa est&aacute; en <b>Naveces</b>, concejo de Castrill&oacute;n. Desde Madrid son unas
-          cinco horas en coche. Si vienes en tren o en avi&oacute;n a Avil&eacute;s o Gij&oacute;n, d&iacute;nos
-          la hora y lo cuadramos con los coches. Aqu&iacute; tienes todos los sitios del viaje,
-          cada uno con su enlace al mapa.</p>
-        <div class="sitios">
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=RuralSurf%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">La casa</span>
-          <span class="v">RuralSurf &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Sidrer%C3%ADa%20El%20Cruce%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">El finde</span>
-          <span class="v">Sidrer&iacute;a El Cruce &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Bah%C3%ADnas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">Surf, seg&uacute;n el d&iacute;a</span>
-          <span class="v">Playa de Bah&iacute;nas<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Play%C3%B3n%20de%20Bayas%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">Surf, seg&uacute;n el d&iacute;a</span>
-          <span class="v">Play&oacute;n de Bayas<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Salinas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">Mi&eacute;rcoles, al atardecer</span>
-          <span class="v">Playa de Salinas<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Munielles%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">El trekking del jueves</span>
-          <span class="v">Playa de Munielles<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Casa%20Demetrio%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
-          <span class="k">Desayunos, a cien metros</span>
-          <span class="v">Casa Demetrio &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
-        </a>
-        </div>
-      </div>
-      <div class="ficha ancha">
-        <h4>Cualquier cosa</h4>
-        <div class="caras">
-          <figure><picture><source type="image/webp" srcset="../img/abraham.webp"></source><img loading="lazy" src="../img/abraham.jpg" alt="Abraham"></picture><figcaption>Abraham</figcaption></figure>
-          <figure><picture><source type="image/webp" srcset="../img/sergio.webp"></source><img loading="lazy" src="../img/sergio.jpg" alt="Sergio"></picture><figcaption>Sergio</figcaption></figure>
-        </div>
-        <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
-          o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
-          o por privado, lo que te venga mejor. Y b&uacute;scanos en cualquier momento del viaje.</p>
-        <p>Y para tener una conversaci&oacute;n bonita, profunda y m&iacute;stica, tambi&eacute;n:
-          lo agradecemos mucho y nos encanta.</p>
-      </div>
     </div>
 
   <details class="dia extra">
     <summary>
       <div class="dcab">
-        <div class="dnum">Camas</div>
+        <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5v15.5"/><path d="M2.5 9h17a2 2 0 0 1 2 2v9"/><path d="M2.5 17h19"/><path d="M6.8 9v8"/></svg></span>
         <div class="dtx">
+          <div class="gnum">Camas</div>
           <h3>D&oacute;nde duermes</h3>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
@@ -758,8 +716,9 @@ footer .centro{text-align:center}
   <details class="dia extra">
     <summary>
       <div class="dcab">
-        <div class="dnum">Surf</div>
+        <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/><path d="M2 14c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/><path d="M2 19.5c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/></svg></span>
         <div class="dtx">
+          <div class="gnum">Surf</div>
           <h3>Los grupos de agua</h3>
         </div>
         <span class="chev" aria-hidden="true">&#9660;</span>
@@ -780,6 +739,69 @@ footer .centro{text-align:center}
       </div>
     </div>
   </details>
+
+  <details class="dia extra">
+    <summary>
+      <div class="dcab">
+        <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.3a7 7 0 1 0-14 0c0 5.4 7 11.3 7 11.3z"/><circle cx="12" cy="10.2" r="2.6"/></svg></span>
+        <div class="dtx">
+          <div class="gnum">Mapas</div>
+          <h3>C&oacute;mo llegar y d&oacute;nde es cada cosa</h3>
+        </div>
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </div>
+    </summary>
+    <p class="dintro">La casa est&aacute; en <b>Naveces</b>, concejo de Castrill&oacute;n. Desde
+      Madrid son unas cinco horas en coche. Si vienes en tren o en avi&oacute;n a Avil&eacute;s o
+      Gij&oacute;n, d&iacute;nos la hora y lo cuadramos con los coches.</p>
+    <div class="listas">
+      <div class="sitios">
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=RuralSurf%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">La casa</span>
+          <span class="v">RuralSurf &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Sidrer%C3%ADa%20El%20Cruce%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">El finde</span>
+          <span class="v">Sidrer&iacute;a El Cruce &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Bah%C3%ADnas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Surf, seg&uacute;n el d&iacute;a</span>
+          <span class="v">Playa de Bah&iacute;nas<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Play%C3%B3n%20de%20Bayas%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Surf, seg&uacute;n el d&iacute;a</span>
+          <span class="v">Play&oacute;n de Bayas<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Salinas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Mi&eacute;rcoles, al atardecer</span>
+          <span class="v">Playa de Salinas<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Munielles%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">El trekking del jueves</span>
+          <span class="v">Playa de Munielles<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+        <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Casa%20Demetrio%2C%20Naveces%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
+          <span class="k">Desayunos, a cien metros</span>
+          <span class="v">Casa Demetrio &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
+        </a>
+      </div>
+    </div>
+  </details>
+
+    <div class="fichas">
+      <div class="ficha ancha">
+        <h4>Cualquier cosa</h4>
+        <div class="caras">
+          <figure><picture><source type="image/webp" srcset="../img/abraham.webp"></source><img loading="lazy" src="../img/abraham.jpg" alt="Abraham"></picture><figcaption>Abraham</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="../img/sergio.webp"></source><img loading="lazy" src="../img/sergio.jpg" alt="Sergio"></picture><figcaption>Sergio</figcaption></figure>
+        </div>
+        <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
+          o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
+          o por privado, lo que te venga mejor. Y b&uacute;scanos en cualquier momento del viaje.</p>
+        <p>Y para tener una conversaci&oacute;n bonita, profunda y m&iacute;stica, tambi&eacute;n:
+          lo agradecemos mucho y nos encanta.</p>
+      </div>
+    </div>
 
   </div>
 </section>
