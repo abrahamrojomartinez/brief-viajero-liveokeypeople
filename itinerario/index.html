@@ -164,6 +164,27 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .foto figcaption{font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--tx2);
   margin-top:7px}
 
+/* ---- La firma de quien lo lleva, con su boton ------------------------
+   Quien conduce un taller firma debajo, y el boton lleva a lo suyo. El
+   relleno es la tinta de la franja, asi que en la previa sale negro
+   sobre crema y en el finde crema sobre negro, sin tocar los tokens. */
+.credito{margin:14px 0 0;max-width:380px;background:var(--bg);
+  border:1px solid var(--ln);border-left:3px solid var(--ac);padding:13px 16px 15px}
+.credito .qn{font-family:var(--f-d);font-size:16px;font-weight:600;line-height:1.25;
+  color:var(--tx)}
+.credito p{font-size:13.5px;color:var(--tx2);margin-top:5px;line-height:1.55;max-width:none}
+.boton{display:inline-block;margin-top:13px;
+  font-family:var(--f-u);font-size:12px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;text-decoration:none;line-height:1.45;
+  color:var(--bg);background:var(--tx);border:1px solid var(--tx);padding:10px 17px;
+  transition:background .18s,border-color .18s,color .18s}
+.boton:hover{background:var(--ac);border-color:var(--ac);color:#fff}
+/* La flecha va pegada a la ultima palabra: si el rotulo parte en dos
+   lineas, la sigue en vez de quedarse suelta a la derecha. */
+.boton .fl{display:inline-block;font-size:15px;margin-left:9px;
+  transition:transform .18s}
+.boton:hover .fl{transform:translateX(3px)}
+
 /* ---- Ficha de sitio -------------------------------------------------- */
 .donde{display:block;max-width:400px;margin-top:12px;text-decoration:none;
   background:var(--bg);border:1px solid var(--ln);border-left:3px solid var(--ac);
@@ -254,6 +275,8 @@ footer .centro{text-align:center}
   .donde{max-width:100%}
   .donde .ir{display:block;margin:6px 0 0}
   .foto{max-width:100%}
+  .credito{max-width:100%}
+  .boton{font-size:11.5px;letter-spacing:.07em;padding:10px 14px}
 }
 </style>
 
@@ -389,6 +412,11 @@ footer .centro{text-align:center}
         <div class="qu">
           <h4>Taller de h&aacute;bitos con IA</h4>
           <p>Cada uno trae un reto de los suyos y sale con &eacute;l resuelto.</p>
+          <div class="credito">
+            <div class="qn">Liderado por Abraham</div>
+            <p>Experto en crecimiento de comunidades con prop&oacute;sito. Con&oacute;cele aqu&iacute;:</p>
+            <a class="boton" href="https://www.instagram.com/abraham.vibra/" target="_blank" rel="noopener">@abraham.vibra<span class="fl" aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </li>
       <li class="hora">
@@ -402,7 +430,7 @@ footer .centro{text-align:center}
       <li class="hora">
         <span class="h">Atardecer</span>
         <div class="qu">
-          <h4>Trekking a la playa de Munielles</h4>
+          <h4>Trekking y meditaci&oacute;n en la playa de Munielles</h4>
           <p>Ruta andando hasta la playa para ver la puesta de sol desde all&iacute;. Lleva
             zapatillas que te valgan para andar por el monte.</p>
           <figure class="foto"><picture><source type="image/webp" srcset="../img/atardecer-mar.webp"></source><img loading="lazy" src="../img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar visto desde la costa"></picture><figcaption>El premio de la ruta</figcaption></figure>
@@ -451,7 +479,9 @@ footer .centro{text-align:center}
         <span class="h">09:00</span>
         <div class="qu">
           <h4>Empieza el cowork</h4>
-          <p>Igual que el jueves: quien no tenga que trabajar, surf opcional o ma&ntilde;ana libre.</p>
+          <p>Igual que el jueves: quien no tenga que trabajar, surf opcional o ma&ntilde;ana
+            libre. O hablar con Abraham, que tiene preparados unos talleres adicionales
+            que har&aacute;n match con tu forma de vivir.</p>
         </div>
       </li>
       <li class="hora">
@@ -539,6 +569,11 @@ footer .centro{text-align:center}
         <div class="qu">
           <h4>Gimnasia natural</h4>
           <figure class="foto"><img loading="lazy" src="../img/descanso-activo.jpg" alt="Gimnasia natural, el grupo en corro"><figcaption>Animal flow para arrancar</figcaption></figure>
+          <div class="credito">
+            <div class="qn">by Sergio Mateo</div>
+            <p>El mejor entrenador que puedes tener en tu d&iacute;a a d&iacute;a. Con&oacute;cele aqu&iacute;:</p>
+            <a class="boton" href="https://programaviveokey.com" target="_blank" rel="noopener">Programa ViveOkey<span class="fl" aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </li>
       <li class="hora">
@@ -650,8 +685,8 @@ footer .centro{text-align:center}
         <p>Del finde entran <b>la cena del s&aacute;bado y los desayunos del s&aacute;bado y del
           domingo</b>.</p>
         <p>Traeros desayunos para la previa, o ten&eacute;is <b>Casa Demetrio</b> al lado.</p>
-        <p>La <b>comida del jueves es en comuna</b>: hacemos compra conjunta y cocinamos
-          juntos.</p>
+        <p>La <b>comida del jueves es en comuna</b>: hacemos compra conjunta y hacemos
+          taller de &laquo;cocina social&raquo;, by Chef Abraham.</p>
       </div>
       <div class="ficha">
         <h4>Qu&eacute; meter en la maleta</h4>
