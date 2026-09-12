@@ -233,6 +233,8 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .fila .co{font-size:10.5px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--tx2)}
 .fila p{font-size:15px;color:var(--tx);margin-top:6px;line-height:1.55}
+/* La cama que sobra no es un nombre: se apaga para que no se lea como uno. */
+.fila p i{color:var(--tx2);font-style:italic}
 /* Las dos caras de quien organiza, en redondo, encima del texto. */
 .caras{display:flex;flex-wrap:wrap;gap:22px;margin:15px 0 18px}
 .caras figure{margin:0;text-align:center}
@@ -728,18 +730,19 @@ footer .centro{text-align:center}
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
-    <p class="dintro">Tres casas, ocho habitaciones. Busca tu nombre y ya sabes d&oacute;nde dejar la mochila al llegar.</p>
+    <p class="dintro">Tres casas, nueve habitaciones. Busca tu nombre y ya sabes d&oacute;nde dejar la mochila al llegar.</p>
     <div class="listas">
       <div class="bloque">
-        <div class="bt"><h4>Casa de piedra</h4><span class="cu">11 personas</span></div>
+        <div class="bt"><h4>Casa de piedra</h4><span class="cu">12 personas</span></div>
         <div class="fila"><b>Bayas</b><span class="co">2 literas de dos camas</span><p>H&eacute;ctor &middot; Jorge &middot; Ovidi &middot; Jes&uacute;s</p></div>
-        <div class="fila"><b>Reguer&iacute;n</b><span class="co">3 camas en la buhardilla</span><p>Silvia &middot; Mar&iacute;a R&iacute;os &middot; Bel&eacute;n</p></div>
+        <div class="fila"><b>Reguer&iacute;n</b><span class="co">3 camas en la buhardilla</span><p>Sergio &middot; Abraham <i>&mdash; queda una cama libre</i></p></div>
+        <div class="fila"><b>Munielles</b><span class="co">doble, camas gemelas</span><p>Mar&iacute;a R&iacute;os &middot; Bel&eacute;n</p></div>
         <div class="fila"><b>Santa Mar&iacute;a</b><span class="co">cama matrimonial</span><p>Marta &middot; Adri&aacute;n Maqueda</p></div>
         <div class="fila"><b>Bahinas</b><span class="co">camas gemelas</span><p>Patricia &middot; Irene</p></div>
       </div>
       <div class="bloque">
         <div class="bt"><h4>Casa de madera</h4><span class="cu">10 personas</span></div>
-        <div class="fila"><b>La Ladrona</b><span class="co">6 camas individuales</span><p>Sergio &middot; Abraham &middot; Emilio (Emilich) &middot; Adri&aacute;n Byczek &middot; Genoveva &middot; Carla</p></div>
+        <div class="fila"><b>La Ladrona</b><span class="co">6 camas individuales</span><p>Emilio (Emilich) &middot; Adri&aacute;n Byczek &middot; Genoveva &middot; Carla &middot; Silvia &middot; Guille</p></div>
         <div class="fila"><b>La Deva</b><span class="co">4 camas individuales</span><p>Eva &middot; Momo &middot; Mar&iacute;a Orlandi &middot; Tania</p></div>
       </div>
       <div class="bloque">
