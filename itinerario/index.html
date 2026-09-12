@@ -235,6 +235,10 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .fila p{font-size:15px;color:var(--tx);margin-top:6px;line-height:1.55}
 /* La cama que sobra no es un nombre: se apaga para que no se lea como uno. */
 .fila p i{color:var(--tx2);font-style:italic}
+/* Las parejas del juego: la flecha marca el cruce y el numerito no compite
+   con los nombres. */
+.fila .cr{color:var(--ac);font-weight:700;padding:0 4px}
+.fila .co2{font-size:13px;color:var(--tx2)}
 /* Las dos caras de quien organiza, en redondo, encima del texto. */
 .caras{display:flex;flex-wrap:wrap;gap:22px;margin:15px 0 18px}
 .caras figure{margin:0;text-align:center}
@@ -824,6 +828,50 @@ footer .centro{text-align:center}
           <span class="k">Desayunos, a cien metros</span>
           <span class="v">Casa Demetrio &middot; Naveces<span class="ir">ver en el mapa &#8599;</span></span>
         </a>
+      </div>
+    </div>
+  </details>
+
+  <details class="dia extra">
+    <summary>
+      <div class="dcab">
+        <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 20.5v-1.8a3.7 3.7 0 0 0-3.7-3.7H6.2a3.7 3.7 0 0 0-3.7 3.7v1.8"/><circle cx="9" cy="7.3" r="3.8"/><path d="M21.5 20.5v-1.8a3.7 3.7 0 0 0-2.8-3.58"/><path d="M15.5 3.7a3.8 3.8 0 0 1 0 7.2"/></svg></span>
+        <div class="dtx">
+          <div class="gnum">El juego</div>
+          <h3>Tu mejor amigo</h3>
+        </div>
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </div>
+    </summary>
+    <p class="dintro">A cada uno le ha tocado alguien. Le escribes <b>antes de salir</b>,
+      le mandas las cuatro preguntas y las contestas t&uacute; tambi&eacute;n. En el viaje le
+      haces la vida un poco mejor sin que se note, y el domingo se cuenta.</p>
+    <div class="listas">
+      <div class="bloque">
+        <div class="bt"><h4>Las parejas</h4><span class="cu">12 y un tr&iacute;o</span></div>
+        <div class="fila"><b>01</b><p>H&eacute;ctor <span class="cr">&harr;</span> Lorena Lara</p></div>
+        <div class="fila"><b>02</b><p>Jorge <span class="cr">&harr;</span> Eva</p></div>
+        <div class="fila"><b>03</b><p>Ovidi <span class="cr">&harr;</span> Alba Tienda</p></div>
+        <div class="fila"><b>04</b><p>Jes&uacute;s <span class="cr">&harr;</span> Abraham</p></div>
+        <div class="fila"><b>05</b><p>Guille <span class="cr">&harr;</span> Genoveva</p></div>
+        <div class="fila"><b>06</b><p>Carolina <span class="cr">&harr;</span> Carla</p></div>
+        <div class="fila"><b>07</b><p>Silvia Rodr&iacute;guez <span class="cr">&harr;</span> Adri&aacute;n Byczek</p></div>
+        <div class="fila"><b>08</b><p>Mar&iacute;a R&iacute;os <span class="cr">&harr;</span> Emilio</p></div>
+        <div class="fila"><b>09</b><p>Bel&eacute;n <span class="cr">&harr;</span> Tania</p></div>
+        <div class="fila"><b>10</b><p>Marta Asensio <span class="cr">&harr;</span> Sandra Tienda</p></div>
+        <div class="fila"><b>11</b><p>Adri&aacute;n Maqueda <span class="cr">&harr;</span> Mar&iacute;a Orlandi</p></div>
+        <div class="fila"><b>12</b><p>Patricia <span class="cr">&harr;</span> Raquel Mim&oacute;</p></div>
+        <div class="fila"><b>13</b><p>Irene <span class="cr">&harr;</span> Momo <span class="cr">&harr;</span> Sergio <span class="co2">&mdash; sois 27, alguien ten&iacute;a que ir de tres</span></p></div>
+      </div>
+      <div class="bloque">
+        <div class="bt"><h4>Las cuatro preguntas</h4><span class="cu">para tu amigo</span></div>
+        <div class="fila"><p>1. &iquest;Qu&eacute; te ha tra&iacute;do a este viaje? Lo de verdad, no lo que se dice.</p></div>
+        <div class="fila"><p>2. &iquest;Qu&eacute; es lo que mejor se te da y nadie te lo pregunta nunca?</p></div>
+        <div class="fila"><p>3. &iquest;Qu&eacute; te da respeto de este finde?</p></div>
+        <div class="fila"><p>4. Una cosa que te encantar&iacute;a que te pasara aqu&iacute;.</p></div>
+        <div class="fila"><p><b>Y una promesa:</b> durante el viaje le haces la vida un
+          poco mejor sin que se note. Un caf&eacute;, un sitio en el coche, estar cuando
+          toque. El domingo, en la din&aacute;mica de despedida, se lo dices a la cara.</p></div>
       </div>
     </div>
   </details>
