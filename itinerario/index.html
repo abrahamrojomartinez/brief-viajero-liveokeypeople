@@ -119,6 +119,29 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .mosaico figcaption{font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--tx2);
   margin-top:7px;line-height:1.4}
 
+/* ---- El personaje que te empuja a abrir los cajones -----------------
+   Los recortes vienen de la familia de descubre-tu-clic: lienzo de
+   1007 px de alto y se dimensionan SIEMPRE por height, nunca por width
+   -es lo que mantiene el mismo tamano de cuerpo entre poses-. Abraham
+   (cuerpo entero, senalando) abre la previa. Sergio es un recorte de
+   medio cuerpo hecho aparte, no pertenece a esa familia: se solapa con
+   la primera tarjeta para que el corte de abajo quede escondido detras
+   de ella, y por eso la tarjeta lleva z-index por encima. */
+.abre{display:flex;align-items:center;gap:4px;margin:30px 0 0;overflow:visible}
+.abre-pj{flex:none;width:auto;display:block;height:196px;margin:0 -30px 0 -8px;
+  filter:drop-shadow(0 16px 24px rgba(33,28,30,.20))}
+.abre p{flex:1 1 auto;margin:0;max-width:20ch;font-family:var(--f-d);
+  font-size:21px;font-weight:600;line-height:1.26;letter-spacing:-.015em}
+.abre b{display:block;font-family:var(--f-u);font-size:12px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ac2);margin-top:9px}
+/* El finde: Sergio a la derecha, para que el neopreno que ensena apunte
+   hacia dentro (no se puede espejar: el logo de LiveOkey saldria al reves). */
+.abre--k{flex-direction:row-reverse;align-items:flex-end}
+.abre--k .abre-pj{height:218px;margin:0 0 -46px -4px;position:relative;z-index:0;
+  filter:drop-shadow(0 16px 26px rgba(0,0,0,.55)) drop-shadow(0 0 2px rgba(245,241,236,.15))}
+.abre--k + .dia{position:relative;z-index:1}
+.abre--k p{text-align:right;margin-bottom:18px;max-width:17ch}
+
 /* ---- Un dia = un cajon plegado -------------------------------------- */
 .dias .centro{padding-block:12px 38px}
 .dia{background:var(--bg2);border:1px solid var(--ln);border-radius:4px;
@@ -282,6 +305,13 @@ footer .centro{text-align:center}
   .qu h4{font-size:17px}
   .dia > summary{padding:14px 15px}
   .dnum{width:38px;font-size:9px;letter-spacing:.14em}
+  .abre{margin-top:22px;gap:0}
+  .abre-pj{height:158px;margin:0 -25px 0 -7px}
+  .abre p{font-size:18px;max-width:18ch}
+  .abre b{font-size:11px;letter-spacing:.1em}
+  .abre--k{gap:12px}
+  .abre--k .abre-pj{height:170px;margin:0 0 -38px 0}
+  .abre--k p{margin-bottom:14px;max-width:13ch}
   .dtx h3{font-size:20px}
   .donde{max-width:100%}
   .donde .ir{display:block;margin:6px 0 0}
@@ -319,6 +349,12 @@ footer .centro{text-align:center}
 <!-- ---- Los tres dias de la previa ---- -->
 <section class="franja v dias">
   <div class="centro">
+
+  <aside class="abre">
+    <img class="abre-pj" src="../img/pj-abraham-senala.webp" alt="" aria-hidden="true"
+      width="560" height="1007" loading="lazy" decoding="async">
+    <p>Los tres d&iacute;as, por dentro.<b>Toca para abrirlos</b></p>
+  </aside>
 
   <details class="dia" id="p1">
     <summary>
@@ -536,6 +572,12 @@ footer .centro{text-align:center}
 
 <section class="franja k dias">
   <div class="centro">
+
+  <aside class="abre abre--k">
+    <img class="abre-pj" src="../img/pj-sergio-neopreno.webp" alt="" aria-hidden="true"
+      width="602" height="1007" loading="lazy" decoding="async">
+    <p>El finde, hora por hora.<b>Toca para abrirlo</b></p>
+  </aside>
 
   <details class="dia" id="f1">
     <summary>
