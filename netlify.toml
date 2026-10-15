@@ -10,7 +10,10 @@
 # quita el prefijo y se sirve lo de siempre. Por eso los enlaces internos
 # son RELATIVOS (../taller/, img/…) y las funciones se llaman por
 # ../api/<nombre>, que viaja con el prefijo y se reescribe a la función.
-# Las reglas van en orden: la primera que encaja gana.
+# Las reglas van en orden: la primera que encaja gana. OJO: Netlify trata
+# igual una ruta con y sin barra final, así que NO hay regla para añadir la
+# barra (se redirigía a sí misma, en bucle). La portada lleva <base> para
+# que sus rutas relativas funcionen llegue como llegue.
 
 [[redirects]]
   from = "/viaje-vibra-con-liveokey/api/*"
@@ -22,12 +25,6 @@
   from = "/viaje-vibra-con-liveokey/netlify/*"
   to = "/404.html"
   status = 404
-  force = true
-
-[[redirects]]
-  from = "/viaje-vibra-con-liveokey"
-  to = "/viaje-vibra-con-liveokey/"
-  status = 301
   force = true
 
 [[redirects]]
