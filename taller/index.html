@@ -842,7 +842,7 @@ footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     btn.textContent = 'Guardando…';
 
     try {
-      var res = await fetch('/.netlify/functions/taller', {
+      var res = await fetch('../api/taller', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

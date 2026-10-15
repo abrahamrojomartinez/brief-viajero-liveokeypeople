@@ -2,6 +2,80 @@
   publish = "."
   command = ""
 
+# ---------------------------------------------------------------------
+# vibrasociety.es/viaje-vibra-con-liveokey · este sitio se sirve ahí
+# ---------------------------------------------------------------------
+# El dominio es del proyecto descubre-tu-clic, que reenvía (proxy)
+# /viaje-vibra-con-liveokey/* a ESTE sitio con la misma ruta. Aquí se le
+# quita el prefijo y se sirve lo de siempre. Por eso los enlaces internos
+# son RELATIVOS (../taller/, img/…) y las funciones se llaman por
+# ../api/<nombre>, que viaja con el prefijo y se reescribe a la función.
+# Las reglas van en orden: la primera que encaja gana.
+
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey"
+  to = "/viaje-vibra-con-liveokey/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+# Los enlaces antiguos a vibra-con-liveokey-trip.netlify.app (las páginas)
+# llevan a la dirección nueva, con la misma ruta y su ?query. 302 (no 301)
+# a propósito: si algo falla se puede volver atrás sin que los navegadores
+# lo tengan memorizado. Las fotos (img/) y las funciones no se tocan.
+[[redirects]]
+  from = "/"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/previa/*"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/previa/:splat"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/itinerario/*"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/:splat"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/formulario/*"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/formulario/:splat"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/taller/*"
+  to = "https://vibrasociety.es/viaje-vibra-con-liveokey/taller/:splat"
+  status = 302
+  force = true
+
 # La funcion que manda el formulario del viaje a HubSpot. Necesita la
 # variable de entorno HUBSPOT_ACCESS_TOKEN en este sitio (el mismo token
 # de app privada que usa la pre-release de VIBRA en el suyo).

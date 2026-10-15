@@ -10,7 +10,7 @@ Dos dossieres del mismo viaje, uno por comunidad, en un solo sitio de Netlify.
 | `/itinerario/`  | LiveOkey  | Los cinco días hora a hora            |
 
 - Panel: https://app.netlify.com/projects/vibra-con-liveokey-trip
-- URL: https://vibra-con-liveokey-trip.netlify.app
+- URL: https://vibrasociety.es/viaje-vibra-con-liveokey (la antigua https://vibra-con-liveokey-trip.netlify.app redirige ahí; ver `netlify.toml`)
 
 ## Estructura
 
@@ -23,7 +23,7 @@ img/                        — las 18 fotos + los dos recortes para compartir
 netlify.toml                — cabeceras de caché
 ```
 
-**Los enlaces entre los dos son relativos y dependen de esta estructura.**
+**Los enlaces entre páginas son relativos y dependen de esta estructura** (y de que se sirve bajo `/viaje-vibra-con-liveokey/`: nada de rutas que empiecen por `/`; las funciones, por `../api/<nombre>`).
 En `index.html` el botón «Ver la previa →» apunta a `previa/`, y en
 `previa/index.html` el botón «Conoce cómo será el finde →» apunta a `../`.
 Si algún día se mueven de sitio, hay que actualizar esos dos enlaces.
