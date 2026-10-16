@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
+<!-- Copia PÚBLICA de ../index.html para enseñar cómo se monta un viaje
+     (la enlaza VIBRA Business). Sin habitaciones, sin grupos con nombres y
+     sin teléfonos: si cambias el original, NO copies esas partes aquí.
+     Lleva <base> como la portada: así img/ y taller/ funcionan llegue con
+     o sin barra final (Netlify sirve las dos). -->
+<base href="/viaje-vibra-con-liveokey/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Asturias hora a hora · VIBRA × LiveOkey</title>
-<meta name="description" content="Los cinco días del viaje a Asturias, hora a hora y con el sitio de cada cosa. Del 16 al 20 de septiembre de 2026.">
-<meta name="robots" content="noindex, nofollow">
+<title>Asturias hora a hora · Ejemplo · VIBRA × LiveOkey</title>
+<meta name="description" content="Ejemplo de viaje montado: los cinco días del viaje a Asturias de VIBRA con LiveOkey, hora a hora y con el sitio de cada cosa (septiembre de 2026).">
+<meta name="robots" content="noindex">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LiveOkey People">
 <meta property="og:locale" content="es_ES">
-<meta property="og:url" content="https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/">
-<meta property="og:title" content="Asturias hora a hora">
-<meta property="og:description" content="Los cinco días del viaje, hora a hora y con el sitio de cada cosa. 16 al 20 de septiembre.">
+<meta property="og:url" content="https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/ejemplo/">
+<meta property="og:title" content="Asturias hora a hora · un viaje de ejemplo">
+<meta property="og:description" content="Así se montó el viaje de VIBRA con LiveOkey: cinco días, hora a hora y con el sitio de cada cosa.">
 <meta property="og:image" content="https://vibrasociety.es/viaje-vibra-con-liveokey/img/og-liveokey.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -74,6 +80,15 @@ a{color:var(--ac2)}
 .rot .t{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
   color:var(--ac);white-space:nowrap}
 .rot .l{flex:1 1 auto;height:1px;background:var(--ln)}
+
+/* ---- Aviso de ejemplo: franja fina encima de la portada -------------
+   Discreta a propósito: crema de VIBRA, texto de lectura en tinta y el
+   coral solo en el filete. No es un botón ni lleva enlace. */
+.aviso{background:var(--v-bg);color:var(--v-tx2);border-bottom:1px solid var(--v-ln)}
+.aviso .centro{display:flex;align-items:center;gap:11px;padding-block:9px;
+  font-size:12.5px;font-weight:500;line-height:1.45}
+.aviso .centro::before{content:"";flex:0 0 18px;height:2px;background:var(--v-ac)}
+.aviso b{color:var(--v-tx);font-weight:700}
 
 /* ---- Portada: la foto, el logo y la fecha. Nada mas. ----------------
    Sin titular, sin bajada, sin cifras y sin tira de dias: el documento
@@ -256,17 +271,6 @@ h2 em{font-style:italic;font-weight:400;color:var(--ac)}
 .fila .co{font-size:10.5px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--tx2)}
 .fila p{font-size:15px;color:var(--tx);margin-top:6px;line-height:1.55}
-/* La cama que sobra no es un nombre: se apaga para que no se lea como uno. */
-.fila p i{color:var(--tx2);font-style:italic}
-/* Las parejas del juego, con su tel&eacute;fono debajo. En el m&oacute;vil, si no
-   caben los dos al lado, el segundo baja de l&iacute;nea y sigue legible. */
-.par{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:6px}
-.par .per{display:flex;flex-direction:column;gap:0}
-.par .per b{line-height:1.2}
-.par .per a{font-family:var(--f-u);font-size:13.5px;font-weight:600;color:var(--ac2);
-  text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:.01em}
-.par .per a:hover{text-decoration:underline}
-.fila .cr{color:var(--ac);font-weight:700;padding:0 2px}
 /* Las dos caras de quien organiza, en redondo, encima del texto. */
 .caras{display:flex;flex-wrap:wrap;gap:22px;margin:15px 0 18px}
 .caras figure{margin:0;text-align:center}
@@ -321,11 +325,14 @@ footer .centro{text-align:center}
 }
 </style>
 
+<!-- ================= AVISO DE EJEMPLO ================= -->
+
+
 <!-- ================= PORTADA ================= -->
 <section class="franja hondo hero">
-  <div class="fondo"><picture><source type="image/webp" srcset="../img/portada-atardecer.webp"></source><img fetchpriority="high" src="../img/portada-atardecer.jpg" alt="El sol cayendo sobre el mar, con la playa y la gente en silueta"></picture></div>
+  <div class="fondo"><picture><source type="image/webp" srcset="img/portada-atardecer.webp"></source><img fetchpriority="high" src="img/portada-atardecer.jpg" alt="El sol cayendo sobre el mar, con la playa y la gente en silueta"></picture></div>
   <div class="centro">
-    <picture><source type="image/webp" srcset="../img/liveokey-logo.webp"></source><img class="marca" src="../img/liveokey-logo.png" alt="LiveOkey People"></picture>
+    <picture><source type="image/webp" srcset="img/liveokey-logo.webp"></source><img class="marca" src="img/liveokey-logo.png" alt="LiveOkey People"></picture>
     <h1 class="sello">Surf trip &middot; Asturias &middot; 16 al 20 de septiembre</h1>
   </div>
 </section>
@@ -333,15 +340,15 @@ footer .centro{text-align:center}
 <!-- ================= CAPITULO 1 · LA PREVIA (marca VIBRA) ================= -->
 <section class="franja v cap">
   <div class="centro">
-    <div class="banda"><picture><source type="image/webp" srcset="../img/vibra-portada.webp"></source><img loading="lazy" src="../img/vibra-portada.jpg" alt="Movilidad por la ma&ntilde;ana en el jard&iacute;n de la casa"></picture></div>
+    <div class="banda"><picture><source type="image/webp" srcset="img/vibra-portada.webp"></source><img loading="lazy" src="img/vibra-portada.jpg" alt="Movilidad por la ma&ntilde;ana en el jard&iacute;n de la casa"></picture></div>
     <p class="pie">El jard&iacute;n de la casa &middot; aqu&iacute; se desayuna y aqu&iacute; empieza cada ma&ntilde;ana</p>
     <h2>La previa con <em>VIBRA</em></h2>
     <p class="lead">Mi&eacute;rcoles, jueves y viernes. Cowork con foco, cocina en comuna,
       talleres y mar.</p>
     <div class="mosaico">
-      <figure><picture><source type="image/webp" srcset="../img/cowork.webp"></source><img loading="lazy" src="../img/cowork.jpg" alt="Port&aacute;til abierto en la mesa de trabajo"></picture><figcaption>Cowork con foco</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="../img/cocina-comuna.webp"></source><img loading="lazy" src="../img/cocina-comuna.jpg" alt="Cocinando entre todos en la cocina de la casa"></picture><figcaption>Cocina en comuna</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="../img/movilidad.webp"></source><img loading="lazy" src="../img/movilidad.jpg" alt="Movilidad y stretching sobre la hierba"></picture><figcaption>Movilidad al levantarse</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/cowork.webp"></source><img loading="lazy" src="img/cowork.jpg" alt="Port&aacute;til abierto en la mesa de trabajo"></picture><figcaption>Cowork con foco</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/cocina-comuna.webp"></source><img loading="lazy" src="img/cocina-comuna.jpg" alt="Cocinando entre todos en la cocina de la casa"></picture><figcaption>Cocina en comuna</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/movilidad.webp"></source><img loading="lazy" src="img/movilidad.jpg" alt="Movilidad y stretching sobre la hierba"></picture><figcaption>Movilidad al levantarse</figcaption></figure>
     </div>
   </div>
 </section>
@@ -351,7 +358,7 @@ footer .centro{text-align:center}
   <div class="centro">
 
   <aside class="abre">
-    <img class="abre-pj" src="../img/pj-abraham-senala.webp" alt="" aria-hidden="true"
+    <img class="abre-pj" src="img/pj-abraham-senala.webp" alt="" aria-hidden="true"
       width="560" height="1007" loading="lazy" decoding="async">
     <p>Los tres d&iacute;as, por dentro.<b>Toca para abrirlos</b></p>
   </aside>
@@ -387,7 +394,7 @@ footer .centro{text-align:center}
           <p>Quedamos all&iacute; para ver la puesta de sol y tomar algo en La Luna, el bar
             surfero de la playa. Vamos igual, seamos los que seamos. Y all&iacute; cenamos:
             hay burgers, pizzas y de todo para picotear.</p>
-          <figure class="foto"><picture><source type="image/webp" srcset="../img/surf-atardecer.webp"></source><img loading="lazy" src="../img/surf-atardecer.jpg" alt="El grupo caminando por la playa al atardecer"></picture><figcaption>La primera puesta de sol del viaje</figcaption></figure>
+          <figure class="foto"><picture><source type="image/webp" srcset="img/surf-atardecer.webp"></source><img loading="lazy" src="img/surf-atardecer.jpg" alt="El grupo caminando por la playa al atardecer"></picture><figcaption>La primera puesta de sol del viaje</figcaption></figure>
           <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Salinas%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
             <span class="k">D&oacute;nde</span>
             <span class="v">Playa de Salinas &middot; Castrill&oacute;n<span class="ir">ver en el mapa &#8599;</span></span>
@@ -416,7 +423,7 @@ footer .centro{text-align:center}
           <h4>Movilidad y stretching</h4>
           <p>Lo primero que hace el grupo junto, antes de desayunar. Opcional, pero
             engancha.</p>
-          <figure class="foto"><img loading="lazy" src="../img/taller.jpg" alt="El grupo en el jard&iacute;n, a primera hora"><figcaption>Lo primero de la ma&ntilde;ana</figcaption></figure>
+          <figure class="foto"><img loading="lazy" src="img/taller.jpg" alt="El grupo en el jard&iacute;n, a primera hora"><figcaption>Lo primero de la ma&ntilde;ana</figcaption></figure>
         </div>
       </li>
       <li class="hora">
@@ -487,7 +494,7 @@ footer .centro{text-align:center}
           <h4>Trekking y meditaci&oacute;n en la playa de Munielles</h4>
           <p>Ruta andando hasta la playa para ver la puesta de sol desde all&iacute;. Lleva
             zapatillas que te valgan para andar por el monte.</p>
-          <figure class="foto"><picture><source type="image/webp" srcset="../img/atardecer-mar.webp"></source><img loading="lazy" src="../img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar visto desde la costa"></picture><figcaption>El premio de la ruta</figcaption></figure>
+          <figure class="foto"><picture><source type="image/webp" srcset="img/atardecer-mar.webp"></source><img loading="lazy" src="img/atardecer-mar.jpg" alt="El sol cayendo sobre el mar visto desde la costa"></picture><figcaption>El premio de la ruta</figcaption></figure>
           <a class="donde" href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20de%20Munielles%2C%20Castrill%C3%B3n%2C%20Asturias" target="_blank" rel="noopener">
             <span class="k">D&oacute;nde</span>
             <span class="v">Playa de Munielles &middot; Castrill&oacute;n<span class="ir">ver en el mapa &#8599;</span></span>
@@ -545,7 +552,7 @@ footer .centro{text-align:center}
           <p>Hoy el par&oacute;n no es contar en qu&eacute; andas: es la din&aacute;mica de
             prop&oacute;sito, <b>Oso, Tigre y Drag&oacute;n</b>. Empieza con una lectura corta
             que puedes leer desde ya, y sigue con tus tres n&uacute;meros.</p>
-          <a class="boton" href="../taller/" target="_blank" rel="noopener">Abrir el taller<span class="fl" aria-hidden="true">&rarr;</span></a>
+          <a class="boton" href="taller/" target="_blank" rel="noopener">Abrir el taller<span class="fl" aria-hidden="true">&rarr;</span></a>
         </div>
       </li>
       <li class="hora">
@@ -569,15 +576,15 @@ footer .centro{text-align:center}
 <!-- ================= CAPITULO 2 · EL FINDE (marca LIVEOKEY) ================= -->
 <section class="franja k cap">
   <div class="centro">
-    <div class="banda"><picture><source type="image/webp" srcset="../img/lok-portada.webp"></source><img loading="lazy" src="../img/lok-portada.jpg" alt="El grupo en el agua, en una clase de surf"></picture></div>
+    <div class="banda"><picture><source type="image/webp" srcset="img/lok-portada.webp"></source><img loading="lazy" src="img/lok-portada.jpg" alt="El grupo en el agua, en una clase de surf"></picture></div>
     <p class="pie">Bah&iacute;nas o el Play&oacute;n de Bayas &middot; la playa la elige el mar cada d&iacute;a</p>
     <h2>El finde con <em>LiveOkey</em></h2>
     <p class="lead">Del viernes por la noche al domingo. Surf por niveles, espicha
       asturiana, fiesta de disfraces y gimnasia natural al levantarse.</p>
     <div class="mosaico">
-      <figure><picture><source type="image/webp" srcset="../img/surf-clase.webp"></source><img loading="lazy" src="../img/surf-clase.jpg" alt="El grupo sentado en la arena antes de la clase de surf"></picture><figcaption>Antes de la clase</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="../img/espicha.webp"></source><img loading="lazy" src="../img/espicha.jpg" alt="La espicha, todos en la misma mesa"></picture><figcaption>La espicha asturiana</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="../img/fiesta-1.webp"></source><img loading="lazy" src="../img/fiesta-1.jpg" alt="La fiesta de disfraces"></picture><figcaption>La fiesta del s&aacute;bado</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/surf-clase.webp"></source><img loading="lazy" src="img/surf-clase.jpg" alt="El grupo sentado en la arena antes de la clase de surf"></picture><figcaption>Antes de la clase</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/espicha.webp"></source><img loading="lazy" src="img/espicha.jpg" alt="La espicha, todos en la misma mesa"></picture><figcaption>La espicha asturiana</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="img/fiesta-1.webp"></source><img loading="lazy" src="img/fiesta-1.jpg" alt="La fiesta de disfraces"></picture><figcaption>La fiesta del s&aacute;bado</figcaption></figure>
     </div>
   </div>
 </section>
@@ -586,7 +593,7 @@ footer .centro{text-align:center}
   <div class="centro">
 
   <aside class="abre abre--k">
-    <img class="abre-pj" src="../img/pj-sergio-neopreno.webp" alt="" aria-hidden="true"
+    <img class="abre-pj" src="img/pj-sergio-neopreno.webp" alt="" aria-hidden="true"
       width="602" height="1007" loading="lazy" decoding="async">
     <p>El finde, hora por hora.<b>Toca para abrirlo</b></p>
   </aside>
@@ -636,7 +643,7 @@ footer .centro{text-align:center}
         <span class="h">08:15</span>
         <div class="qu">
           <h4>Gimnasia natural</h4>
-          <figure class="foto"><img loading="lazy" src="../img/descanso-activo.jpg" alt="Gimnasia natural, el grupo en corro"><figcaption>Animal flow para arrancar</figcaption></figure>
+          <figure class="foto"><img loading="lazy" src="img/descanso-activo.jpg" alt="Gimnasia natural, el grupo en corro"><figcaption>Animal flow para arrancar</figcaption></figure>
           <div class="credito">
             <div class="qn">by Sergio Mateo</div>
             <p>El mejor entrenador que puedes tener en tu d&iacute;a a d&iacute;a. Con&oacute;cele aqu&iacute;:</p>
@@ -794,40 +801,6 @@ footer .centro{text-align:center}
   <details class="dia extra">
     <summary>
       <div class="dcab">
-        <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5v15.5"/><path d="M2.5 9h17a2 2 0 0 1 2 2v9"/><path d="M2.5 17h19"/><path d="M6.8 9v8"/></svg></span>
-        <div class="dtx">
-          <div class="gnum">Camas</div>
-          <h3>D&oacute;nde duermes</h3>
-        </div>
-        <span class="chev" aria-hidden="true">&#9660;</span>
-      </div>
-    </summary>
-    <p class="dintro">Tres casas, nueve habitaciones. Busca tu nombre y ya sabes d&oacute;nde dejar la mochila al llegar.</p>
-    <div class="listas">
-      <div class="bloque">
-        <div class="bt"><h4>Casa de piedra</h4><span class="cu">12 personas</span></div>
-        <div class="fila"><b>Bayas</b><span class="co">2 literas de dos camas</span><p>H&eacute;ctor &middot; Jorge &middot; Ovidi &middot; Jes&uacute;s</p></div>
-        <div class="fila"><b>Reguer&iacute;n</b><span class="co">3 camas en la buhardilla</span><p>Sergio &middot; Abraham</p></div>
-        <div class="fila"><b>Munielles</b><span class="co">doble, camas gemelas</span><p>Mar&iacute;a R&iacute;os &middot; Bel&eacute;n</p></div>
-        <div class="fila"><b>Santa Mar&iacute;a</b><span class="co">cama matrimonial</span><p>Marta &middot; Adri&aacute;n Maqueda</p></div>
-        <div class="fila"><b>Bahinas</b><span class="co">camas gemelas</span><p>Patricia &middot; Irene</p></div>
-      </div>
-      <div class="bloque">
-        <div class="bt"><h4>Casa de madera</h4><span class="cu">10 personas</span></div>
-        <div class="fila"><b>La Ladrona</b><span class="co">6 camas individuales</span><p>Emilio (Emilich) &middot; Adri&aacute;n Byczek &middot; Genoveva &middot; Carla &middot; Guille &middot; Silvia</p></div>
-        <div class="fila"><b>La Deva</b><span class="co">4 camas individuales</span><p>Eva &middot; Momo &middot; Mar&iacute;a Orlandi &middot; Tania</p></div>
-      </div>
-      <div class="bloque">
-        <div class="bt"><h4>Apartamento Senda Norte</h4><span class="cu">4 personas</span></div>
-        <div class="fila"><b>Altillo</b><span class="co">cama matrimonial</span><p>Sandra &middot; Alba Tienda</p></div>
-        <div class="fila"><b>Sal&oacute;n</b><span class="co">cama nido de dos plazas</span><p>Raquel &middot; Lorena</p></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="dia extra">
-    <summary>
-      <div class="dcab">
         <span class="glob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/><path d="M2 14c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/><path d="M2 19.5c2.2 0 3.1-1.7 5-1.7s2.8 1.7 5 1.7 3.1-1.7 5-1.7 2.8 1.7 5 1.7"/></svg></span>
         <div class="dtx">
           <div class="gnum">Surf</div>
@@ -836,18 +809,14 @@ footer .centro{text-align:center}
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
-    <p class="dintro">Cuatro tandas con monitor, por el nivel que pusiste en el formulario. El intermedio se parte en dos porque no cabe en una sola tanda.</p>
+    <p class="dintro">Cuatro tandas con monitor, por el nivel que cada uno marc&oacute; en el formulario. El intermedio se parte en dos porque no cabe en una sola tanda.</p>
     <div class="listas">
       <div class="bloque">
-        <div class="bt"><h4>Con monitor</h4><span class="cu">24 personas</span></div>
-        <div class="fila"><b>Debutante</b><span class="co">nunca han surfeado o casi</span><p>Genoveva &middot; Eva &middot; Momo &middot; Carla &middot; Lorena &middot; Silvia &middot; Alba Tienda</p></div>
-        <div class="fila"><b>Iniciaci&oacute;n</b><span class="co">se ponen de pie en espumas</span><p>Bel&eacute;n &middot; Ovidi &middot; Tania &middot; Jorge &middot; Sandra &middot; Raquel &middot; Guille</p></div>
-        <div class="fila"><b>Intermedio A</b><span class="co">cogen olas formadas</span><p>Mar&iacute;a Orlandi &middot; Emilio &middot; H&eacute;ctor &middot; Irene &middot; Jes&uacute;s</p></div>
-        <div class="fila"><b>Intermedio B</b><span class="co">cogen olas formadas</span><p>Adri&aacute;n Maqueda &middot; Adri&aacute;n Byczek &middot; Mar&iacute;a R&iacute;os &middot; Marta &middot; Patricia</p></div>
-      </div>
-      <div class="bloque">
-        <div class="bt"><h4>Por libre</h4><span class="cu">2 personas</span></div>
-        <div class="fila"><b>Sin monitor</b><span class="co">organizan el viaje</span><p>Sergio &middot; Abraham</p></div>
+        <div class="bt"><h4>Con monitor</h4><span class="cu">24 personas, 4 tandas</span></div>
+        <div class="fila"><b>Debutante</b><span class="co">nunca han surfeado o casi</span></div>
+        <div class="fila"><b>Iniciaci&oacute;n</b><span class="co">se ponen de pie en espumas</span></div>
+        <div class="fila"><b>Intermedio A</b><span class="co">cogen olas formadas</span></div>
+        <div class="fila"><b>Intermedio B</b><span class="co">cogen olas formadas</span></div>
       </div>
     </div>
   </details>
@@ -911,25 +880,9 @@ footer .centro{text-align:center}
         <span class="chev" aria-hidden="true">&#9660;</span>
       </div>
     </summary>
-    <p class="dintro">Haced una videollamada antes de que comience el viaje para
-      preguntaros estas cuatro cosas y alguna m&aacute;s que quer&aacute;is.</p>
+    <p class="dintro">A cada uno le toca una pareja antes del viaje. Os llam&aacute;is por
+      v&iacute;deo y os pregunt&aacute;is estas cuatro cosas, y alguna m&aacute;s que quer&aacute;is.</p>
     <div class="listas">
-      <div class="bloque">
-        <div class="bt"><h4>Las parejas</h4><span class="cu">toca el n&uacute;mero y se abre WhatsApp</span></div>
-        <div class="fila"><b>01</b><div class="par"><span class="per"><b>H&eacute;ctor</b><a href="https://wa.me/34669587094" target="_blank" rel="noopener">669 58 70 94</a></span><span class="cr">&harr;</span><span class="per"><b>Lorena Lara</b><a href="https://wa.me/34618263585" target="_blank" rel="noopener">618 26 35 85</a></span></div></div>
-        <div class="fila"><b>02</b><div class="par"><span class="per"><b>Jorge</b><a href="https://wa.me/34627669317" target="_blank" rel="noopener">627 66 93 17</a></span><span class="cr">&harr;</span><span class="per"><b>Eva</b><a href="https://wa.me/34615413732" target="_blank" rel="noopener">615 41 37 32</a></span></div></div>
-        <div class="fila"><b>03</b><div class="par"><span class="per"><b>Ovidi</b><a href="https://wa.me/34685123760" target="_blank" rel="noopener">685 12 37 60</a></span><span class="cr">&harr;</span><span class="per"><b>Alba Tienda</b><a href="https://wa.me/34606871110" target="_blank" rel="noopener">606 87 11 10</a></span></div></div>
-        <div class="fila"><b>04</b><div class="par"><span class="per"><b>Jes&uacute;s</b><a href="https://wa.me/34669984209" target="_blank" rel="noopener">669 98 42 09</a></span><span class="cr">&harr;</span><span class="per"><b>Carla</b><a href="https://wa.me/34665693965" target="_blank" rel="noopener">665 69 39 65</a></span></div></div>
-        <div class="fila"><b>05</b><div class="par"><span class="per"><b>Guille</b><a href="https://wa.me/34600290776" target="_blank" rel="noopener">600 29 07 76</a></span><span class="cr">&harr;</span><span class="per"><b>Tania</b><a href="https://wa.me/34610395828" target="_blank" rel="noopener">610 39 58 28</a></span></div></div>
-        <div class="fila"><b>06</b><div class="par"><span class="per"><b>Emilio</b><a href="https://wa.me/34646013968" target="_blank" rel="noopener">646 01 39 68</a></span><span class="cr">&harr;</span><span class="per"><b>Bel&eacute;n</b><a href="https://wa.me/34680793268" target="_blank" rel="noopener">680 79 32 68</a></span></div></div>
-        <div class="fila"><b>07</b><div class="par"><span class="per"><b>Silvia Rodr&iacute;guez</b><a href="https://wa.me/34657361937" target="_blank" rel="noopener">657 36 19 37</a></span><span class="cr">&harr;</span><span class="per"><b>Irene</b><a href="https://wa.me/34646109819" target="_blank" rel="noopener">646 10 98 19</a></span></div></div>
-        <div class="fila"><b>08</b><div class="par"><span class="per"><b>Mar&iacute;a R&iacute;os</b><a href="https://wa.me/34695312583" target="_blank" rel="noopener">695 31 25 83</a></span><span class="cr">&harr;</span><span class="per"><b>Sandra Tienda</b><a href="https://wa.me/34679902613" target="_blank" rel="noopener">679 90 26 13</a></span></div></div>
-        <div class="fila"><b>09</b><div class="par"><span class="per"><b>Patricia</b><a href="https://wa.me/34638548937" target="_blank" rel="noopener">638 54 89 37</a></span><span class="cr">&harr;</span><span class="per"><b>Mar&iacute;a Orlandi</b><a href="https://wa.me/34674810106" target="_blank" rel="noopener">674 81 01 06</a></span></div></div>
-        <div class="fila"><b>10</b><div class="par"><span class="per"><b>Marta Asensio</b><a href="https://wa.me/34646934937" target="_blank" rel="noopener">646 93 49 37</a></span><span class="cr">&harr;</span><span class="per"><b>Raquel Mim&oacute;</b><a href="https://wa.me/34659054958" target="_blank" rel="noopener">659 05 49 58</a></span></div></div>
-        <div class="fila"><b>11</b><div class="par"><span class="per"><b>Adri&aacute;n Maqueda</b><a href="https://wa.me/34636450568" target="_blank" rel="noopener">636 45 05 68</a></span><span class="cr">&harr;</span><span class="per"><b>Momo</b><a href="https://wa.me/34674786626" target="_blank" rel="noopener">674 78 66 26</a></span></div></div>
-        <div class="fila"><b>12</b><div class="par"><span class="per"><b>Abraham</b><a href="https://wa.me/34678703227" target="_blank" rel="noopener">678 70 32 27</a></span><span class="cr">&harr;</span><span class="per"><b>Genoveva</b><a href="https://wa.me/34663130074" target="_blank" rel="noopener">663 13 00 74</a></span></div></div>
-        <div class="fila"><b>13</b><div class="par"><span class="per"><b>Adri&aacute;n Byczek</b><a href="https://wa.me/34616440637" target="_blank" rel="noopener">616 44 06 37</a></span><span class="cr">&harr;</span><span class="per"><b>Sergio</b><a href="https://wa.me/34618246576" target="_blank" rel="noopener">618 24 65 76</a></span></div></div>
-      </div>
       <div class="bloque">
         <div class="bt"><h4>Las cuatro preguntas</h4></div>
         <div class="fila"><p>1. &iquest;Qu&eacute; te ha tra&iacute;do a este viaje? Lo de verdad, no lo que se dice.</p></div>
@@ -944,8 +897,8 @@ footer .centro{text-align:center}
       <div class="ficha ancha">
         <h4>Cualquier cosa</h4>
         <div class="caras">
-          <figure><picture><source type="image/webp" srcset="../img/abraham.webp"></source><img loading="lazy" src="../img/abraham.jpg" alt="Abraham"></picture><figcaption>Abraham</figcaption></figure>
-          <figure><picture><source type="image/webp" srcset="../img/sergio.webp"></source><img loading="lazy" src="../img/sergio.jpg" alt="Sergio"></picture><figcaption>Sergio</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="img/abraham.webp"></source><img loading="lazy" src="img/abraham.jpg" alt="Abraham"></picture><figcaption>Abraham</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="img/sergio.webp"></source><img loading="lazy" src="img/sergio.jpg" alt="Sergio"></picture><figcaption>Sergio</figcaption></figure>
         </div>
         <p>Antes del viaje, durante o despu&eacute;s: si te surge una duda, si llegas a otra hora
           o si algo no te cuadra, escr&iacute;bele a <b>Abraham</b> o a <b>Sergio</b>. Por el grupo
@@ -962,7 +915,7 @@ footer .centro{text-align:center}
 <section class="franja hondo cierre">
   <div class="centro">
     <p class="frase">Esta vida <em>pide otra</em></p>
-    <div class="banda"><picture><source type="image/webp" srcset="../img/cierre.webp"></source><img loading="lazy" src="../img/cierre.jpg" alt="El grupo saliendo del agua con las tablas al atardecer, con el sello del viaje"></picture></div>
+    <div class="banda"><picture><source type="image/webp" srcset="img/cierre.webp"></source><img loading="lazy" src="img/cierre.jpg" alt="El grupo saliendo del agua con las tablas al atardecer, con el sello del viaje"></picture></div>
   </div>
 </section>
 
